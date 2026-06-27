@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Talk to Machines — John Kenneally</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1a1a2e;
+      --accent: #e94560;
+      --text: #2d2d2d;
+      --muted: #666;
+      --light: #f5f5f7;
+      --border: #e0e0e0;
+      --font: Georgia, 'Times New Roman', serif;
+      --sans: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text);
+      background: #fff;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* ---------- Cover ---------- */
+    .cover {
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      border-bottom: 3px solid var(--accent);
+      margin-bottom: 3rem;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 8px;
+    }
+    .cover .label {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .cover h1 {
+      font-size: 2.8rem;
+      line-height: 1.2;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .cover .subtitle {
+      font-size: 1.1rem;
+      color: #aaa;
+      margin-bottom: 0.5rem;
+    }
+    .cover .author {
+      font-size: 1rem;
+      color: #ccc;
+      font-style: italic;
+    }
+    .cover .edition-note {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      font-family: var(--sans);
+      color: var(--accent);
+      background: rgba(233,69,96,0.15);
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+    }
+
+    /* ---------- TOC ---------- */
+    .toc { margin-bottom: 3rem; }
+    .toc h2 {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .toc-part { margin-bottom: 1.5rem; }
+    .toc-part-title {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+    .toc a {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid transparent;
+    }
+    .toc a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .toc a .ch-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 2.5rem;
+    }
+
+    /* ---------- Part headings ---------- */
+    .part-header {
+      margin: 4rem 0 2rem;
+      padding: 2rem;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .part-header .part-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .part-header h2 {
+      font-size: 1.6rem;
+      font-weight: 900;
+    }
+    .part-header .part-subtitle {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-top: 0.3rem;
+      font-family: var(--sans);
+    }
+
+    /* ---------- Chapter ---------- */
+    .chapter {
+      margin-bottom: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .chapter-number {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .chapter h3 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .placeholder {
+      background: var(--light);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem 1.5rem;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ---------- C.R.A.F.T. Framework ---------- */
+    .framework-box {
+      margin: 2rem 0;
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .framework-box h4 {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+    }
+    .framework-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .framework-item:last-child { border-bottom: none; }
+    .framework-letter {
+      font-family: var(--sans);
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--accent);
+      width: 2rem;
+      flex-shrink: 0;
+      line-height: 1;
+      padding-top: 0.2rem;
+    }
+    .framework-item-content h5 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+    .framework-item-content p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ---------- Front / Back matter ---------- */
+    .front-matter, .back-matter {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: var(--light);
+      border-radius: 8px;
+    }
+    .front-matter h2, .back-matter h2 {
+      font-family: var(--sans);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    /* ---------- Utility ---------- */
+    h2 { font-size: 1.5rem; color: var(--primary); margin: 2rem 0 1rem; }
+    p { margin-bottom: 1.2rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1.2rem; }
+    li { margin-bottom: 0.4rem; }
+    strong { color: var(--primary); }
+    .accent { color: var(--accent); font-weight: 700; }
+
+    @media print {
+      body { max-width: 100%; padding: 0; }
+      .part-header { break-before: page; }
+      .chapter { break-inside: avoid; }
+      .edition-note { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="label">PromptCraft One — PC1</div>
+  <h1>How to Talk to Machines</h1>
+  <p class="subtitle">A Practical Guide to Getting Better Results from AI</p>
+  <p class="author">by John Kenneally</p>
+  <div class="edition-note">DRAFT — PAID EDITION — REPLACE PLACEHOLDERS WITH FINAL PROSE</div>
+</div>
+
+
+<!-- ===== FRONT MATTER ===== -->
+<div class="front-matter" id="front-matter">
+  <h2>How to use this book</h2>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final "How to use this book" content. Explain dual reading levels: Year 7 and Professional / Managerial. Explain C.R.A.F.T. overview. Explain how to navigate the book. ]</div>
+
+  <h2>Dual Reading Levels</h2>
+  <p>
+    This book is written at two levels simultaneously. The <strong>Year 7 level</strong> uses plain English, short sentences,
+    and clear examples — suitable for students, parents, and anyone new to AI. The
+    <strong>Professional / Managerial level</strong> is structured, precise, and industry-aware — suitable for
+    managers, professionals, and technical users who want the full depth of the PC1 method.
+  </p>
+  <p>
+    You do not need to read both levels. Choose the one that feels right for you. Both arrive at the same conclusion.
+  </p>
+</div>
+
+
+<!-- ===== TABLE OF CONTENTS ===== -->
+<nav class="toc" id="toc">
+  <h2>Table of Contents</h2>
+
+  <div class="toc-part">
+    <div class="toc-part-title">Front Matter</div>
+    <a href="#front-matter"><span class="ch-num">—</span> How to use this book</a>
+  </div>
+
+  <div class="toc-part">
+    <div class="toc-part-title">Part 1 — Why This Matters (The Problem)</div>
+    <a href="#ch1"><span class="ch-num">Ch 1</span> What Happens When You Talk to AI</a>
+    <a href="#ch2"><span class="ch-num">Ch 2</span> The Retry Problem</a>
+    <a href="#ch3"><span class="ch-num">Ch 3</span> The Hidden Cost</a>
+  </div>
+
+  <div class="toc-part">
+    <div class="toc-part-title">Part 2 — The C.R.A.F.T. Method (The Solution)</div>
+    <a href="#ch4"><span class="ch-num">Ch 4</span> Context: Setting the Boundaries</a>
+    <a href="#ch5"><span class="ch-num">Ch 5</span> Role: Assigning the Expert</a>
+    <a href="#ch6"><span class="ch-num">Ch 6</span> Action: Naming the Task</a>
+    <a href="#ch7"><span class="ch-num">Ch 7</span> Format: Shaping the Output</a>
+    <a href="#ch8"><span class="ch-num">Ch 8</span> Tone: Calibrating the Voice</a>
+    <a href="#ch9"><span class="ch-num">Ch 9</span> Integration: The Complete System</a>
+  </div>
+
+  <div class="toc-part">
+    <div class="toc-part-title">Part 3 — Industry Applications (The Proof)</div>
+    <a href="#ch10"><span class="ch-num">Ch 10</span> Healthcare: C.A.R.E.S.</a>
+    <a href="#ch11"><span class="ch-num">Ch 11</span> Legal: B.R.I.E.F.</a>
+    <a href="#ch12"><span class="ch-num">Ch 12</span> Education: T.E.A.C.H.</a>
+    <a href="#ch13"><span class="ch-num">Ch 13</span> Finance: S.T.A.K.E.</a>
+    <a href="#ch14"><span class="ch-num">Ch 14</span> Software: D.E.B.U.G.</a>
+    <a href="#ch15"><span class="ch-num">Ch 15</span> Marketing: P.I.T.C.H.</a>
+  </div>
+
+  <div class="toc-part">
+    <div class="toc-part-title">Part 4 — The Environmental Case (The Stakes)</div>
+    <a href="#ch16"><span class="ch-num">Ch 16</span> Energy: What Your Prompts Cost the Planet</a>
+    <a href="#ch17"><span class="ch-num">Ch 17</span> Water: The Resource Too Many Ignore</a>
+    <a href="#ch18"><span class="ch-num">Ch 18</span> The 10% Argument: What Happens at Scale</a>
+  </div>
+
+  <div class="toc-part">
+    <div class="toc-part-title">Part 5 — Teaching Prompt Literacy (The Future)</div>
+    <a href="#ch19"><span class="ch-num">Ch 19</span> Prompt Literacy in Schools</a>
+    <a href="#ch20"><span class="ch-num">Ch 20</span> Curriculum Design: How to Teach C.R.A.F.T. and T.E.A.C.H.</a>
+    <a href="#ch21"><span class="ch-num">Ch 21</span> The Email Parallel: Why This Must Happen Now</a>
+  </div>
+
+  <div class="toc-part">
+    <div class="toc-part-title">Part 6 — PC1 as Platform (The Business)</div>
+    <a href="#ch22"><span class="ch-num">Ch 22</span> PC1 as SaaS: From Method to Platform</a>
+    <a href="#ch23"><span class="ch-num">Ch 23</span> Industry Counterparts: Vertical SaaS</a>
+    <a href="#ch24"><span class="ch-num">Ch 24</span> The Road Ahead</a>
+  </div>
+
+  <div class="toc-part">
+    <div class="toc-part-title">Back Matter</div>
+    <a href="#appendix"><span class="ch-num">—</span> Appendices — Data, Acronyms, Resources</a>
+  </div>
+</nav>
+
+
+<!-- ===== PART 1 ===== -->
+<div class="part-header" id="part1">
+  <div class="part-label">Part One</div>
+  <h2>Why This Matters</h2>
+  <div class="part-subtitle">The Problem</div>
+</div>
+
+<div class="chapter" id="ch1">
+  <div class="chapter-number">Chapter 1</div>
+  <h3>What Happens When You Talk to AI</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 1 prose. Cover: the mechanics of what happens when a person sends a message to an AI. What the AI receives, how it interprets it, why vague instructions produce vague results. Opening hook, framing of the core problem. ]</div>
+</div>
+
+<div class="chapter" id="ch2">
+  <div class="chapter-number">Chapter 2</div>
+  <h3>The Retry Problem</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 2 prose. Cover: the pattern of asking, getting a bad result, asking again slightly differently, getting another bad result. The cost in time, energy, and frustration. Why retrying is not the solution. ]</div>
+</div>
+
+<div class="chapter" id="ch3">
+  <div class="chapter-number">Chapter 3</div>
+  <h3>The Hidden Cost</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 3 prose. Cover: the hidden costs of poor prompting — energy use, time waste, environmental impact, productivity loss. The case for doing this properly from the start. ]</div>
+</div>
+
+
+<!-- ===== PART 2 ===== -->
+<div class="part-header" id="part2">
+  <div class="part-label">Part Two</div>
+  <h2>The C.R.A.F.T. Method</h2>
+  <div class="part-subtitle">The Solution</div>
+</div>
+
+<div class="chapter" id="ch4">
+  <div class="chapter-number">Chapter 4</div>
+  <h3>Context: Setting the Boundaries</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 4 prose. ]</div>
+
+  <div class="framework-box">
+    <h4>C — Context</h4>
+    <div class="framework-item">
+      <div class="framework-letter">C</div>
+      <div class="framework-item-content">
+        <h5>What is Context?</h5>
+        <p>
+          Context is the background the AI needs to understand your situation.
+          It tells the AI what the project is, who you are, what constraints apply,
+          and what information it should draw on.
+        </p>
+        <p>
+          Without context, the AI makes assumptions — and its assumptions are almost always wrong for your specific situation.
+        </p>
+        <p><strong>Include:</strong> project name, audience, domain, relevant data, any documents or previous answers to reference,
+        and any constraints (word count, legal rules, reading level).</p>
+        <p><strong>Example:</strong> "I am writing a report for a Year 10 science class about climate change. The audience is 15-year-old students in Australia. Keep explanations simple."</p>
+      </div>
+    </div>
+  </div>
+  <div class="placeholder">[ PLACEHOLDER — Continue Chapter 4 prose after the framework box. ]</div>
+</div>
+
+<div class="chapter" id="ch5">
+  <div class="chapter-number">Chapter 5</div>
+  <h3>Role: Assigning the Expert</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 5 prose. ]</div>
+
+  <div class="framework-box">
+    <h4>R — Role</h4>
+    <div class="framework-item">
+      <div class="framework-letter">R</div>
+      <div class="framework-item-content">
+        <h5>What is Role?</h5>
+        <p>
+          Role tells the AI what persona or expertise to adopt.
+          When you assign a role, the AI adjusts its vocabulary, depth, assumptions, and style
+          to match the persona you described.
+        </p>
+        <p><strong>Examples:</strong></p>
+        <ul>
+          <li>"You are a secondary school science teacher with 15 years' experience."</li>
+          <li>"You are a senior software engineer specialising in Python security."</li>
+          <li>"You are a plain-English legal writer for non-lawyers."</li>
+        </ul>
+        <p>The more specific the role, the more targeted the response.</p>
+      </div>
+    </div>
+  </div>
+  <div class="placeholder">[ PLACEHOLDER — Continue Chapter 5 prose after the framework box. ]</div>
+</div>
+
+<div class="chapter" id="ch6">
+  <div class="chapter-number">Chapter 6</div>
+  <h3>Action: Naming the Task</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 6 prose. ]</div>
+
+  <div class="framework-box">
+    <h4>A — Action</h4>
+    <div class="framework-item">
+      <div class="framework-letter">A</div>
+      <div class="framework-item-content">
+        <h5>What is Action?</h5>
+        <p>
+          Action is the explicit instruction — what you want the AI to do, step by step.
+          AI tools respond best to numbered, sequenced instructions rather than vague requests.
+        </p>
+        <p><strong>Structure your Action as steps:</strong></p>
+        <ol>
+          <li>Step 1: Clarify — ask if you need any information confirmed before proceeding.</li>
+          <li>Step 2: Analyse — describe your reasoning or approach.</li>
+          <li>Step 3: Execute — deliver the final output.</li>
+        </ol>
+        <p>If the task has multiple stages, number each one. AI tools follow numbered lists reliably.</p>
+      </div>
+    </div>
+  </div>
+  <div class="placeholder">[ PLACEHOLDER — Continue Chapter 6 prose after the framework box. ]</div>
+</div>
+
+<div class="chapter" id="ch7">
+  <div class="chapter-number">Chapter 7</div>
+  <h3>Format: Shaping the Output</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 7 prose. ]</div>
+
+  <div class="framework-box">
+    <h4>F — Format</h4>
+    <div class="framework-item">
+      <div class="framework-letter">F</div>
+      <div class="framework-item-content">
+        <h5>What is Format?</h5>
+        <p>
+          Format tells the AI how to structure and present its answer.
+          Without format instructions, AI tools default to a style that may not match your needs.
+        </p>
+        <p><strong>Format options include:</strong></p>
+        <ul>
+          <li>Headings and subheadings</li>
+          <li>Bullet point lists</li>
+          <li>Numbered lists</li>
+          <li>Tables</li>
+          <li>Code blocks (for technical output)</li>
+          <li>Length limits ("under 300 words", "one paragraph only")</li>
+          <li>Output type ("in JSON", "as a PDF-ready summary", "as a slide-by-slide script")</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="placeholder">[ PLACEHOLDER — Continue Chapter 7 prose after the framework box. ]</div>
+</div>
+
+<div class="chapter" id="ch8">
+  <div class="chapter-number">Chapter 8</div>
+  <h3>Tone: Calibrating the Voice</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 8 prose. ]</div>
+
+  <div class="framework-box">
+    <h4>T — Tone</h4>
+    <div class="framework-item">
+      <div class="framework-letter">T</div>
+      <div class="framework-item-content">
+        <h5>What is Tone?</h5>
+        <p>
+          Tone is the writing style and voice. It covers formality, warmth, technicality, and reading level.
+          When you specify tone, the AI calibrates its vocabulary and sentence structure to match.
+        </p>
+        <p><strong>Tone examples:</strong></p>
+        <ul>
+          <li>"Formal and professional — no contractions."</li>
+          <li>"Friendly and encouraging — suitable for a 12-year-old."</li>
+          <li>"Precise and technical — assume the reader has an engineering background."</li>
+          <li>"Plain English — avoid jargon. Explain terms if you must use them."</li>
+          <li>"Concise — one idea per sentence. No filler."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="placeholder">[ PLACEHOLDER — Continue Chapter 8 prose after the framework box. ]</div>
+</div>
+
+<div class="chapter" id="ch9">
+  <div class="chapter-number">Chapter 9</div>
+  <h3>Integration: The Complete System</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 9 prose. ]</div>
+
+  <div class="framework-box">
+    <h4>C.R.A.F.T. — The Complete Framework</h4>
+    <div class="framework-item">
+      <div class="framework-letter">C</div>
+      <div class="framework-item-content">
+        <h5>Context</h5>
+        <p>Briefly state all relevant background. Include any data, documents, or links the AI should use.</p>
+      </div>
+    </div>
+    <div class="framework-item">
+      <div class="framework-letter">R</div>
+      <div class="framework-item-content">
+        <h5>Role</h5>
+        <p>Define the AI's persona, expertise, and attitude. The more specific, the better.</p>
+      </div>
+    </div>
+    <div class="framework-item">
+      <div class="framework-letter">A</div>
+      <div class="framework-item-content">
+        <h5>Action</h5>
+        <p>Outline exactly what you want the AI to do. Number each step.</p>
+      </div>
+    </div>
+    <div class="framework-item">
+      <div class="framework-letter">F</div>
+      <div class="framework-item-content">
+        <h5>Format</h5>
+        <p>Specify output structure — headings, bullets, length, code blocks, tables.</p>
+      </div>
+    </div>
+    <div class="framework-item">
+      <div class="framework-letter">T</div>
+      <div class="framework-item-content">
+        <h5>Tone</h5>
+        <p>State the writing style — formal or casual, technical or plain English, concise or detailed.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>The D.E.T. Extension — For Software and Technical Tasks</h2>
+  <p>
+    When your task involves code, software, automation, or any technical build,
+    append a D.E.T. checklist to your C.R.A.F.T. prompt. D.E.T. stands for
+    Dependencies, Environment, and Testing.
+  </p>
+
+  <div class="framework-box">
+    <h4>D.E.T. — For Technical and Build Tasks</h4>
+    <div class="framework-item">
+      <div class="framework-letter">D</div>
+      <div class="framework-item-content">
+        <h5>Dependencies</h5>
+        <p>List required libraries, packages, or tools and their versions. Example: <em>numpy&gt;=1.20, express.js 4.x</em></p>
+      </div>
+    </div>
+    <div class="framework-item">
+      <div class="framework-letter">E</div>
+      <div class="framework-item-content">
+        <h5>Environment</h5>
+        <p>Note any API keys, environment variables, or configuration requirements. Example: <em>Set OPENAI_API_KEY in .env, database URL required.</em></p>
+      </div>
+    </div>
+    <div class="framework-item">
+      <div class="framework-letter">T</div>
+      <div class="framework-item-content">
+        <h5>Testing</h5>
+        <p>Specify test framework and criteria. Example: <em>Include unit tests using pytest achieving at least 80% coverage.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="placeholder">[ PLACEHOLDER — Continue Chapter 9 prose. Show a worked example of a complete C.R.A.F.T. + D.E.T. prompt. ]</div>
+</div>
+
+
+<!-- ===== PART 3 ===== -->
+<div class="part-header" id="part3">
+  <div class="part-label">Part Three</div>
+  <h2>Industry Applications</h2>
+  <div class="part-subtitle">The Proof</div>
+</div>
+
+<div class="chapter" id="ch10">
+  <div class="chapter-number">Chapter 10</div>
+  <h3>Healthcare: C.A.R.E.S.</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 10 prose. Healthcare application of the PC1 method. The C.A.R.E.S. acronym (expand and define). Real use cases in clinical and administrative healthcare settings. ]</div>
+</div>
+
+<div class="chapter" id="ch11">
+  <div class="chapter-number">Chapter 11</div>
+  <h3>Legal: B.R.I.E.F.</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 11 prose. Legal application of the PC1 method. The B.R.I.E.F. acronym (expand and define). Real use cases for legal professionals, case preparation, and document drafting. ]</div>
+</div>
+
+<div class="chapter" id="ch12">
+  <div class="chapter-number">Chapter 12</div>
+  <h3>Education: T.E.A.C.H.</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 12 prose. Education application of the PC1 method. The T.E.A.C.H. acronym (expand and define). Real use cases for teachers, curriculum designers, and students. ]</div>
+</div>
+
+<div class="chapter" id="ch13">
+  <div class="chapter-number">Chapter 13</div>
+  <h3>Finance: S.T.A.K.E.</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 13 prose. Finance application of the PC1 method. The S.T.A.K.E. acronym (expand and define). Real use cases for financial professionals, analysts, and advisors. ]</div>
+</div>
+
+<div class="chapter" id="ch14">
+  <div class="chapter-number">Chapter 14</div>
+  <h3>Software: D.E.B.U.G.</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 14 prose. Software development application of the PC1 method. The D.E.B.U.G. acronym (expand and define). Real use cases for developers, DevOps, and QA engineers. ]</div>
+</div>
+
+<div class="chapter" id="ch15">
+  <div class="chapter-number">Chapter 15</div>
+  <h3>Marketing: P.I.T.C.H.</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 15 prose. Marketing application of the PC1 method. The P.I.T.C.H. acronym (expand and define). Real use cases for marketers, copywriters, and brand strategists. ]</div>
+</div>
+
+
+<!-- ===== PART 4 ===== -->
+<div class="part-header" id="part4">
+  <div class="part-label">Part Four</div>
+  <h2>The Environmental Case</h2>
+  <div class="part-subtitle">The Stakes</div>
+</div>
+
+<div class="chapter" id="ch16">
+  <div class="chapter-number">Chapter 16</div>
+  <h3>Energy: What Your Prompts Cost the Planet</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 16 prose. The energy cost of AI inference. How poor prompting amplifies energy waste. The case for prompt efficiency as an environmental responsibility. ]</div>
+</div>
+
+<div class="chapter" id="ch17">
+  <div class="chapter-number">Chapter 17</div>
+  <h3>Water: The Resource Too Many Ignore</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 17 prose. The water cooling requirements of AI data centres. Why water is the overlooked environmental cost of AI. ]</div>
+</div>
+
+<div class="chapter" id="ch18">
+  <div class="chapter-number">Chapter 18</div>
+  <h3>The 10% Argument: What Happens at Scale</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 18 prose. The compound effect of prompt efficiency at scale. If 10% of AI interactions were more precise, the environmental saving. The moral case for prompt literacy. ]</div>
+</div>
+
+
+<!-- ===== PART 5 ===== -->
+<div class="part-header" id="part5">
+  <div class="part-label">Part Five</div>
+  <h2>Teaching Prompt Literacy</h2>
+  <div class="part-subtitle">The Future</div>
+</div>
+
+<div class="chapter" id="ch19">
+  <div class="chapter-number">Chapter 19</div>
+  <h3>Prompt Literacy in Schools</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 19 prose. The case for teaching prompt literacy in schools. Why it belongs alongside reading, writing, and numeracy. How to introduce it. ]</div>
+</div>
+
+<div class="chapter" id="ch20">
+  <div class="chapter-number">Chapter 20</div>
+  <h3>Curriculum Design: How to Teach C.R.A.F.T. and T.E.A.C.H.</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 20 prose. Practical curriculum design for C.R.A.F.T. and the T.E.A.C.H. framework for educators. Age-appropriate approaches, lesson structures, assessment ideas. ]</div>
+</div>
+
+<div class="chapter" id="ch21">
+  <div class="chapter-number">Chapter 21</div>
+  <h3>The Email Parallel: Why This Must Happen Now</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 21 prose. The comparison between learning to write email professionally and learning to write AI prompts. Why this transition is urgent and inevitable. The window of opportunity. ]</div>
+</div>
+
+
+<!-- ===== PART 6 ===== -->
+<div class="part-header" id="part6">
+  <div class="part-label">Part Six</div>
+  <h2>PC1 as Platform</h2>
+  <div class="part-subtitle">The Business</div>
+</div>
+
+<div class="chapter" id="ch22">
+  <div class="chapter-number">Chapter 22</div>
+  <h3>PC1 as SaaS: From Method to Platform</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 22 prose. How PC1 evolves from a method into a software platform. The SaaS opportunity. Product thinking, pricing, and architecture considerations. ]</div>
+</div>
+
+<div class="chapter" id="ch23">
+  <div class="chapter-number">Chapter 23</div>
+  <h3>Industry Counterparts: Vertical SaaS</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 23 prose. How PC1 can be adapted into vertical SaaS products for specific industries. Healthcare, legal, education, finance, government, construction. ]</div>
+</div>
+
+<div class="chapter" id="ch24">
+  <div class="chapter-number">Chapter 24</div>
+  <h3>The Road Ahead</h3>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Chapter 24 prose. The future of PC1, prompt literacy, AI communication, and the author's vision for what comes next — PC2, PC3, the long-term platform. Closing thoughts. ]</div>
+</div>
+
+
+<!-- ===== BACK MATTER ===== -->
+<div class="back-matter" id="appendix">
+  <h2>Appendices — Data, Acronyms, Resources</h2>
+  <div class="placeholder">[ PLACEHOLDER — Replace with final Appendix content. Include: all acronyms defined (C.R.A.F.T., D.E.T., C.A.R.E.S., B.R.I.E.F., T.E.A.C.H., S.T.A.K.E., D.E.B.U.G., P.I.T.C.H.), data sources cited in environmental chapters, recommended tools and resources, glossary. ]</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+}
+
+body {
+  background-color: #f9f9fb;
+  color: #1a1a2e;
+}
+
+.btn-primary {
+  @apply bg-accent text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-600 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+}
+
+.btn-secondary {
+  @apply bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-sm border border-gray-100 p-6;
+}
