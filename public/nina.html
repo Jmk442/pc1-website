@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Nina — From John Kenneally</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark: #0d1a0d;
+      --mid: #162b16;
+      --green: #6dbf3a;
+      --green-dim: #4a8a28;
+      --text: #2d2d2d;
+      --muted: #666;
+      --light: #f4f7f4;
+      --border: #e0e8e0;
+      --font: Georgia, 'Times New Roman', serif;
+      --sans: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text);
+      background: #fff;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+      margin: 0 -1.5rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(109,191,58,0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .cover-ring {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: white;
+      margin: 0 auto 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .cover-ring svg { position: relative; }
+    .tagline {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.5rem;
+    }
+    .tagline span { color: var(--green); }
+    .cover h1 {
+      font-family: var(--sans);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 900;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    .cover h1 em {
+      font-style: normal;
+      color: var(--green);
+    }
+    .cover .subtitle {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      font-family: var(--sans);
+      letter-spacing: 0.1em;
+      margin-top: 1rem;
+    }
+
+    /* ── SECTIONS ── */
+    .section { margin-bottom: 3rem; }
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--green-dim);
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-family: var(--sans);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+    h3 {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    p { margin-bottom: 1rem; color: #3d3d3d; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── PROMPT BLOCK ── */
+    .prompt-wrap {
+      background: var(--dark);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .prompt-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(109,191,58,0.06) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .prompt-header {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .prompt-block {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(109,191,58,0.2);
+      border-radius: 8px;
+      padding: 1.5rem;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.85);
+      white-space: pre-wrap;
+      position: relative;
+    }
+    .prompt-block strong { color: var(--green); font-weight: 700; }
+    .prompt-block .prompt-letter {
+      display: inline-block;
+      color: var(--green);
+      font-weight: 900;
+      font-size: 1rem;
+      min-width: 1.5rem;
+    }
+
+    /* ── ETHICS ITEMS ── */
+    .ethics-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .ethics-item:last-child { border-bottom: none; }
+    .ethics-letter {
+      font-family: var(--sans);
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--green);
+      line-height: 1;
+      min-width: 2rem;
+      padding-top: 0.2rem;
+    }
+    .ethics-content h4 {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+    .ethics-content p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── PROJECT BOX ── */
+    .project-box {
+      background: var(--light);
+      border-left: 4px solid var(--green);
+      border-radius: 0 8px 8px 0;
+      padding: 1.5rem 2rem;
+      margin: 1.5rem 0;
+    }
+    .project-box p { font-size: 0.95rem; color: #444; }
+
+    /* ── OFFER TABLE ── */
+    .offer-row {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .offer-row:last-child { border-bottom: none; }
+    .offer-icon {
+      font-size: 1.3rem;
+      min-width: 2rem;
+      text-align: center;
+    }
+    .offer-text strong {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.2rem;
+    }
+    .offer-text span { font-size: 0.9rem; color: var(--muted); }
+
+    /* ── AGREEMENT ── */
+    .agreement {
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    .agreement h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--dark);
+      border-bottom: 2px solid var(--green);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+      margin-top: 0;
+    }
+    .agreement p { font-size: 0.95rem; margin-bottom: 0.75rem; }
+    .sign-line {
+      border-bottom: 1.5px solid var(--text);
+      margin: 1.5rem 0 0.25rem;
+      min-width: 200px;
+      display: block;
+      height: 1px;
+    }
+    .sign-label {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .sign-pair {
+      margin-top: 1.5rem;
+    }
+
+    /* ── PERSONAL NOTE ── */
+    .personal {
+      background: var(--dark);
+      color: white;
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .personal::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.5rem;
+      left: 1.5rem;
+      font-size: 8rem;
+      color: rgba(109,191,58,0.1);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .personal p { color: rgba(255,255,255,0.8); position: relative; }
+    .personal .from {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--green);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-top: 1.5rem;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      text-align: center;
+      margin: 2.5rem 0;
+      color: var(--green);
+      font-size: 1.2rem;
+      letter-spacing: 0.5rem;
+      opacity: 0.4;
+    }
+
+    @media print {
+      .cover { margin: 0 0 2rem; }
+      .prompt-wrap { break-inside: avoid; }
+      .agreement { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── COVER ── -->
+<div class="cover">
+  <div class="cover-ring">
+    <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+      <circle cx="35" cy="35" r="34" fill="white"/>
+      <path d="M35 57s-16-10-16-24c0-8.84 7.16-16 16-16s16 7.16 16 16c0 14-16 24-16 24z" fill="#0d1a0d"/>
+      <path d="M35 57s-7-12-7-24c0-6.3 2.8-11.3 7-14 4.2 2.7 7 7.7 7 14 0 12-7 24-7 24z" fill="#6dbf3a"/>
+    </svg>
+  </div>
+  <p class="tagline">BETTER PROMPTS. BETTER OUTCOMES. <span>BETTER WORLD.</span></p>
+  <h1>For Nina —<br><em>A Gift and a Proposal</em></h1>
+  <p class="subtitle">From John Kenneally &nbsp;·&nbsp; PromptCraft One</p>
+</div>
+
+
+<!-- ── SECTION 1: PERSONAL NOTE ── -->
+<div class="section">
+  <p class="section-label">First things first</p>
+  <h2>Before anything else</h2>
+
+  <div class="personal">
+    <p>
+      Nina — I have been working on this for a while. Not just the book, but what comes after it.
+      And the more I worked, the more I kept coming back to you.
+    </p>
+    <p>
+      I know you have strong feelings about AI and what it has done to artists and creators.
+      You are right to feel that way. So before I ask you anything, I want to give you something.
+    </p>
+    <p>
+      What follows is a prompt I built specifically for you — for someone who makes things,
+      who values authorship, who wants to use a tool without the tool using them.
+      It is my answer to the question you have been asking.
+    </p>
+    <p>
+      Read the prompt first. Everything else can wait.
+    </p>
+    <p class="from">— John</p>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+
+<!-- ── SECTION 2: THE GIFT PROMPT ── -->
+<div class="section">
+  <p class="section-label">The Gift — C.R.A.F.T. + E.T.H.I.C.S.</p>
+  <h2>A prompt built for a creator who protects their work</h2>
+
+  <p>
+    The PC1 method is built on C.R.A.F.T. — five parts that turn a vague question into a clear
+    instruction. For creative work, translation, voice, and publishing, there is a second layer:
+    E.T.H.I.C.S. It does not replace C.R.A.F.T. It sits beneath it — specifically for moments
+    when your authorship, your voice, and your rights need to be stated plainly before the machine starts.
+  </p>
+  <p>
+    This is that prompt. You can copy it, adapt it, and use it in any AI tool.
+  </p>
+
+  <div class="prompt-wrap">
+    <p class="prompt-header">Your personal C.R.A.F.T. + E.T.H.I.C.S. prompt — copy and use freely</p>
+    <div class="prompt-block"><strong>--- C.R.A.F.T. ---</strong>
+
+<span class="prompt-letter">C</span> — CONTEXT
+I am a professional translator and creative working on [describe your project — translation, writing, voiceover, etc.]. I am using AI as a support tool only. I make all final decisions about language, style, and expression.
+
+<span class="prompt-letter">R</span> — ROLE
+You are a research assistant and structural support. You are not the author. You are not the translator. You provide scaffolding, research, and options. I select, shape, and finalise everything.
+
+<span class="prompt-letter">A</span> — ACTION
+[Describe the specific task — e.g. "Research German equivalents for the following English idioms" or "Give me five structural options for opening this chapter."]
+
+<span class="prompt-letter">F</span> — FORMAT
+[Specify how you want the output — e.g. "Present as a numbered list" or "Give me a short paragraph I can work from."]
+
+<span class="prompt-letter">T</span> — TONE
+[Specify the register — e.g. "Match a warm, accessible non-fiction tone" or "Keep it neutral and precise."]
+
+
+<strong>--- E.T.H.I.C.S. ---</strong>
+
+<span class="prompt-letter">E</span> — EXPLICIT AUTHORSHIP
+All work produced in this session is authored by me. You have no authorship claim on any output, draft, or idea that emerges here.
+
+<span class="prompt-letter">T</span> — TRANSPARENCY
+If you cannot verify the specific origin of a fact, phrase, or creative approach — say so before continuing. Do not present training-derived content as original or independently confirmed.
+
+<span class="prompt-letter">H</span> — HUMAN LEADS
+My voice, my style, my creative decisions are primary. You provide material I work with. You do not determine the final expression.
+
+<span class="prompt-letter">I</span> — INTEGRITY
+Do not generate content in the style of any named author, artist, or musician. If I ask you to, flag it, explain why you are declining, and suggest an alternative.
+
+<span class="prompt-letter">C</span> — CREDIT
+When the work touches known sources, traditions, or recognisable works — name them. Do not obscure what you drew on. Acknowledge the shoulders you stand on.
+
+<span class="prompt-letter">S</span> — SOVEREIGNTY
+I own this session's output entirely. If I publish anything that incorporates thinking from this session, I am the author. You will not be credited. That is correct and proper.</div>
+  </div>
+
+  <p style="font-size:0.9rem; color: var(--muted); font-family: system-ui, sans-serif;">
+    The E.T.H.I.C.S. framework is part of the PC1 system. It was designed with professional
+    creators specifically in mind — people who have every right to be cautious about AI and
+    what it takes without asking.
+  </p>
+</div>
+
+<div class="divider">· · ·</div>
+
+
+<!-- ── SECTION 3: THE ETHICS BREAKDOWN ── -->
+<div class="section">
+  <p class="section-label">What E.T.H.I.C.S. stands for</p>
+  <h2>Six principles. One position.</h2>
+  <p>Each letter names a constraint you place on the AI before the work begins.</p>
+
+  <div>
+    <div class="ethics-item">
+      <div class="ethics-letter">E</div>
+      <div class="ethics-content">
+        <h4>Explicit Authorship</h4>
+        <p>The human is the author. Stated as a hard constraint before any creative work begins. The AI has no authorship claim on anything produced in this session.</p>
+      </div>
+    </div>
+    <div class="ethics-item">
+      <div class="ethics-letter">T</div>
+      <div class="ethics-content">
+        <h4>Transparency</h4>
+        <p>The AI must acknowledge it cannot fully verify the origins of its training data. Where creative content is requested, it must flag this honestly — not present training-derived material as original.</p>
+      </div>
+    </div>
+    <div class="ethics-item">
+      <div class="ethics-letter">H</div>
+      <div class="ethics-content">
+        <h4>Human Leads</h4>
+        <p>Human creative vision, voice, and original expression are the primary material. The AI produces structure, research, and scaffolding only. It does not write the final creative work.</p>
+      </div>
+    </div>
+    <div class="ethics-item">
+      <div class="ethics-letter">I</div>
+      <div class="ethics-content">
+        <h4>Integrity</h4>
+        <p>Do not mimic the specific style of named artists, writers, musicians, or creators. If asked, refuse and explain why. Protect the integrity of both the named creator and the human being assisted.</p>
+      </div>
+    </div>
+    <div class="ethics-item">
+      <div class="ethics-letter">C</div>
+      <div class="ethics-content">
+        <h4>Credit</h4>
+        <p>When content draws on recognisable traditions, genres, or works — acknowledge it. Do not present AI-derived content as wholly original. Honour the shoulders the work stands on.</p>
+      </div>
+    </div>
+    <div class="ethics-item">
+      <div class="ethics-letter">S</div>
+      <div class="ethics-content">
+        <h4>Sovereignty</h4>
+        <p>The human retains full creative and legal ownership of everything in this session. The AI does not share authorship. The output belongs entirely to the human.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+
+<!-- ── SECTION 4: THE PROJECT ── -->
+<div class="section">
+  <p class="section-label">The Proposal</p>
+  <h2>What I am building — and where you come in</h2>
+
+  <p>
+    <strong>PromptCraft One</strong> is a book about how to talk to AI clearly.
+    At its centre is the C.R.A.F.T. method — five parts that turn a vague question into
+    a precise instruction. The result is fewer retries, better answers, and less wasted
+    energy. Written at two levels: accessible enough for a school student, rigorous enough
+    for a university or government reader — all in one volume.
+  </p>
+
+  <div class="project-box">
+    <p><strong>Title:</strong> How to Talk to Machines (Wie man mit Maschinen spricht)</p>
+    <p><strong>Author:</strong> John Kenneally</p>
+    <p><strong>Format:</strong> Digital book (PDF + EPUB) with a separate audiobook adaptation</p>
+    <p><strong>German edition:</strong> Full translation + German audiobook voiceover</p>
+    <p><strong>Audiobook:</strong> Approximately 10–12 chapters · No activities · Tables spoken as paragraphs</p>
+  </div>
+
+  <p>
+    I am not looking for someone to just translate words. I am looking for someone who
+    understands language well enough to make the German edition feel like it was written in German —
+    not translated into it. That takes a professional. It takes you.
+  </p>
+</div>
+
+
+<!-- ── SECTION 5: THE OFFER ── -->
+<div class="section">
+  <p class="section-label">What I am offering</p>
+  <h2>The terms — simply put</h2>
+
+  <div>
+    <div class="offer-row">
+      <div class="offer-icon">📝</div>
+      <div class="offer-text">
+        <strong>Your contribution</strong>
+        <span>Translation and authorship of the German written edition. Writing and adaptation of the German audiobook script. Voiceover recording of the German audiobook.</span>
+      </div>
+    </div>
+    <div class="offer-row">
+      <div class="offer-icon">💚</div>
+      <div class="offer-text">
+        <strong>Your share</strong>
+        <span>33% of net royalties from the German edition and the German audiobook — across all platforms it is sold on. Net means after platform fees, before anything else.</span>
+      </div>
+    </div>
+    <div class="offer-row">
+      <div class="offer-icon">✍️</div>
+      <div class="offer-text">
+        <strong>Your credit</strong>
+        <span>Acknowledged in the German edition and German audiobook as: <strong>Translator, Contributor, and Voice Artist</strong>. Placement agreed before publication.</span>
+      </div>
+    </div>
+    <div class="offer-row">
+      <div class="offer-icon">🤝</div>
+      <div class="offer-text">
+        <strong>Platform decisions</strong>
+        <span>All platform and release decisions are made jointly for the German edition. Nothing goes live without both of us agreeing.</span>
+      </div>
+    </div>
+    <div class="offer-row">
+      <div class="offer-icon">🚫</div>
+      <div class="offer-text">
+        <strong>No pressure</strong>
+        <span>This is a proposal, not a request. If it does not feel right, say so. The prompt above is yours regardless. That was a gift, not a negotiation.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+
+<!-- ── SECTION 6: AGREEMENT ── -->
+<div class="section">
+  <p class="section-label">If you would like to proceed</p>
+  <h2>A simple written agreement</h2>
+  <p>
+    This is not a legal contract. It is two people putting something down on paper
+    so both of us know exactly where we stand.
+  </p>
+
+  <div class="agreement">
+    <h3>PromptCraft One — German Edition Collaboration Agreement</h3>
+
+    <p>This is a personal agreement between <strong>John Kenneally</strong> (author, PromptCraft One) and the collaborator named below.</p>
+
+    <p style="margin-top:1.5rem;">I, <span class="sign-line" style="display:inline-block; width:220px; vertical-align:bottom; margin-bottom:2px;"></span> agree to the following:</p>
+
+    <h3 style="border:none; padding:0; margin-top:1.5rem; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted);">What I am contributing</h3>
+    <p>I am contributing my professional skills as translator, writer, contributor, and voice artist to the German edition of PromptCraft One (<em>Wie man mit Maschinen spricht</em>) and to the German audiobook adaptation.</p>
+    <p>My specific contributions are:</p>
+    <p style="padding-left:1rem;">— Translation and authorship of the German written edition<br>
+    — Writing and adaptation of the German audiobook script<br>
+    — Voiceover recording of the German audiobook</p>
+
+    <h3 style="border:none; padding:0; margin-top:1.5rem; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted);">What I will receive</h3>
+    <p>I will receive <strong>33% of net royalties</strong> earned from the German edition of PromptCraft One and the German audiobook, across all platforms on which these products are sold. Net is defined as revenue received after platform fees are deducted. Platform arrangements will be agreed between us before any product goes on sale.</p>
+
+    <h3 style="border:none; padding:0; margin-top:1.5rem; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted);">Credit and acknowledgement</h3>
+    <p>I will be acknowledged in the German edition and German audiobook as <strong>Translator, Contributor, and Voice Artist</strong>. The form and placement of this credit will be agreed between us before publication.</p>
+
+    <h3 style="border:none; padding:0; margin-top:1.5rem; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted);">What remains with the author</h3>
+    <p>John Kenneally retains full authorship of PromptCraft One. The PC1 system, C.R.A.F.T. method, and all associated frameworks remain his intellectual property. All publication decisions are made by John Kenneally. Both parties agree to consult each other on any decision that affects the German edition specifically.</p>
+
+    <div style="margin-top:2.5rem; display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+      <div class="sign-pair">
+        <p style="font-size:0.9rem; margin-bottom:1rem;">I, <span class="sign-line" style="display:inline-block; width:140px; vertical-align:bottom; margin-bottom:2px;"></span> agree to the above.</p>
+        <span class="sign-line" style="display:block; margin-bottom:0.25rem;"></span>
+        <span class="sign-label">Signature</span>
+        <br><br>
+        <span class="sign-line" style="display:block; margin-bottom:0.25rem;"></span>
+        <span class="sign-label">Date</span>
+      </div>
+      <div class="sign-pair">
+        <p style="font-size:0.9rem; margin-bottom:1rem;"><strong>John Kenneally</strong></p>
+        <span class="sign-line" style="display:block; margin-bottom:0.25rem;"></span>
+        <span class="sign-label">Signature</span>
+        <br><br>
+        <span class="sign-line" style="display:block; margin-bottom:0.25rem;"></span>
+        <span class="sign-label">Date</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+
+<!-- ── SECTION 7: CLOSING ── -->
+<div class="section">
+  <div class="personal">
+    <p>
+      I have not heard from you for a while — and that is on me, not you.
+      I have been working. This is what I have been working on.
+    </p>
+    <p>
+      There is no deadline on any of this. Read it when you are ready.
+      Reply when you feel like it. The E.T.H.I.C.S. prompt is yours either way.
+    </p>
+    <p>
+      The most important thing here is you — not the book, not the numbers, not the plan.
+      Whatever you decide, I am glad you are in the world making things.
+    </p>
+    <p class="from">— John Kenneally</p>
+  </div>
+</div>
+
+<p style="text-align:center; font-family:system-ui,sans-serif; font-size:0.7rem; color:#ccc; margin-top:4rem; letter-spacing:0.1em;">
+  PROMPTCRAFT ONE &nbsp;·&nbsp; BETTER PROMPTS. BETTER OUTCOMES. BETTER WORLD.
+</p>
+
+</body>
+</html>
