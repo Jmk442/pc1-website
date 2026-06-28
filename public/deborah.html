@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nina Banks — Narrator Handoff · PromptCraft 1</title>
+  <title>Deborah Arnell — Narrator Handoff · PromptCraft 1</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --dark: #0d1a0d;
-      --mid: #162b16;
-      --green: #6dbf3a;
-      --green-dim: #4a8a28;
+      --dark: #0a0a1a;
+      --mid: #14142b;
+      --blue: #4a7fd4;
+      --blue-dim: #3360a8;
       --text: #2d2d2d;
       --muted: #666;
-      --light: #f4f7f4;
-      --border: #dce8dc;
+      --light: #f4f5f9;
+      --border: #dcdee8;
       --font: Georgia, 'Times New Roman', serif;
       --sans: system-ui, -apple-system, sans-serif;
     }
@@ -45,7 +45,7 @@
       font-weight: 800;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--blue);
       margin-bottom: 1rem;
     }
     .header h1 {
@@ -56,7 +56,7 @@
       line-height: 1.2;
       margin-bottom: 0.6rem;
     }
-    .header h1 em { font-style: normal; color: var(--green); }
+    .header h1 em { font-style: normal; color: var(--blue); }
     .header .sub {
       font-family: var(--sans);
       font-size: 0.85rem;
@@ -71,7 +71,7 @@
       font-weight: 800;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--green-dim);
+      color: var(--blue-dim);
       margin-bottom: 0.4rem;
     }
     h2 {
@@ -112,7 +112,7 @@
       top: -1rem;
       left: 1.5rem;
       font-size: 7rem;
-      color: rgba(109,191,58,0.1);
+      color: rgba(74,127,212,0.1);
       font-family: Georgia, serif;
       line-height: 1;
     }
@@ -120,30 +120,11 @@
     .personal .from {
       font-family: var(--sans);
       font-size: 0.78rem;
-      color: var(--green);
+      color: var(--blue);
       font-weight: 600;
       letter-spacing: 0.1em;
       margin-top: 1.4rem;
     }
-
-    /* ── QUESTION BOX ── */
-    .question-box {
-      background: #fff9e6;
-      border-left: 4px solid #d4a843;
-      border-radius: 0 8px 8px 0;
-      padding: 1.4rem 1.8rem;
-      margin: 1.5rem 0;
-    }
-    .question-box .q-label {
-      font-family: var(--sans);
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #9a7b1c;
-      margin-bottom: 0.6rem;
-    }
-    .question-box p { color: #4a3800; font-size: 0.95rem; }
 
     /* ── ROLE CARD ── */
     .role-grid {
@@ -164,7 +145,7 @@
       font-weight: 800;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--green-dim);
+      color: var(--blue-dim);
       margin-bottom: 0.35rem;
     }
     .role-item .ri-val {
@@ -196,7 +177,7 @@
       letter-spacing: 0.03em;
       transition: background 0.2s;
     }
-    .book-link:hover { background: var(--green-dim); }
+    .book-link:hover { background: var(--blue-dim); }
     .book-link .icon { font-size: 1rem; }
 
     /* ── SCRIPT BLOCK ── */
@@ -212,7 +193,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle, rgba(109,191,58,0.05) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(74,127,212,0.05) 1px, transparent 1px);
       background-size: 22px 22px;
       pointer-events: none;
     }
@@ -222,13 +203,13 @@
       font-weight: 800;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--blue);
       margin-bottom: 1.4rem;
       position: relative;
     }
     .script-text {
       background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(109,191,58,0.2);
+      border: 1px solid rgba(74,127,212,0.2);
       border-radius: 8px;
       padding: 1.5rem 1.6rem;
       font-family: var(--font);
@@ -237,11 +218,11 @@
       color: rgba(255,255,255,0.88);
       position: relative;
     }
-    .script-text em { color: rgba(255,255,255,0.45); font-style: italic; font-size: 0.85em; }
+    .script-text em { color: rgba(255,255,255,0.42); font-style: italic; font-size: 0.85em; }
     .script-note {
       font-family: var(--sans);
       font-size: 0.78rem;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.32);
       margin-top: 1rem;
       position: relative;
     }
@@ -289,7 +270,7 @@
       font-family: var(--sans);
       font-size: 1.1rem;
       font-weight: 900;
-      color: var(--green);
+      color: var(--blue);
       min-width: 2.2rem;
       padding-top: 0.1rem;
     }
@@ -307,10 +288,10 @@
     .divider {
       text-align: center;
       margin: 2.5rem 0;
-      color: var(--green);
+      color: var(--blue);
       font-size: 1rem;
       letter-spacing: 0.6rem;
-      opacity: 0.35;
+      opacity: 0.3;
     }
 
     /* ── CONTACT ── */
@@ -340,7 +321,7 @@
       letter-spacing: 0.04em;
       transition: background 0.2s;
     }
-    .contact-btn:hover { background: var(--green-dim); }
+    .contact-btn:hover { background: var(--blue-dim); }
 
     /* ── FOOTER ── */
     .footer {
@@ -359,150 +340,142 @@
 <!-- ── HEADER ── -->
 <div class="header">
   <p class="header-eyebrow">Narrator Handoff · Confidential</p>
-  <h1>Für <em>Nina Banks</em> —<br>Deutsche Aufnahme</h1>
-  <p class="sub">PromptCraft 1: Teaching Machines to Listen &nbsp;·&nbsp; Von John Kenneally</p>
+  <h1>For <em>Deborah Arnell</em> —<br>English Recording</h1>
+  <p class="sub">PromptCraft 1: Teaching Machines to Listen &nbsp;·&nbsp; By John Kenneally</p>
 </div>
 
 
 <!-- ── SECTION 1: PERSONAL NOTE ── -->
 <div class="section">
-  <p class="label">Persönliche Notiz</p>
-  <h2>Eine Nachricht von John</h2>
+  <p class="label">A Note from John</p>
+  <h2>Before you start</h2>
 
   <div class="personal">
     <p>
-      Nina — du hast das Buch jetzt vor dir. Ich weiß, das ist eine Menge auf einmal.
-      Aber du bist genau die Person, der ich diesen Text anvertrauen möchte.
+      Deborah — thank you for taking this on. This book has been a long time coming
+      and having the right voice for it matters more than I can properly express.
     </p>
     <p>
-      Ich brauche keine wortgetreue Übersetzung. Ich brauche jemanden, der das Buch
-      auf Deutsch <em>fühlt</em> — der versteht, warum ein Satz so klingt wie er klingt,
-      und ihn dann so hinschreibt, dass er sich auf Deutsch genauso natürlich anfühlt.
-      Das bist du.
+      This is not a technical manual. It is a book about communication — about how
+      we talk to machines, and why doing it well matters for the planet and for people.
+      I want listeners to feel that. I want the Year 7 sections to feel warm and clear.
+      I want the University sections to feel precise and grounded.
     </p>
     <p>
-      Diese Seite ist alles, was du brauchst, bevor wir ins Studio gehen.
-      Lies das Eröffnungsskript. Schau dir die Produktionsregeln an.
-      Wenn du Fragen hast — schreib mir einfach. Die Schaltfläche ist ganz unten.
+      Read your opening script. Look through the production rules.
+      If anything feels off — anything at all — write to me before you record.
+      There is no rush. Getting it right is everything.
     </p>
     <p class="from">— John Kenneally</p>
-  </div>
-
-  <div class="question-box">
-    <p class="q-label">Offene Frage — bitte gib mir deine Meinung</p>
-    <p>
-      <strong>Soll die Abkürzung C.R.A.F.T. im Deutschen unverändert bleiben,</strong>
-      oder soll eine eigenständige deutsche Abkürzung entwickelt werden,
-      die die gleichen Konzepte abdeckt aber auf Deutsch steht?
-      Deine Einschätzung als Muttersprachlerin hat hier mehr Gewicht als alles andere.
-    </p>
   </div>
 </div>
 
 
-<!-- ── SECTION 2: DEINE ROLLE ── -->
+<!-- ── SECTION 2: YOUR ROLE ── -->
 <div class="section">
-  <p class="label">Deine Rolle</p>
-  <h2>Was du beiträgst</h2>
+  <p class="label">Your Role</p>
+  <h2>What you are contributing</h2>
 
   <div class="role-grid">
     <div class="role-item">
-      <p class="ri-label">Sprache</p>
-      <p class="ri-val">Deutsch (Muttersprache)</p>
+      <p class="ri-label">Language</p>
+      <p class="ri-val">English (primary edition)</p>
     </div>
     <div class="role-item">
       <p class="ri-label">Register</p>
-      <p class="ri-val">Jahrgang 11–12 / Universität</p>
+      <p class="ri-val">Year 7 clarity + University depth</p>
     </div>
     <div class="role-item">
-      <p class="ri-label">Kredit</p>
-      <p class="ri-val">Übersetzerin, Beiträgerin, Sprecherin</p>
+      <p class="ri-label">Credit</p>
+      <p class="ri-val">Narrator (English Audiobook)</p>
     </div>
     <div class="role-item">
-      <p class="ri-label">Royalties</p>
-      <p class="ri-val">33 % netto (dt. Edition + Hörbuch)</p>
+      <p class="ri-label">Platform</p>
+      <p class="ri-val">Audible (English)</p>
     </div>
     <div class="role-item">
-      <p class="ri-label">Skript</p>
-      <p class="ri-val">Selbst übersetzen + anpassen</p>
+      <p class="ri-label">Script</p>
+      <p class="ri-val">Provided — adapted from book</p>
     </div>
     <div class="role-item">
-      <p class="ri-label">Plattform</p>
-      <p class="ri-val">Audible DE (gemeinsam abgestimmt)</p>
+      <p class="ri-label">Chapters</p>
+      <p class="ri-val">Full book — Parts 1–6 (Ch 1–24)</p>
     </div>
   </div>
 
-  <p>Das englische Original liegt hier für dich bereit. Die deutsche Ausgabe — <em>deine</em> Übersetzung — entsteht gemeinsam mit dir:</p>
+  <p>The full English book is here for your reference:</p>
 
   <div class="book-links">
-    <a href="book-en.html" class="book-link"><span class="icon">📖</span> Englische Originalausgabe</a>
+    <a href="book-en.html" class="book-link"><span class="icon">📖</span> Read the English Book</a>
   </div>
 </div>
 
 <div class="divider">· · ·</div>
 
 
-<!-- ── SECTION 3: ERÖFFNUNGSSKRIPT ── -->
+<!-- ── SECTION 3: OPENING SCRIPT ── -->
 <div class="section">
-  <p class="label">Aufnahmeskript — Deutsch</p>
-  <h2>Dein Eröffnungsskript</h2>
-  <p>Das ist der Text, den du am Anfang des Hörbuchs einsprichst. Lies ihn laut vor — er sollte sich natürlich anfühlen. Wenn etwas sperrig klingt, mark es und schreib mir.</p>
+  <p class="label">Recording Script — English</p>
+  <h2>Your opening script</h2>
+  <p>This is the text you read at the start of the audiobook. Say it out loud — it should feel natural. If anything sounds awkward, mark it and let me know.</p>
 
   <div class="script-wrap">
-    <p class="script-header">Eröffnung — Spreche dies zu Beginn von Kapitel 1</p>
+    <p class="script-header">Opening — Read this before Chapter 1</p>
     <div class="script-text">
-      Willkommen bei PromptCraft 1: Teaching Machines to Listen — in der deutschen Fassung.
+      Welcome to PromptCraft 1: Teaching Machines to Listen.
 
       <br><br>
 
-      Dieses Buch hat ein einziges Ziel: dir beibringen, wie du mit künstlicher Intelligenz
-      so kommunizierst, dass sie genau das tut, was du brauchst — beim ersten Mal.
+      This book has one purpose: to show you how to communicate with artificial intelligence
+      so clearly that it does exactly what you need — the first time.
 
       <br><br>
 
-      Im Mittelpunkt steht die C.R.A.F.T.-Methode. Fünf Elemente, die einen vagen Gedanken
-      in eine präzise Anweisung verwandeln: Kontext, Rolle, Aktion, Format und Ton.
+      At the centre is the C.R.A.F.T. method — five elements that turn a vague thought
+      into a precise instruction: Context, Role, Action, Format, and Tone.
 
       <br><br>
 
-      Jedes Kapitel erscheint in zwei Versionen: eine für Schülerinnen und Schüler
-      ab etwa 12 Jahren — klar und direkt. Und eine für Universitätsstudierende,
-      Fachleute und Behörden — mit mehr Tiefe und formaler Sprache.
+      Every chapter appears in two versions: one written for students around twelve years old —
+      plain, direct, with real examples. And one written for university students, professionals,
+      and policy makers — with more depth, more evidence, and more formal language.
 
       <br><br>
 
-      Du kannst beide lesen. Du kannst dir eine aussuchen. Das Buch trifft dich dort,
-      wo du gerade stehst.
+      You can read both. You can choose one. The book meets you where you are.
 
       <br><br>
 
-      Ich bin <em>[Name der Sprecherin]</em>, und das ist PromptCraft 1.
+      I'm <em>[narrator's name]</em>, and this is PromptCraft 1.
     </div>
-    <p class="script-note">Hinweis: Ersetze [Name der Sprecherin] durch deinen eigenen Namen.</p>
+    <p class="script-note">Note: Replace [narrator's name] with your own name.</p>
   </div>
 </div>
 
 
-<!-- ── SECTION 4: ABSCHLUSS ── -->
+<!-- ── SECTION 4: CLOSING SCRIPT ── -->
 <div class="section">
-  <p class="label">Abschlussskript</p>
-  <h2>Zum Ende des Hörbuchs</h2>
+  <p class="label">Closing Script</p>
+  <h2>End of the audiobook</h2>
 
   <div class="script-wrap">
-    <p class="script-header">Abschluss — Spreche dies nach dem letzten Kapitel</p>
+    <p class="script-header">Closing — Read this after the final chapter</p>
     <div class="script-text">
-      Das war PromptCraft 1: Teaching Machines to Listen — auf Deutsch.
+      That was PromptCraft 1: Teaching Machines to Listen.
 
       <br><br>
 
-      Wenn du die C.R.A.F.T.-Methode in deinem Alltag anwenden möchtest,
-      findest du die Kurzübersicht im Anhang dieses Buches.
-      Außerdem gibt es auf promptcraft1.com weitere Ressourcen, Kurse
-      und Werkzeuge — auf Englisch und bald auch auf Deutsch.
+      If you'd like to apply the C.R.A.F.T. method in your work or study,
+      the quick-reference cheat sheet is included at the back of this book in the Appendices.
 
       <br><br>
 
-      Bessere Prompts. Bessere Ergebnisse. Bessere Welt.
+      You can also find courses, tools, and resources at promptcraft1.com —
+      built for individuals, classrooms, and organisations.
+
+      <br><br>
+
+      Better prompts. Better outcomes. Better world.
     </div>
   </div>
 </div>
@@ -512,54 +485,54 @@
 
 <!-- ── SECTION 5: DELIVERY STRUCTURE ── -->
 <div class="section">
-  <p class="label">Aufbau des Hörbuchs</p>
-  <h2>Struktur und Lieferung — Teil für Teil</h2>
+  <p class="label">Audiobook Structure</p>
+  <h2>Part by part — what to expect</h2>
 
   <table>
     <thead>
       <tr>
-        <th>Teil</th>
-        <th>Inhalt</th>
-        <th>Kapitel</th>
-        <th>Hinweis</th>
+        <th>Part</th>
+        <th>Content</th>
+        <th>Chapters</th>
+        <th>Delivery note</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Teil 1</strong></td>
-        <td>Warum das wichtig ist (Das Problem)</td>
-        <td>Kap. 1–3</td>
-        <td>Einleitend, zugänglich — normales Sprechtempo</td>
+        <td><strong>Part 1</strong></td>
+        <td>Why This Matters (The Problem)</td>
+        <td>Ch 1–3</td>
+        <td>Accessible, conversational — warm pace</td>
       </tr>
       <tr>
-        <td><strong>Teil 2</strong></td>
-        <td>Die C.R.A.F.T.-Methode (Die Lösung)</td>
-        <td>Kap. 4–9</td>
-        <td>Kerninhalt — klar und deutlich</td>
+        <td><strong>Part 2</strong></td>
+        <td>The C.R.A.F.T. Method (The Solution)</td>
+        <td>Ch 4–9</td>
+        <td>Core content — clear and precise</td>
       </tr>
       <tr>
-        <td><strong>Teil 3</strong></td>
-        <td>Branchenspezifische Anwendungen (Der Beweis)</td>
-        <td>Kap. 10–15</td>
-        <td>Sachlich und direkt; Tabellen als Fließtext sprechen</td>
+        <td><strong>Part 3</strong></td>
+        <td>Industry Applications (The Proof)</td>
+        <td>Ch 10–15</td>
+        <td>Matter-of-fact; speak tables as prose</td>
       </tr>
       <tr>
-        <td><strong>Teil 4</strong></td>
-        <td>Der ökologische Aspekt (Die Verantwortung)</td>
-        <td>Kap. 16–18</td>
-        <td>Ernsthafter Ton; Daten langsam und klar vortragen</td>
+        <td><strong>Part 4</strong></td>
+        <td>The Environmental Case (The Stakes)</td>
+        <td>Ch 16–18</td>
+        <td>Serious tone; data delivered slowly and clearly</td>
       </tr>
       <tr>
-        <td><strong>Teil 5</strong></td>
-        <td>Prompt-Kompetenz vermitteln (Die Zukunft)</td>
-        <td>Kap. 19–21</td>
-        <td>Lehrend; engagiert und mit Wärme</td>
+        <td><strong>Part 5</strong></td>
+        <td>Teaching Prompt Literacy (The Future)</td>
+        <td>Ch 19–21</td>
+        <td>Teaching mode — engaged, with warmth</td>
       </tr>
       <tr>
-        <td><strong>Teil 6</strong></td>
-        <td>PC1 als Plattform (Das Geschäftsmodell)</td>
-        <td>Kap. 22–24</td>
-        <td>Vorausschauend; sachlich aber optimistisch</td>
+        <td><strong>Part 6</strong></td>
+        <td>PC1 as Platform (The Business)</td>
+        <td>Ch 22–24</td>
+        <td>Forward-looking — measured optimism</td>
       </tr>
     </tbody>
   </table>
@@ -568,57 +541,57 @@
 
 <!-- ── SECTION 6: PRODUCTION RULES ── -->
 <div class="section">
-  <p class="label">Produktionsregeln</p>
-  <h2>Was du schneidest, behältst und anpasst</h2>
+  <p class="label">Production Rules</p>
+  <h2>What you cut, keep, and adapt</h2>
 
   <table>
     <thead>
       <tr>
         <th>Element</th>
-        <th>Regel</th>
-        <th>Kommentar</th>
+        <th>Rule</th>
+        <th>Notes</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Aktivitätsboxen / Aufgaben</td>
-        <td class="cut">KÜRZEN</td>
-        <td>Nur für das schriftliche Buch — im Hörbuch weglassen</td>
+        <td>Activity boxes / exercises</td>
+        <td class="cut">CUT</td>
+        <td>Written-book only — skip in the audiobook</td>
       </tr>
       <tr>
-        <td>Tabellen</td>
-        <td class="adapt">ANPASSEN</td>
-        <td>Als kurze Aufzählung oder Fließtext sprechen</td>
+        <td>Tables</td>
+        <td class="adapt">ADAPT</td>
+        <td>Read as a short prose list or summary</td>
       </tr>
       <tr>
-        <td>Vergleichsbeispiele (Y7 / Uni)</td>
-        <td class="keep">BEHALTEN</td>
-        <td>Beide Versionen vorlesen — sie sind der Kern des Buchs</td>
+        <td>Year 7 + University sections</td>
+        <td class="keep">KEEP</td>
+        <td>Read both — they are the heart of the book</td>
       </tr>
       <tr>
-        <td>Formulierungen wie "Lese Abschnitt X"</td>
-        <td class="cut">KÜRZEN</td>
-        <td>Im Hörbuch nicht sinnvoll — einfach weglassen</td>
+        <td>Phrases like "See Section X"</td>
+        <td class="cut">CUT</td>
+        <td>Not relevant in audio — omit cleanly</td>
       </tr>
       <tr>
-        <td>C.R.A.F.T. / T.E.A.C.H. usw. (Akronyme)</td>
-        <td class="adapt">ANPASSEN</td>
-        <td>Deine Entscheidung — Englisch behalten oder dt. Version entwickeln</td>
+        <td>C.R.A.F.T. acronym letters (C, R, A, F, T)</td>
+        <td class="keep">KEEP</td>
+        <td>Spell them out when first introduced; use the word after</td>
       </tr>
       <tr>
-        <td>Zitate und Zahlen</td>
-        <td class="keep">BEHALTEN</td>
-        <td>Genau so sprechen — langsam und klar</td>
+        <td>Industry acronyms (C.A.R.E.S., B.R.I.E.F., etc.)</td>
+        <td class="adapt">ADAPT</td>
+        <td>Introduce spelling first, then use the word naturally</td>
       </tr>
       <tr>
-        <td>Abkürzungen (z. B. "KI" für "AI")</td>
-        <td class="adapt">ANPASSEN</td>
-        <td>Wo sinnvoll, deutsche Fachbegriffe verwenden</td>
+        <td>Data / statistics</td>
+        <td class="keep">KEEP</td>
+        <td>Read exactly as written — slow and clear</td>
       </tr>
       <tr>
-        <td>Persönliche Anreden (z. B. "du" vs. "Sie")</td>
-        <td class="adapt">ANPASSEN</td>
-        <td>Deiner Einschätzung nach — das Buch ist zugänglich, also eher "du"</td>
+        <td>Callout boxes</td>
+        <td class="adapt">ADAPT</td>
+        <td>Read the content; skip the box title unless it adds meaning</td>
       </tr>
     </tbody>
   </table>
@@ -627,36 +600,36 @@
 
 <!-- ── SECTION 7: PHASE ROADMAP ── -->
 <div class="section">
-  <p class="label">Zeitplan</p>
-  <h2>Die vier Phasen unserer Zusammenarbeit</h2>
+  <p class="label">Timeline</p>
+  <h2>Our four phases together</h2>
 
   <div class="phases">
     <div class="phase-row">
       <div class="phase-num">1</div>
       <div class="phase-content">
-        <strong>Lektüre &amp; Feedback</strong>
-        <span>Du liest das Buch (DE + EN). Du gibst mir Feedback zur Übersetzung und zur Akronyme-Frage. Wir sprechen über offene Punkte.</span>
+        <strong>Read &amp; Familiarise</strong>
+        <span>Read the full English book. Flag anything that sounds unnatural when spoken aloud. We discuss before you record anything.</span>
       </div>
     </div>
     <div class="phase-row">
       <div class="phase-num">2</div>
       <div class="phase-content">
-        <strong>Skript-Finalisierung</strong>
-        <span>Du erstellst das endgültige Hörbuch-Skript auf Deutsch. Ich gebe dir mein OK. Keine Aufnahme ohne gegenseitiges Einverständnis.</span>
+        <strong>Script Sign-off</strong>
+        <span>I send you the final adapted audiobook script. You confirm you are happy with it. No recording starts without mutual agreement.</span>
       </div>
     </div>
     <div class="phase-row">
       <div class="phase-num">3</div>
       <div class="phase-content">
-        <strong>Aufnahme</strong>
-        <span>Du nimmst das Hörbuch auf. Wir gehen gemeinsam durch die Qualitätsprüfung. Korrekturen nach Bedarf.</span>
+        <strong>Recording</strong>
+        <span>You record the audiobook. We go through quality together. Corrections as needed — take your time.</span>
       </div>
     </div>
     <div class="phase-row">
       <div class="phase-num">4</div>
       <div class="phase-content">
-        <strong>Veröffentlichung</strong>
-        <span>Wir stimmen die Plattform ab (Audible DE und andere). Beide unterschreiben, bevor irgendwas live geht. Deine 33 % netto ab Tag 1.</span>
+        <strong>Release</strong>
+        <span>We agree on platform and release timing. Audible (English) is the primary target. Nothing goes live without both of us signing off.</span>
       </div>
     </div>
   </div>
@@ -667,13 +640,13 @@
 
 <!-- ── CONTACT ── -->
 <div class="section">
-  <p class="label">Fragen? Anmerkungen?</p>
-  <h2>Schreib mir direkt</h2>
+  <p class="label">Questions? Notes?</p>
+  <h2>Write to John directly</h2>
 
   <div class="contact-block">
-    <p>Diese Seite ist nur für dich. Wenn du Fragen zum Skript, zur Aufnahme oder zur Zusammenarbeit hast — einfach auf den Knopf drücken.</p>
-    <a href="mailto:johntilv4575@gmail.com?subject=PromptCraft%201%20—%20Hörbuch%20DE%20(Nina)" class="contact-btn">
-      ✉️ &nbsp; John schreiben
+    <p>This page is just for you. If you have questions about the script, the recording process, or anything else — just hit the button below.</p>
+    <a href="mailto:johntilv4575@gmail.com?subject=PromptCraft%201%20—%20English%20Audiobook%20(Deborah)" class="contact-btn">
+      ✉️ &nbsp; Email John
     </a>
   </div>
 </div>
@@ -681,8 +654,8 @@
 
 <!-- ── FOOTER ── -->
 <p class="footer">
-  PROMPTCRAFT 1 &nbsp;·&nbsp; NARRATOR HANDOFF — NINA BANKS &nbsp;·&nbsp; VERTRAULICH<br>
-  Diese Seite ist nur für Nina. Nicht öffentlich verlinkt.<br>
+  PROMPTCRAFT 1 &nbsp;·&nbsp; NARRATOR HANDOFF — DEBORAH ARNELL &nbsp;·&nbsp; CONFIDENTIAL<br>
+  This page is for Deborah Arnell only. Not linked publicly.<br>
   © John Kenneally &nbsp;·&nbsp; johntilv4575@gmail.com
 </p>
 
