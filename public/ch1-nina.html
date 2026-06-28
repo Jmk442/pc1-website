@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 1 — Narration Script · Nina Banks</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --dark: #0d1a0d; --green: #6dbf3a; --green-dim: #4a8a28;
+  --light: #f4f7f4; --text: #1a2e1a; --muted: #666; --border: #dde8dd;
+  --font: Georgia, 'Times New Roman', serif;
+  --sans: system-ui, -apple-system, sans-serif;
+}
+body { font-family: var(--font); font-size: 19px; line-height: 1.9; color: var(--text); background: var(--light); max-width: 680px; margin: 0 auto; padding: 0; }
+.top-nav { position: sticky; top: 0; background: var(--dark); display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1.2rem; z-index: 100; }
+.top-nav a { color: var(--green); font-family: var(--sans); font-size: 0.78rem; font-weight: 700; text-decoration: none; }
+.top-nav .badge { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.card { display: none; padding: 2.5rem 1.5rem 8rem; min-height: calc(100vh - 50px); }
+.card.active { display: block; }
+.context-card { background: var(--dark); }
+.ctx-eyebrow { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--green); margin-bottom: 0.6rem; }
+.ctx-title { font-family: var(--sans); font-size: clamp(1.3rem,4vw,1.9rem); font-weight: 900; color: white; margin-bottom: 1.5rem; line-height: 1.2; }
+.context-card p { color: rgba(255,255,255,0.78); margin-bottom: 0.9rem; }
+.context-card strong { color: white; }
+.legend { display: flex; flex-direction: column; gap: 0.6rem; margin: 1.4rem 0; }
+.legend-item { display: flex; align-items: center; gap: 0.8rem; font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+.l-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.l-dot.script { background: var(--green); }
+.l-dot.cut { background: #e74c3c; }
+.l-dot.adapt { background: #d4a843; }
+.card-label { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--green-dim); margin-bottom: 0.5rem; }
+.card-title { font-family: var(--sans); font-size: 1.2rem; font-weight: 900; color: var(--dark); margin-bottom: 2rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--dark); }
+.script-card p { margin-bottom: 1.1rem; }
+.script-card blockquote { margin: 1.2rem 0 1.2rem 1rem; padding-left: 1rem; border-left: 3px solid var(--green); font-style: italic; color: #333; }
+.script-card ul, .script-card ol { margin: 0.6rem 0 1.1rem 1.8rem; }
+.script-card li { margin-bottom: 0.5rem; }
+.cut-card { background: #fff5f5; border: 2px solid #e74c3c; border-radius: 12px; }
+.cut-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #c0392b; margin-bottom: 0.4rem; }
+.cut-card h2 { font-family: var(--sans); font-size: 1.1rem; font-weight: 900; color: #7a0000; margin-bottom: 1rem; }
+.cut-card p { font-size: 0.9rem; color: #8b0000; margin-bottom: 0.5rem; line-height: 1.7; }
+.pause-line { margin-top: 1.5rem; padding: 1rem 1.2rem; background: #f0f9f0; border-left: 4px solid var(--green); border-radius: 0 8px 8px 0; font-style: italic; color: #1a4a1a; font-size: 1rem; line-height: 1.8; }
+.adapt-card { background: #fffbec; border: 2px solid #d4a843; border-radius: 12px; }
+.adapt-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #a07c20; margin-bottom: 0.4rem; }
+.adapt-card h2 { font-family: var(--sans); font-size: 1.1rem; font-weight: 900; color: #5a4000; margin-bottom: 1rem; }
+.adapt-card p { font-size: 0.9rem; color: #5a4000; margin-bottom: 0.5rem; line-height: 1.7; }
+.adapt-card .spoken { background: rgba(255,255,255,0.7); border-radius: 8px; padding: 1.2rem 1.4rem; margin-top: 1rem; font-family: var(--font); font-size: 1.05rem; font-style: italic; color: #3a2800; line-height: 1.9; }
+.end-card { background: var(--dark); border-radius: 12px; text-align: center; }
+.end-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+.end-card h2 { font-family: var(--sans); font-size: 1.6rem; font-weight: 900; color: white; margin-bottom: 1.5rem; }
+.end-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
+.end-nav a { font-family: var(--sans); font-size: 0.9rem; font-weight: 700; color: var(--green); text-decoration: none; }
+.bottom-controls { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(244,247,244,0.97); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.5rem; z-index: 100; }
+#prev-btn { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; border: 1.5px solid var(--border); background: var(--light); color: var(--text); border-radius: 8px; padding: 0.6rem 1.2rem; cursor: pointer; }
+#prev-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+#next-btn { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; border: none; background: var(--green-dim); color: white; border-radius: 8px; padding: 0.6rem 1.4rem; cursor: pointer; }
+.counter { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); }
+.director-box { margin-top: 1.6rem; padding: 1.1rem 1.3rem; border-left: 4px solid var(--green); background: rgba(109,191,58,0.08); border-radius: 0 8px 8px 0; }
+.director-box p { color: rgba(255,255,255,0.72) !important; font-size: 0.88rem; margin-bottom: 0.5rem; }
+.director-box strong { color: var(--green) !important; }
+@media print { .top-nav, .bottom-controls, #notepad { display: none !important; } .card { display: block !important; min-height: auto; } }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="nina.html">← nina.html</a>
+  <span class="badge">Chapter 1 of 9 · Part 1</span>
+  <a href="index.html">Hub →</a>
+</nav>
+
+<!-- CARD 0: Context -->
+<div class="card context-card active">
+  <div class="ctx-eyebrow">🎙️ Before You Begin — Chapter 1</div>
+  <div class="ctx-title">What Happens When You Talk to AI</div>
+  <p>Before you start reading, scan through all the cards. Familiarise yourself. Then come back to card one and read. Everything you need is here — no cross-referencing required.</p>
+  <p><strong>Register for this chapter:</strong> Year 11–12. You are drawing from University/Government level prose and softening it to clear, reasoned English suitable for an educated young adult. Not academic formal — clear and evidence-aware.</p>
+  <div class="legend">
+    <div class="legend-item"><div class="l-dot script"></div> Script — read exactly as written</div>
+    <div class="legend-item"><div class="l-dot cut"></div> Cut — informational only, do not read</div>
+    <div class="legend-item"><div class="l-dot adapt"></div> Adapt — read the spoken version shown</div>
+  </div>
+  <div class="director-box">
+    <p><strong>Tone:</strong> Analytical and grounded. You are walking through a technical process — the four steps from prompt to response. Measured pace. Let the statistics land.</p>
+    <p><strong>What was adapted:</strong> Year 7 classroom framing removed. Australian curriculum references removed. Raised to Year 11–12 register throughout.</p>
+    <p><strong>What was cut:</strong> Activity 1.1, References list, Policy Implications section (Section 1.4) → shortened to 2–3 spoken sentences.</p>
+  </div>
+</div>
+
+<!-- CARD 1: Script -->
+<div class="card script-card">
+  <div class="card-label">Script · The Inference Pipeline</div>
+  <div class="card-title">You Press Enter. Then What?</div>
+  <p>You press Enter. That is your side of the interaction.</p>
+  <p>But what happens next — in the fraction of a second before a response appears — is a process most people never consider.</p>
+  <p>Your text is first broken into tokens. A token is roughly a word or part of a word — the sentence 'Tell me about climate' becomes approximately five tokens. Each token is converted into a numerical vector, a mathematical representation the model can process. This step is called tokenisation.</p>
+  <p>Those vectors are then passed through a transformer network — a series of computational layers, each one refining the model's understanding of what you asked and what should come next. The network does not look up an answer. It generates one, one token at a time, calculating the most probable next word given everything it has processed so far.</p>
+  <p>This is called autoregressive generation. And it runs at full computational cost for every single prompt — regardless of whether the question was clear or vague, structured or scattered.</p>
+  <p>Step 1: Tokenisation. Step 2: Embedding. Step 3: Forward pass through transformer layers. Step 4: Token generation and return.</p>
+</div>
+
+<!-- CARD 2: Script -->
+<div class="card script-card">
+  <div class="card-label">Script · The Ambiguity Problem</div>
+  <div class="card-title">Why Vague Prompts Cost More</div>
+  <p>Natural language is inherently ambiguous. A prompt like 'Write about the environment' activates probability distributions across multiple semantic domains simultaneously — ecology, policy, economics, geography, atmospheric science. The model must resolve this ambiguity probabilistically, producing outputs that attempt to cover all possible interpretations.</p>
+  <p>The consequence is measurable. Unstructured prompts generate an estimated three to four times more output tokens than structured equivalents delivering the same informational content. Longer outputs are more likely to miss the user's actual intent, triggering retry cycles.</p>
+  <p>Industry data suggests that users relying on unstructured prompts retry three to four times per task on average. Each retry runs the full inference pipeline at full cost — tokens, computation, generation, delivery. Nothing is cached. Nothing is reused.</p>
+  <p>The ambiguity in the original prompt does not reduce the cost of the retry. It multiplies it.</p>
+</div>
+
+<!-- CARD 3: Script -->
+<div class="card script-card">
+  <div class="card-label">Script · The Scale Effect</div>
+  <div class="card-title">From One Prompt to One City's Power</div>
+  <p>At the level of a single interaction, the numbers are small. Google has measured the cost of a median AI text prompt at 0.24 watt-hours of electricity, 0.03 grams of CO₂ equivalent, and 0.26 millilitres of water.</p>
+  <p>That is unremarkable. What is not unremarkable is the scale.</p>
+  <p>More than 200 million people use AI tools every day. Most retry three to four times per task when using unstructured prompts. That produces an estimated 600 to 800 million unnecessary prompts every single day.</p>
+  <p>At 0.24 watt-hours each, that is 144 to 192 megawatt-hours of wasted energy per day. Every day. Not from the prompts that worked. From the ones that didn't — because the question wasn't clear enough the first time.</p>
+  <p>This is not an abstract environmental concern. It is a direct consequence of how we communicate with AI systems.</p>
+</div>
+
+<!-- CARD 4: Script -->
+<div class="card script-card">
+  <div class="card-label">Script · The Key Insight</div>
+  <div class="card-title">The 32–48 Percent Reduction</div>
+  <p>Researchers have quantified what happens when structured prompting replaces unstructured prompting. Podder et al. (2026) demonstrated that structured prompt design reduces inference energy consumption by 32 to 48 percent across multiple large language models.</p>
+  <p>This is not achieved through hardware improvements. Not through switching to renewable energy. Not through regulatory mandates or capital investment.</p>
+  <p>It is achieved through education. Through structured communication.</p>
+  <p>The quality of how you ask determines how hard the machine has to work. A precise, well-structured prompt — one that tells the model what it needs to know before it begins generating — requires fewer calculations, fewer tokens, fewer retries.</p>
+  <p>That is what C.R.A.F.T. is. A structured method for communicating with AI systems. Five elements. One pipeline. And at scale, a measurable difference.</p>
+</div>
+
+<!-- CARD 5: Adapt -->
+<div class="card adapt-card">
+  <div class="card-type">🔄 Adapt — Policy Implications (Section 1.4)</div>
+  <h2>Three Implications — Shortened for Audio</h2>
+  <p>Source: Section 1.4 of the University/Government version. Too formal as-is for audio. Shorten to 2–3 spoken sentences.</p>
+  <div class="spoken">
+    Three things follow from what this chapter has established. Governance frameworks for AI need to measure prompt quality — not just model performance. Educational policy needs to treat prompt literacy as a foundational digital skill, in the same way it treats reading and numeracy. And organisations deploying AI at scale should treat unstructured prompting as a form of computational waste — with the same seriousness they bring to energy auditing.
+  </div>
+</div>
+
+<!-- CARD 6: Cut -->
+<div class="card cut-card">
+  <div class="card-type">✂️ Cut — Activity 1.1</div>
+  <h2>Two-Question Experiment</h2>
+  <p>Interactive classroom exercise — students compare structured vs unstructured prompts. Not suited to audio.</p>
+  <div class="pause-line">Pause here if you want to try this yourself before we move on.</div>
+</div>
+
+<!-- CARD 7: Cut -->
+<div class="card cut-card">
+  <div class="card-type">✂️ Cut — References &amp; Technical Sections</div>
+  <h2>References List + Technical Detail</h2>
+  <p>All inline references, forward references, and deeper technical sections. Available in the print edition at promptcraft1.com.</p>
+</div>
+
+<!-- CARD 8: End -->
+<div class="card end-card">
+  <div class="card-type">End of Chapter 1 Script</div>
+  <h2>Chapter 1 complete.</h2>
+  <div class="end-nav">
+    <a href="nina.html">← nina.html</a>
+    <a href="ch2-nina.html">ch2-nina.html →</a>
+  </div>
+</div>
+
+<div class="bottom-controls">
+  <button id="prev-btn" onclick="prev()">← Back</button>
+  <span class="counter"><span id="current-num">1</span> / 9</span>
+  <button id="next-btn" onclick="next()">Continue →</button>
+</div>
+
+<div id="notepad" style="position:fixed;bottom:70px;right:24px;width:280px;z-index:9999;font-family:system-ui,sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.22);border-radius:12px;overflow:hidden;">
+  <div id="notepad-header" style="background:#0d1a0d;color:white;padding:0.6rem 1rem;display:flex;justify-content:space-between;align-items:center;cursor:move;user-select:none;">
+    <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6dbf3a;">📝 Notes</span>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button onclick="clearNotes()" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:0.75rem;padding:0;">✕ clear</button>
+      <button onclick="toggleNotepad()" id="notepad-toggle" style="background:none;border:none;color:white;cursor:pointer;font-size:1rem;padding:0;line-height:1;">−</button>
+    </div>
+  </div>
+  <div id="notepad-body" style="background:#fff;">
+    <textarea id="notepad-text" placeholder="Notes save automatically…" style="width:100%;height:180px;border:none;padding:0.9rem;font-family:inherit;font-size:0.85rem;line-height:1.6;resize:vertical;outline:none;display:block;"></textarea>
+    <div style="background:#f4f7f4;padding:0.35rem 1rem;font-size:0.65rem;color:#999;">Saves to this device only</div>
+  </div>
+</div>
+
+<script>
+const cards = [...document.querySelectorAll('.card')];
+let cur = 0;
+function update() {
+  cards.forEach((c,i) => c.classList.toggle('active', i===cur));
+  document.getElementById('current-num').textContent = cur + 1;
+  document.getElementById('prev-btn').disabled = cur === 0;
+  document.getElementById('next-btn').textContent = cur === cards.length-1 ? 'Back to Start ↺' : 'Continue →';
+  window.scrollTo(0,0);
+}
+function next() { if (cur < cards.length-1) { cur++; update(); } else { cur=0; update(); } }
+function prev() { if (cur > 0) { cur--; update(); } }
+document.addEventListener('keydown', e => {
+  if (e.key==='ArrowRight') { e.preventDefault(); next(); }
+  if (e.key==='ArrowLeft') { e.preventDefault(); prev(); }
+});
+update();
+const noteKey = 'pc1-notes-ch1-nina';
+const ta = document.getElementById('notepad-text');
+ta.value = localStorage.getItem(noteKey) || '';
+ta.addEventListener('input', () => localStorage.setItem(noteKey, ta.value));
+let open = true;
+function toggleNotepad() { open=!open; document.getElementById('notepad-body').style.display=open?'block':'none'; document.getElementById('notepad-toggle').textContent=open?'−':'+'; }
+function clearNotes() { if(confirm('Clear all notes?')) { ta.value=''; localStorage.removeItem(noteKey); } }
+const pad = document.getElementById('notepad');
+const hdr = document.getElementById('notepad-header');
+let dragging=false, ox=0, oy=0;
+hdr.addEventListener('mousedown', e=>{dragging=true; ox=e.clientX-pad.getBoundingClientRect().left; oy=e.clientY-pad.getBoundingClientRect().top;});
+document.addEventListener('mousemove', e=>{if(!dragging)return; pad.style.left=(e.clientX-ox)+'px'; pad.style.top=(e.clientY-oy)+'px'; pad.style.right='auto'; pad.style.bottom='auto';});
+document.addEventListener('mouseup', ()=>dragging=false);
+</script>
+</body>
+</html>

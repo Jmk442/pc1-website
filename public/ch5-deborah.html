@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ch 5 — Narration Script · Deborah Arnell</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0a0a1a; --blue: #4a7fd4; --blue-dim: #3360a8;
+      --cream: #f9f6f0; --text: #1a1a2e; --muted: #666; --border: #ddd;
+      --font: Georgia, 'Times New Roman', serif;
+      --sans: system-ui, -apple-system, sans-serif;
+    }
+    body { font-family: var(--font); font-size: 19px; line-height: 1.9; color: var(--text); background: var(--cream); max-width: 680px; margin: 0 auto; padding: 0; }
+    .top-nav { position: sticky; top: 0; background: var(--dark); display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1.2rem; z-index: 100; }
+    .top-nav a { color: var(--blue); font-family: var(--sans); font-size: 0.78rem; font-weight: 700; text-decoration: none; }
+    .top-nav .badge { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .card { display: none; padding: 2.5rem 1.5rem 8rem; min-height: calc(100vh - 50px); }
+    .card.active { display: block; }
+    .context-card { background: var(--dark); }
+    .ctx-eyebrow { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.6rem; }
+    .ctx-title { font-family: var(--sans); font-size: clamp(1.3rem,4vw,1.9rem); font-weight: 900; color: white; margin-bottom: 1.5rem; line-height: 1.2; }
+    .context-card p { color: rgba(255,255,255,0.78); margin-bottom: 0.9rem; }
+    .context-card strong { color: white; }
+    .legend { display: flex; flex-direction: column; gap: 0.6rem; margin: 1.4rem 0; }
+    .legend-item { display: flex; align-items: center; gap: 0.8rem; font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+    .l-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .l-dot.script { background: var(--blue); }
+    .l-dot.cut { background: #e74c3c; }
+    .l-dot.adapt { background: #d4a843; }
+    .ctx-key-box { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 1.1rem 1.3rem; margin-top: 1.4rem; }
+    .ctx-key-box .key-label { font-family: var(--sans); font-size: 0.6rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.6rem; }
+    .ctx-key-box p { font-family: var(--sans); font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 0.3rem; line-height: 1.6; }
+    .card-label { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
+    .card-title { font-family: var(--sans); font-size: 1.2rem; font-weight: 900; color: var(--dark); margin-bottom: 2rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--dark); }
+    .script-card p { margin-bottom: 1.1rem; }
+    .script-card blockquote { margin: 1.2rem 0 1.2rem 1rem; padding-left: 1rem; border-left: 3px solid var(--blue); font-style: italic; color: #333; }
+    .script-card ul, .script-card ol { margin: 0.6rem 0 1.1rem 1.8rem; }
+    .script-card li { margin-bottom: 0.5rem; }
+    .spoken-table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.88rem; font-family: var(--sans); }
+    .spoken-table th { background: var(--dark); color: white; padding: 0.6rem 0.8rem; text-align: left; font-size: 0.76rem; }
+    .spoken-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .spoken-table tr:nth-child(even) td { background: rgba(0,0,0,0.03); }
+    .cut-card { background: #fff5f5; border: 2px solid #e74c3c; border-radius: 12px; }
+    .cut-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #c0392b; margin-bottom: 0.4rem; }
+    .cut-card h2 { font-family: var(--sans); font-size: 1.1rem; font-weight: 900; color: #7a0000; margin-bottom: 1rem; }
+    .cut-card p { font-size: 0.9rem; color: #8b0000; margin-bottom: 0.5rem; line-height: 1.7; }
+    .pause-line { margin-top: 1.5rem; padding: 1rem 1.2rem; background: #f0f4ff; border-left: 4px solid var(--blue); border-radius: 0 8px 8px 0; font-style: italic; color: #1a3a6e; font-size: 1rem; line-height: 1.8; }
+    .adapt-card { background: #fffbec; border: 2px solid #d4a843; border-radius: 12px; }
+    .adapt-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #a07c20; margin-bottom: 0.4rem; }
+    .adapt-card h2 { font-family: var(--sans); font-size: 1.1rem; font-weight: 900; color: #5a4000; margin-bottom: 1rem; }
+    .adapt-card p { font-size: 0.9rem; color: #5a4000; margin-bottom: 0.5rem; line-height: 1.7; }
+    .adapt-card .spoken { background: rgba(255,255,255,0.7); border-radius: 8px; padding: 1.2rem 1.4rem; margin-top: 1rem; font-family: var(--font); font-size: 1.05rem; font-style: italic; color: #3a2800; line-height: 1.9; }
+    .end-card { background: var(--dark); border-radius: 12px; text-align: center; }
+    .end-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+    .end-card h2 { font-family: var(--sans); font-size: 1.6rem; font-weight: 900; color: white; margin-bottom: 1.5rem; }
+    .end-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
+    .end-nav a { font-family: var(--sans); font-size: 0.9rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+    .bottom-controls { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.97); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.5rem; z-index: 100; }
+    #prev-btn { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; border: 1.5px solid var(--border); background: var(--cream); color: var(--text); border-radius: 8px; padding: 0.6rem 1.2rem; cursor: pointer; }
+    #prev-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    #next-btn { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; border: none; background: var(--blue); color: white; border-radius: 8px; padding: 0.6rem 1.4rem; cursor: pointer; }
+    .counter { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); }
+    @media print { .top-nav, .bottom-controls, #notepad { display: none !important; } .card { display: block !important; min-height: auto; } }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="deborah.html">← Deborah's Page</a>
+  <span class="badge">Chapter 5 of 9 · Part 2</span>
+  <a href="index.html">Hub →</a>
+</nav>
+
+<!-- Card 0: Context -->
+<div class="card context-card active" id="card-0">
+  <div class="ctx-eyebrow">🎙️ Before You Begin — Chapter 5</div>
+  <div class="ctx-title">Role — The R in C.R.A.F.T.</div>
+
+  <p>The Role chapter opens with an exciting premise — <strong>you can ask any expert in the world a question.</strong> Play that up. Then show how assigning a role changes the quality of the answer.</p>
+
+  <p>The Context Only vs Context + Role table is an ADAPT — you'll read a spoken contrast instead. The photosynthesis example is a great moment — the leaf-as-kitchen analogy should feel warm and delightful.</p>
+
+  <div class="legend">
+    <div class="legend-item"><span class="l-dot script"></span> Script — read aloud verbatim</div>
+    <div class="legend-item"><span class="l-dot cut"></span> Cut — do not read, for reference only</div>
+    <div class="legend-item"><span class="l-dot adapt"></span> Adapt — read the spoken version provided</div>
+  </div>
+
+  <div class="ctx-key-box">
+    <div class="key-label">What was cut</div>
+    <p>Activity 5.1 (Expert Swap exercise)</p>
+    <p>University/Government role-priming mechanics (5.1–5.4)</p>
+    <p>Role Libraries section — too enterprise-focused</p>
+    <p>The key efficiency numbers are spoken directly</p>
+  </div>
+</div>
+
+<!-- Card 1: Script — Opening -->
+<div class="card script-card" id="card-1">
+  <div class="card-label">Script · Opening</div>
+  <div class="card-title">Assigning the Expert</div>
+
+  <p>Imagine you could ask any expert in the world a single question.</p>
+
+  <p>A brain surgeon. A NASA engineer. A pastry chef. A criminal lawyer. A marine biologist. You walk up, ask your question, and get an answer shaped by decades of training and experience.</p>
+
+  <p>That is what the R in C.R.A.F.T. gives you.</p>
+
+  <p>When you tell an AI to act as a specific type of expert, something changes in the way it answers. It doesn't just use different words — it thinks differently. A doctor answering a health question will organise information around diagnosis, symptoms, and treatment. A scientist answering the same question will organise around evidence, methodology, and data. A journalist will organise around who, what, when, where, and why.</p>
+
+  <p>Same question. Three completely different answers. All useful — but only one is the answer you actually needed.</p>
+
+  <p>Without a role, AI defaults to "helpful assistant." That sounds fine, but it means the AI tries to be a little bit of everything and ends up being deeply nothing. The output is generic. It covers the basics. It doesn't go deep enough. So you read it, frown, and type: "No, I meant explain it like you're a scientist..."</p>
+
+  <p>That second prompt? That's a retry. That's wasted energy. That's a computer doing the work twice because you didn't set the role the first time.</p>
+
+  <p>The role builds on context. In Chapter 4, you told the AI what world it's operating in. Now you're telling it who it should be in that world.</p>
+</div>
+
+<!-- Card 2: Adapt — Context Only vs Context + Role -->
+<div class="card adapt-card" id="card-2">
+  <div class="card-type">🔄 Adapt — Context Only vs Context + Role</div>
+  <h2>The Difference a Role Makes — read as spoken contrast</h2>
+  <p>The book has a comparison table here. Read this spoken version instead.</p>
+  <div class="spoken">
+    Context only: "Write about photosynthesis for a Year 7 class." Result — accurate but textbook-style. Reads like a Wikipedia summary. Students lose interest by paragraph two.<br><br>
+    Context plus role: "You are a Year 7 biology teacher who uses everyday analogies. Write about photosynthesis for your class." Result — "Imagine a leaf is a tiny kitchen. Sunlight is the oven, water is one ingredient, CO₂ is another, and the recipe makes glucose — the plant's food." Students get it immediately.<br><br>
+    The first answer is correct. The second answer is useful. The difference is the role.
+  </div>
+</div>
+
+<!-- Card 3: Script — How to Choose Well -->
+<div class="card script-card" id="card-3">
+  <div class="card-label">Script · Choosing the Right Role</div>
+  <div class="card-title">How to Choose Well</div>
+
+  <p>Choosing the right role:</p>
+
+  <ul>
+    <li><strong>Match the role to your need.</strong> If you want a simple explanation, pick a teacher. If you want a detailed analysis, pick a researcher. If you want advice, pick a professional who gives that kind of advice.</li>
+    <li><strong>Be specific.</strong> "Act as a doctor" is okay. "Act as a GP with 15 years of experience in chronic disease management" is much better.</li>
+    <li><strong>Stack it on context.</strong> The role only works well if the context is already set. A teacher without a subject is just a person standing in an empty classroom.</li>
+  </ul>
+
+  <p>Why does role-setting save energy?</p>
+
+  <p>Because without it, you get a generic answer, then you retry with a role. Two prompts instead of one. Twice the electricity. Twice the water to cool the server. If you set the role from the start, the AI gets it right the first time — and the planet saves a tiny bit of energy, multiplied by millions of users.</p>
+</div>
+
+<!-- Card 4: Cut — Activity 5.1 -->
+<div class="card cut-card" id="card-4">
+  <div class="card-type">✂️ Cut — Activity 5.1 (The Expert Swap)</div>
+  <h2>Expert Swap Exercise</h2>
+  <p>Students ask the same question three times with three different roles (primary teacher, university researcher, journalist) and compare answers.</p>
+  <p>Classroom exercise — not suited to audio.</p>
+  <div class="pause-line">Pause here if you'd like to try the expert swap yourself with something you're curious about.</div>
+</div>
+
+<!-- Card 5: Cut — University/Government Sections 5.1–5.4 -->
+<div class="card cut-card" id="card-5">
+  <div class="card-type">✂️ Cut — University/Government Sections 5.1–5.4</div>
+  <h2>Role-Priming Mechanics</h2>
+  <p>5.1 — Mechanics of Role-Priming: How attention mechanisms shift with role assignment. Token distribution narrowing. Academic/technical.</p>
+  <p>5.2 — Role-Priming and Inference Efficiency: Table comparing retry rates and token counts for no-role vs generic-role vs specific-role prompts. The key numbers: retry rate drops from 2.4 to 0.6; tokens per useful output from 1,840 to 680.</p>
+  <p>5.3 — Role Libraries for Institutional Deployment: Healthcare, administrative, and communication role libraries for organisations. Enterprise content — too operational for audio.</p>
+  <p>5.4 — Role and the C.R.A.F.T. Pipeline: Technical explanation of inheritance logic. Not needed for Year 7 audio.</p>
+</div>
+
+<!-- Card 6: End -->
+<div class="card end-card" id="card-6">
+  <div class="card-type">End of Chapter 5 Script</div>
+  <h2>Chapter 5 complete.</h2>
+  <div class="end-nav">
+    <a href="ch4-deborah.html">← Chapter 4</a>
+    <a href="ch6-deborah.html">Chapter 6 →</a>
+  </div>
+</div>
+
+<!-- Bottom Controls -->
+<div class="bottom-controls">
+  <button id="prev-btn" onclick="prev()" disabled>← Back</button>
+  <span class="counter">Card <span id="current-num">1</span> of 7</span>
+  <button id="next-btn" onclick="next()">Continue →</button>
+</div>
+
+<!-- Notepad -->
+<div id="notepad" style="position:fixed;bottom:70px;right:24px;width:280px;z-index:9999;font-family:system-ui,sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.22);border-radius:12px;overflow:hidden;">
+  <div id="notepad-header" style="background:#0a0a1a;color:white;padding:0.6rem 1rem;display:flex;justify-content:space-between;align-items:center;cursor:move;user-select:none;">
+    <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#4a7fd4;">📝 Notes</span>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button onclick="clearNotes()" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:0.75rem;padding:0;">✕ clear</button>
+      <button onclick="toggleNotepad()" id="notepad-toggle" style="background:none;border:none;color:white;cursor:pointer;font-size:1rem;padding:0;line-height:1;">−</button>
+    </div>
+  </div>
+  <div id="notepad-body" style="background:#fff;">
+    <textarea id="notepad-text" placeholder="Notes save automatically…" style="width:100%;height:180px;border:none;padding:0.9rem;font-family:inherit;font-size:0.85rem;line-height:1.6;resize:vertical;outline:none;display:block;"></textarea>
+    <div style="background:#f4f5f9;padding:0.35rem 1rem;font-size:0.65rem;color:#999;">Saves to this device only</div>
+  </div>
+</div>
+
+<script>
+const cards = [...document.querySelectorAll('.card')];
+let cur = 0;
+function update() {
+  cards.forEach((c,i) => c.classList.toggle('active', i===cur));
+  document.getElementById('current-num').textContent = cur + 1;
+  document.getElementById('prev-btn').disabled = cur === 0;
+  document.getElementById('next-btn').textContent = cur === cards.length-1 ? 'Back to Start ↺' : 'Continue →';
+  window.scrollTo(0,0);
+}
+function next() { if (cur < cards.length-1) { cur++; update(); } else { cur=0; update(); } }
+function prev() { if (cur > 0) { cur--; update(); } }
+document.addEventListener('keydown', e => {
+  if (e.key==='ArrowRight') { e.preventDefault(); next(); }
+  if (e.key==='ArrowLeft') { e.preventDefault(); prev(); }
+});
+update();
+const noteKey = 'pc1-notes-ch5-deborah';
+const ta = document.getElementById('notepad-text');
+ta.value = localStorage.getItem(noteKey) || '';
+ta.addEventListener('input', () => localStorage.setItem(noteKey, ta.value));
+let open = true;
+function toggleNotepad() { open=!open; document.getElementById('notepad-body').style.display=open?'block':'none'; document.getElementById('notepad-toggle').textContent=open?'−':'+'; }
+function clearNotes() { if(confirm('Clear all notes?')) { ta.value=''; localStorage.removeItem(noteKey); } }
+const pad = document.getElementById('notepad');
+const hdr = document.getElementById('notepad-header');
+let dragging=false, ox=0, oy=0;
+hdr.addEventListener('mousedown', e=>{dragging=true; ox=e.clientX-pad.getBoundingClientRect().left; oy=e.clientY-pad.getBoundingClientRect().top;});
+document.addEventListener('mousemove', e=>{if(!dragging)return; pad.style.left=(e.clientX-ox)+'px'; pad.style.top=(e.clientY-oy)+'px'; pad.style.right='auto'; pad.style.bottom='auto';});
+document.addEventListener('mouseup', ()=>dragging=false);
+</script>
+</body>
+</html>

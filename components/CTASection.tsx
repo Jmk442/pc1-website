@@ -18,16 +18,26 @@ export default function CTASection({
   secondaryHref,
 }: CTASectionProps) {
   return (
-    <section className="bg-primary text-white py-16 px-4">
-      <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-4">{heading}</h2>
-        <p className="text-gray-300 mb-8 text-lg">{subtext}</p>
+    <section className="bg-primary text-white py-20 px-4 relative overflow-hidden">
+      {/* Subtle geometric ring */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
+        <div className="w-[600px] h-[600px] rounded-full border-2 border-accent" />
+        <div className="absolute w-[400px] h-[400px] rounded-full border border-accent" />
+      </div>
+
+      <div className="max-w-3xl mx-auto text-center relative">
+        <p className="text-xs font-bold tracking-[0.3em] uppercase text-accent mb-4">PromptCraft One</p>
+        <h2 className="text-3xl sm:text-4xl font-black mb-4 leading-tight">{heading}</h2>
+        <p className="text-white/60 mb-8 text-lg">{subtext}</p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <Link href={primaryHref} className="btn-primary">
+          <Link href={primaryHref} className="btn-primary text-base px-8 py-3.5">
             {primaryLabel}
           </Link>
           {secondaryLabel && secondaryHref && (
-            <Link href={secondaryHref} className="border border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-primary transition-colors">
+            <Link
+              href={secondaryHref}
+              className="border border-white/30 text-white font-semibold px-8 py-3.5 rounded-lg hover:border-accent hover:text-accent transition-colors text-base"
+            >
               {secondaryLabel}
             </Link>
           )}

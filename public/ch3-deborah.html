@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ch 3 — Narration Script · Deborah Arnell</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0a0a1a; --blue: #4a7fd4; --blue-dim: #3360a8;
+      --cream: #f9f6f0; --text: #1a1a2e; --muted: #666; --border: #ddd;
+      --font: Georgia, 'Times New Roman', serif;
+      --sans: system-ui, -apple-system, sans-serif;
+    }
+    body { font-family: var(--font); font-size: 19px; line-height: 1.9; color: var(--text); background: var(--cream); max-width: 680px; margin: 0 auto; padding: 0; }
+    .top-nav { position: sticky; top: 0; background: var(--dark); display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1.2rem; z-index: 100; }
+    .top-nav a { color: var(--blue); font-family: var(--sans); font-size: 0.78rem; font-weight: 700; text-decoration: none; }
+    .top-nav .badge { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .card { display: none; padding: 2.5rem 1.5rem 8rem; min-height: calc(100vh - 50px); }
+    .card.active { display: block; }
+    .context-card { background: var(--dark); }
+    .ctx-eyebrow { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.6rem; }
+    .ctx-title { font-family: var(--sans); font-size: clamp(1.3rem,4vw,1.9rem); font-weight: 900; color: white; margin-bottom: 1.5rem; line-height: 1.2; }
+    .context-card p { color: rgba(255,255,255,0.78); margin-bottom: 0.9rem; }
+    .context-card strong { color: white; }
+    .legend { display: flex; flex-direction: column; gap: 0.6rem; margin: 1.4rem 0; }
+    .legend-item { display: flex; align-items: center; gap: 0.8rem; font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+    .l-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .l-dot.script { background: var(--blue); }
+    .l-dot.cut { background: #e74c3c; }
+    .l-dot.adapt { background: #d4a843; }
+    .ctx-key-box { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 1.1rem 1.3rem; margin-top: 1.4rem; }
+    .ctx-key-box .key-label { font-family: var(--sans); font-size: 0.6rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.6rem; }
+    .ctx-key-box p { font-family: var(--sans); font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 0.3rem; line-height: 1.6; }
+    .card-label { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
+    .card-title { font-family: var(--sans); font-size: 1.2rem; font-weight: 900; color: var(--dark); margin-bottom: 2rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--dark); }
+    .script-card p { margin-bottom: 1.1rem; }
+    .script-card blockquote { margin: 1.2rem 0 1.2rem 1rem; padding-left: 1rem; border-left: 3px solid var(--blue); font-style: italic; color: #333; }
+    .script-card ul, .script-card ol { margin: 0.6rem 0 1.1rem 1.8rem; }
+    .script-card li { margin-bottom: 0.5rem; }
+    .spoken-table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.88rem; font-family: var(--sans); }
+    .spoken-table th { background: var(--dark); color: white; padding: 0.6rem 0.8rem; text-align: left; font-size: 0.76rem; }
+    .spoken-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .spoken-table tr:nth-child(even) td { background: rgba(0,0,0,0.03); }
+    .cut-card { background: #fff5f5; border: 2px solid #e74c3c; border-radius: 12px; }
+    .cut-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #c0392b; margin-bottom: 0.4rem; }
+    .cut-card h2 { font-family: var(--sans); font-size: 1.1rem; font-weight: 900; color: #7a0000; margin-bottom: 1rem; }
+    .cut-card p { font-size: 0.9rem; color: #8b0000; margin-bottom: 0.5rem; line-height: 1.7; }
+    .pause-line { margin-top: 1.5rem; padding: 1rem 1.2rem; background: #f0f4ff; border-left: 4px solid var(--blue); border-radius: 0 8px 8px 0; font-style: italic; color: #1a3a6e; font-size: 1rem; line-height: 1.8; }
+    .adapt-card { background: #fffbec; border: 2px solid #d4a843; border-radius: 12px; }
+    .adapt-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #a07c20; margin-bottom: 0.4rem; }
+    .adapt-card h2 { font-family: var(--sans); font-size: 1.1rem; font-weight: 900; color: #5a4000; margin-bottom: 1rem; }
+    .adapt-card p { font-size: 0.9rem; color: #5a4000; margin-bottom: 0.5rem; line-height: 1.7; }
+    .adapt-card .spoken { background: rgba(255,255,255,0.7); border-radius: 8px; padding: 1.2rem 1.4rem; margin-top: 1rem; font-family: var(--font); font-size: 1.05rem; font-style: italic; color: #3a2800; line-height: 1.9; }
+    .end-card { background: var(--dark); border-radius: 12px; text-align: center; }
+    .end-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+    .end-card h2 { font-family: var(--sans); font-size: 1.6rem; font-weight: 900; color: white; margin-bottom: 1.5rem; }
+    .end-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
+    .end-nav a { font-family: var(--sans); font-size: 0.9rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+    .bottom-controls { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.97); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.5rem; z-index: 100; }
+    #prev-btn { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; border: 1.5px solid var(--border); background: var(--cream); color: var(--text); border-radius: 8px; padding: 0.6rem 1.2rem; cursor: pointer; }
+    #prev-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    #next-btn { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; border: none; background: var(--blue); color: white; border-radius: 8px; padding: 0.6rem 1.4rem; cursor: pointer; }
+    .counter { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); }
+    @media print { .top-nav, .bottom-controls, #notepad { display: none !important; } .card { display: block !important; min-height: auto; } }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="deborah.html">← Deborah's Page</a>
+  <span class="badge">Chapter 3 of 9 · Part 1</span>
+  <a href="index.html">Hub →</a>
+</nav>
+
+<!-- Card 0: Context -->
+<div class="card context-card active" id="card-0">
+  <div class="ctx-eyebrow">🎙️ Before You Begin — Chapter 3</div>
+  <div class="ctx-title">The Hidden Cost</div>
+
+  <p>This is the closing chapter of Part 1 — it completes the problem statement. By the end of this chapter, the listener understands that their AI usage has a real-world physical footprint. The tone should feel significant without being preachy. You're not lecturing — you're showing them something that's already happening.</p>
+
+  <p>The data statistics land hardest when you slow down. Read the numbers deliberately: <strong>415 terawatt-hours. 1.5 percent of all the electricity on the planet.</strong> Let those sink in.</p>
+
+  <div class="legend">
+    <div class="legend-item"><span class="l-dot script"></span> Script — read aloud verbatim</div>
+    <div class="legend-item"><span class="l-dot cut"></span> Cut — do not read, for reference only</div>
+    <div class="legend-item"><span class="l-dot adapt"></span> Adapt — read the spoken version provided</div>
+  </div>
+
+  <div class="ctx-key-box">
+    <div class="key-label">What was cut</div>
+    <p>Activity 3.1 (Water Calculator — classroom exercise)</p>
+    <p>University/Government sections 3.1–3.2 (replaced by Year 7 prose)</p>
+    <p>Part 1 Summary Table (replaced with spoken closer)</p>
+    <p>References</p>
+  </div>
+</div>
+
+<!-- Card 1: Script — Opening -->
+<div class="card script-card" id="card-1">
+  <div class="card-label">Script · Opening</div>
+  <div class="card-title">The Invisible Machine</div>
+
+  <p>You can't see it. You can't hear it. But every time you use AI, a building the size of a shopping centre is working for you.</p>
+
+  <p>That building is called a data centre. And there are thousands of them, all around the world, running 24 hours a day.</p>
+</div>
+
+<!-- Card 2: Script — The Scale -->
+<div class="card script-card" id="card-2">
+  <div class="card-label">Script · The Scale</div>
+  <div class="card-title">How Big Is the Problem?</div>
+
+  <p><strong>Electricity:</strong> In 2024, all the data centres in the world used about 415 terawatt-hours of electricity. That's about 1.5% of all the electricity on the entire planet.</p>
+
+  <p>Australia's total electricity consumption is about 250 terawatt-hours per year. So the world's data centres use more electricity than all of Australia. Every year.</p>
+
+  <p>And it's getting bigger. Goldman Sachs predicts data centre electricity demand will rise 165% by 2030.</p>
+
+  <p><strong>Water:</strong> A single large data centre can use up to 5 million gallons of water per day.</p>
+
+  <p><strong>Carbon:</strong> Researchers at Cornell University estimate that by 2030, AI alone will produce 24 to 44 million metric tonnes of CO₂ per year.</p>
+</div>
+
+<!-- Card 3: Script — The Solution -->
+<div class="card script-card" id="card-3">
+  <div class="card-label">Script · The Solution</div>
+  <div class="card-title">The Part You Control</div>
+
+  <p>You can't change how data centres are built. But you can change how hard they have to work.</p>
+
+  <p>Researchers have measured this precisely. A landmark study published in 2026 found that structured prompting reduces the energy AI uses by 32 to 48 percent. Not by building better hardware. Not by switching to solar panels. Just by asking better questions.</p>
+
+  <p>That's why the way you write a prompt matters. Not just for you — but for the machines working for you.</p>
+</div>
+
+<!-- Card 4: Cut — Activity 3.1 -->
+<div class="card cut-card" id="card-4">
+  <div class="card-type">✂️ Cut — Activity 3.1 (The Water Calculator)</div>
+  <h2>Water Calculator</h2>
+  <p>Students estimate class AI usage, multiply by 0.26ml, and calculate water saved by structured prompting.</p>
+  <p>Classroom exercise — not suited to audio.</p>
+  <div class="pause-line">Pause here if you'd like to work through those numbers yourself before we move on.</div>
+</div>
+
+<!-- Card 5: Cut — University/Government & Summary Table -->
+<div class="card cut-card" id="card-5">
+  <div class="card-type">✂️ Cut — University/Government Version (3.1–3.2) &amp; Part 1 Summary Table</div>
+  <h2>Technical &amp; Policy Sections</h2>
+  <p>Section 3.1 — Infrastructure Trajectory: IEA citations, Goldman Sachs projections, hyperscale data centre numbers. The Year 7 stats above cover this.</p>
+  <p>Section 3.2 — The Software Lever: Research detail from Podder et al. (2026). Academic analysis for policy readers.</p>
+  <p>Part 1 Summary Table: Reiterates what was covered in Chapters 1–3 in tabular form. Replaced with spoken closer on the next card.</p>
+</div>
+
+<!-- Card 5b: Script — Part 1 Closer -->
+<div class="card script-card" id="card-5b">
+  <div class="card-label">Script · Part 1 Closer</div>
+  <div class="card-title">The Through-Line</div>
+
+  <p>Three chapters. One through-line: the way we talk to AI has a direct, measurable cost. And it is reducible — by 32 to 48 percent — through a single change in how we ask.</p>
+
+  <p>That's where Part 2 begins. The method. Five letters. C.R.A.F.T.</p>
+</div>
+
+<!-- Card 6: Cut — References -->
+<div class="card cut-card" id="card-6">
+  <div class="card-type">✂️ Cut — References</div>
+  <h2>Reference list [1]–[5]</h2>
+  <p>IEA, Goldman Sachs, various industry reports, Cornell University, Podder et al. (2026). Full citations in print edition at promptcraft1.com.</p>
+</div>
+
+<!-- Card 7: End -->
+<div class="card end-card" id="card-7">
+  <div class="card-type">End of Chapter 3 Script — Part 1 Complete</div>
+  <h2>Part 1 done. On to C.R.A.F.T.</h2>
+  <div class="end-nav">
+    <a href="ch2-deborah.html">← Chapter 2</a>
+    <a href="ch4-deborah.html">Chapter 4 →</a>
+  </div>
+</div>
+
+<!-- Bottom Controls -->
+<div class="bottom-controls">
+  <button id="prev-btn" onclick="prev()" disabled>← Back</button>
+  <span class="counter">Card <span id="current-num">1</span> of 8</span>
+  <button id="next-btn" onclick="next()">Continue →</button>
+</div>
+
+<!-- Notepad -->
+<div id="notepad" style="position:fixed;bottom:70px;right:24px;width:280px;z-index:9999;font-family:system-ui,sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.22);border-radius:12px;overflow:hidden;">
+  <div id="notepad-header" style="background:#0a0a1a;color:white;padding:0.6rem 1rem;display:flex;justify-content:space-between;align-items:center;cursor:move;user-select:none;">
+    <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#4a7fd4;">📝 Notes</span>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button onclick="clearNotes()" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:0.75rem;padding:0;">✕ clear</button>
+      <button onclick="toggleNotepad()" id="notepad-toggle" style="background:none;border:none;color:white;cursor:pointer;font-size:1rem;padding:0;line-height:1;">−</button>
+    </div>
+  </div>
+  <div id="notepad-body" style="background:#fff;">
+    <textarea id="notepad-text" placeholder="Notes save automatically…" style="width:100%;height:180px;border:none;padding:0.9rem;font-family:inherit;font-size:0.85rem;line-height:1.6;resize:vertical;outline:none;display:block;"></textarea>
+    <div style="background:#f4f5f9;padding:0.35rem 1rem;font-size:0.65rem;color:#999;">Saves to this device only</div>
+  </div>
+</div>
+
+<script>
+const cards = [...document.querySelectorAll('.card')];
+let cur = 0;
+function update() {
+  cards.forEach((c,i) => c.classList.toggle('active', i===cur));
+  document.getElementById('current-num').textContent = cur + 1;
+  document.getElementById('prev-btn').disabled = cur === 0;
+  document.getElementById('next-btn').textContent = cur === cards.length-1 ? 'Back to Start ↺' : 'Continue →';
+  window.scrollTo(0,0);
+}
+function next() { if (cur < cards.length-1) { cur++; update(); } else { cur=0; update(); } }
+function prev() { if (cur > 0) { cur--; update(); } }
+document.addEventListener('keydown', e => {
+  if (e.key==='ArrowRight') { e.preventDefault(); next(); }
+  if (e.key==='ArrowLeft') { e.preventDefault(); prev(); }
+});
+update();
+const noteKey = 'pc1-notes-ch3-deborah';
+const ta = document.getElementById('notepad-text');
+ta.value = localStorage.getItem(noteKey) || '';
+ta.addEventListener('input', () => localStorage.setItem(noteKey, ta.value));
+let open = true;
+function toggleNotepad() { open=!open; document.getElementById('notepad-body').style.display=open?'block':'none'; document.getElementById('notepad-toggle').textContent=open?'−':'+'; }
+function clearNotes() { if(confirm('Clear all notes?')) { ta.value=''; localStorage.removeItem(noteKey); } }
+const pad = document.getElementById('notepad');
+const hdr = document.getElementById('notepad-header');
+let dragging=false, ox=0, oy=0;
+hdr.addEventListener('mousedown', e=>{dragging=true; ox=e.clientX-pad.getBoundingClientRect().left; oy=e.clientY-pad.getBoundingClientRect().top;});
+document.addEventListener('mousemove', e=>{if(!dragging)return; pad.style.left=(e.clientX-ox)+'px'; pad.style.top=(e.clientY-oy)+'px'; pad.style.right='auto'; pad.style.bottom='auto';});
+document.addEventListener('mouseup', ()=>dragging=false);
+</script>
+</body>
+</html>

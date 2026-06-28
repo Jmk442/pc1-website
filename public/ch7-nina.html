@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 7 — Narration Script · Nina Banks</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --dark: #0d1a0d; --green: #6dbf3a; --green-dim: #4a8a28;
+  --light: #f4f7f4; --text: #1a2e1a; --muted: #666; --border: #dde8dd;
+  --font: Georgia, 'Times New Roman', serif;
+  --sans: system-ui, -apple-system, sans-serif;
+}
+body { font-family: var(--font); font-size: 19px; line-height: 1.9; color: var(--text); background: var(--light); max-width: 680px; margin: 0 auto; padding: 0; }
+.top-nav { position: sticky; top: 0; background: var(--dark); display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1.2rem; z-index: 100; }
+.top-nav a { color: var(--green); font-family: var(--sans); font-size: 0.78rem; font-weight: 700; text-decoration: none; }
+.top-nav .badge { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.card { display: none; padding: 2.5rem 1.5rem 8rem; min-height: calc(100vh - 50px); }
+.card.active { display: block; }
+.context-card { background: var(--dark); }
+.ctx-eyebrow { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--green); margin-bottom: 0.6rem; }
+.ctx-title { font-family: var(--sans); font-size: clamp(1.3rem,4vw,1.9rem); font-weight: 900; color: white; margin-bottom: 1.5rem; line-height: 1.2; }
+.context-card p { color: rgba(255,255,255,0.78); margin-bottom: 0.9rem; }
+.context-card strong { color: white; }
+.legend { display: flex; flex-direction: column; gap: 0.6rem; margin: 1.4rem 0; }
+.legend-item { display: flex; align-items: center; gap: 0.8rem; font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+.l-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.l-dot.script { background: var(--green); }
+.l-dot.cut { background: #e74c3c; }
+.l-dot.adapt { background: #d4a843; }
+.card-label { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--green-dim); margin-bottom: 0.5rem; }
+.card-title { font-family: var(--sans); font-size: 1.2rem; font-weight: 900; color: var(--dark); margin-bottom: 2rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--dark); }
+.script-card p { margin-bottom: 1.1rem; }
+.script-card blockquote { margin: 1.2rem 0 1.2rem 1rem; padding-left: 1rem; border-left: 3px solid var(--green); font-style: italic; color: #333; }
+.script-card ul, .script-card ol { margin: 0.6rem 0 1.1rem 1.8rem; }
+.script-card li { margin-bottom: 0.5rem; }
+.cut-card { background: #fff5f5; border: 2px solid #e74c3c; border-radius: 12px; }
+.cut-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #c0392b; margin-bottom: 0.4rem; }
+.cut-card h2 { font-family: var(--sans); font-size: 1.1rem; font-weight: 900; color: #7a0000; margin-bottom: 1rem; }
+.cut-card p { font-size: 0.9rem; color: #8b0000; margin-bottom: 0.5rem; line-height: 1.7; }
+.pause-line { margin-top: 1.5rem; padding: 1rem 1.2rem; background: #f0f9f0; border-left: 4px solid var(--green); border-radius: 0 8px 8px 0; font-style: italic; color: #1a4a1a; font-size: 1rem; line-height: 1.8; }
+.adapt-card { background: #fffbec; border: 2px solid #d4a843; border-radius: 12px; }
+.adapt-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #a07c20; margin-bottom: 0.4rem; }
+.adapt-card h2 { font-family: var(--sans); font-size: 1.1rem; font-weight: 900; color: #5a4000; margin-bottom: 1rem; }
+.adapt-card p { font-size: 0.9rem; color: #5a4000; margin-bottom: 0.5rem; line-height: 1.7; }
+.adapt-card .spoken { background: rgba(255,255,255,0.7); border-radius: 8px; padding: 1.2rem 1.4rem; margin-top: 1rem; font-family: var(--font); font-size: 1.05rem; font-style: italic; color: #3a2800; line-height: 1.9; }
+.end-card { background: var(--dark); border-radius: 12px; text-align: center; }
+.end-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+.end-card h2 { font-family: var(--sans); font-size: 1.6rem; font-weight: 900; color: white; margin-bottom: 1.5rem; }
+.end-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
+.end-nav a { font-family: var(--sans); font-size: 0.9rem; font-weight: 700; color: var(--green); text-decoration: none; }
+.bottom-controls { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(244,247,244,0.97); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.5rem; z-index: 100; }
+#prev-btn { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; border: 1.5px solid var(--border); background: var(--light); color: var(--text); border-radius: 8px; padding: 0.6rem 1.2rem; cursor: pointer; }
+#prev-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+#next-btn { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; border: none; background: var(--green-dim); color: white; border-radius: 8px; padding: 0.6rem 1.4rem; cursor: pointer; }
+.counter { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); }
+@media print { .top-nav, .bottom-controls, #notepad { display: none !important; } .card { display: block !important; min-height: auto; } }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="nina.html">← nina.html</a>
+  <span class="badge">Chapter 7 of 9 · Part 2</span>
+  <a href="nina.html">Hub →</a>
+</nav>
+
+<!-- CARD 0 — context-card -->
+<div class="card context-card active">
+  <div class="ctx-eyebrow">🎙️ Before You Begin — Chapter 7</div>
+  <div class="ctx-title">Format — Shaping the Output</div>
+  <p>Scan all cards first. Then read.</p>
+  <p>Register: Year 11–12. The German version uses the formal argument — not the world map/classroom analogy from Year 7. The reformatting cost is the key insight: every reformat is a full regeneration.</p>
+  <div class="legend">
+    <div class="legend-item"><div class="l-dot script"></div>Script — read as written</div>
+    <div class="legend-item"><div class="l-dot adapt"></div>Adapt — spoken version shown</div>
+    <div class="legend-item"><div class="l-dot cut"></div>Cut — do not read</div>
+  </div>
+  <p><strong>Director's Notes</strong></p>
+  <p>Tone: Precise, logical. Format is the structural constraint. The energy equation is concrete — use it.</p>
+  <p>What was cut: World map/classroom analogy. 'If you need to...' format guide table. Format categories table (7.3). Activity 7.1.</p>
+  <p>What was adapted: Before/after comparison → spoken contrast. Reformatting cost → one sentence spoken. Format types → covered in prose, not table.</p>
+</div>
+
+<!-- CARD 1 — script-card -->
+<div class="card script-card">
+  <div class="card-label">Script · Format as Pre-Generation Structuring</div>
+  <div class="card-title">Why Format Must Be Specified First</div>
+  <p>Format specification operates at a critical point in the generation pipeline: it determines the structural template before token generation begins. This is fundamentally different from reformatting after the fact — which requires complete regeneration.</p>
+  <p>When a user specifies 'present as a table with four columns,' the model's generation process is constrained to a tabular structure from the first token. The attention mechanism allocates resources to producing cell-appropriate content — concise, comparative, structured. The output is shorter, more information-dense, and more likely to be accepted on first generation.</p>
+  <p>Without format specification, the model defaults to its most probable output structure: continuous prose. Prose is the highest-entropy format — it permits the widest range of token sequences, generates the most tokens per unit of information, and is the least likely to match a user's specific structural requirements.</p>
+  <p>The default is not wrong. But the default is expensive.</p>
+</div>
+
+<!-- CARD 2 — adapt-card -->
+<div class="card adapt-card">
+  <div class="card-type">🔄 Adapt — Before/After Comparison</div>
+  <h2>The Difference Format Makes</h2>
+  <p>Source: the Without/With Format comparison table from Chapter 7. TABLE IS CONTENT — read as spoken contrast.</p>
+  <div class="spoken">
+    <p>Here is the contrast.</p>
+    <p>Without format: 'Explain the differences between renewable and non-renewable energy.'</p>
+    <p>The model produces five paragraphs mixing definitions, examples, and analysis. The comparisons are buried in the text. You need to read all of it to find what you need. Then you ask for it in a table. That second prompt is a full regeneration.</p>
+    <p>With format: 'Compare renewable and non-renewable energy in a table with columns for source, cost, environmental impact, and availability.'</p>
+    <p>The model produces a clean table with exactly those four columns. You can scan it in ten seconds and use it directly.</p>
+    <p>Same information. Same model. One specification — the format — determined whether it worked on the first try.</p>
+  </div>
+</div>
+
+<!-- CARD 3 — script-card -->
+<div class="card script-card">
+  <div class="card-label">Script · The Energy Equation</div>
+  <div class="card-title">Every Reformat Is a Full Regeneration</div>
+  <p>The reformatting cost is one of the most significant sources of avoidable waste in AI interaction, because it requires complete regeneration of content that was already generated correctly in substance but delivered in the wrong structure.</p>
+  <p>The original output — correct in content, wrong in format — is fully stranded. Every token generated to produce it is wasted. The retry generates a new response from scratch. Full cost. Second time.</p>
+  <p>At scale, this compounds. An organisation processing five thousand AI prompts per day with a 30 percent reformatting retry rate generates fifteen hundred unnecessary full-cost regenerations daily. That is not a rounding error. It is a structural waste pattern that format specification eliminates entirely.</p>
+</div>
+
+<!-- CARD 4 — adapt-card -->
+<div class="card adapt-card">
+  <div class="card-type">🔄 Adapt — Reformatting Cost Statistic (Section 7.2)</div>
+  <h2>One Sentence on the Cost</h2>
+  <p>Read this one sentence, clearly.</p>
+  <div class="spoken">
+    <p>A reformat is a full regeneration. Every time. In a typical scenario — prose response followed by table reformat followed by list reformat — 67 to 74 percent of the tokens generated were wasted.</p>
+  </div>
+</div>
+
+<!-- CARD 5 — script-card -->
+<div class="card script-card">
+  <div class="card-label">Script · Format Types in Practice</div>
+  <div class="card-title">Matching Format to Purpose</div>
+  <p>Effective format specification requires matching output structure to its downstream use.</p>
+  <p>A comparison task calls for a table — side-by-side columns make differences immediately visible. A process documentation task calls for numbered steps — sequential, each step actionable. An executive briefing calls for a short summary followed by structured sections — fifty words at the top, supporting detail below.</p>
+  <p>The principle is simple: think about what you are going to do with the output. That tells you the format. If you are going to scan it quickly, you need a list or a table. If you are going to read it start to finish, you need prose with clear structure. If you are going to present it, you need concise headed sections.</p>
+  <p>Specifying the format before generation is not a constraint on the AI. It is an instruction that makes the AI's output immediately usable — without the additional cost of reformatting it afterwards.</p>
+</div>
+
+<!-- CARD 6 — cut-card -->
+<div class="card cut-card">
+  <div class="card-type">✂️ Cut — Activity 7.1</div>
+  <h2>The Format Test</h2>
+  <p>Interactive exercise comparing four formats of the same question. Not suited to audio.</p>
+</div>
+
+<!-- CARD 7 — cut-card -->
+<div class="card cut-card">
+  <div class="card-type">✂️ Cut — Format Guide Table + Format Categories Table (Sections 7.3–7.4)</div>
+  <h2>Format Reference Tables</h2>
+  <p>The 'If You Need To...' format guide table and the Format Categories reference table. TABLE REITERATES — covered in prose on previous cards. Available in print edition.</p>
+</div>
+
+<!-- CARD 8 — end-card -->
+<div class="card end-card">
+  <div class="card-type">End of Chapter 7 Script</div>
+  <h2>Chapter 7 complete.</h2>
+  <div class="end-nav">
+    <a href="ch6-nina.html">← ch6-nina.html</a>
+    <a href="ch8-nina.html">ch8-nina.html →</a>
+  </div>
+</div>
+
+<div class="bottom-controls">
+  <button id="prev-btn" onclick="prev()">← Prev</button>
+  <span class="counter"><span id="current-num">1</span> / 9</span>
+  <button id="next-btn" onclick="next()">Continue →</button>
+</div>
+
+<div id="notepad" style="position:fixed;bottom:70px;right:24px;width:280px;z-index:9999;font-family:system-ui,sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.22);border-radius:12px;overflow:hidden;">
+  <div id="notepad-header" style="background:#0d1a0d;color:white;padding:0.6rem 1rem;display:flex;justify-content:space-between;align-items:center;cursor:move;user-select:none;">
+    <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6dbf3a;">📝 Notes</span>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button onclick="clearNotes()" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:0.75rem;padding:0;">✕ clear</button>
+      <button onclick="toggleNotepad()" id="notepad-toggle" style="background:none;border:none;color:white;cursor:pointer;font-size:1rem;padding:0;line-height:1;">−</button>
+    </div>
+  </div>
+  <div id="notepad-body" style="background:#fff;">
+    <textarea id="notepad-text" placeholder="Notes save automatically…" style="width:100%;height:180px;border:none;padding:0.9rem;font-family:inherit;font-size:0.85rem;line-height:1.6;resize:vertical;outline:none;display:block;"></textarea>
+    <div style="background:#f4f7f4;padding:0.35rem 1rem;font-size:0.65rem;color:#999;">Saves to this device only</div>
+  </div>
+</div>
+
+<script>
+const cards = [...document.querySelectorAll('.card')];
+let cur = 0;
+function update() {
+  cards.forEach((c,i) => c.classList.toggle('active', i===cur));
+  document.getElementById('current-num').textContent = cur + 1;
+  document.getElementById('prev-btn').disabled = cur === 0;
+  document.getElementById('next-btn').textContent = cur === cards.length-1 ? 'Back to Start ↺' : 'Continue →';
+  window.scrollTo(0,0);
+}
+function next() { if (cur < cards.length-1) { cur++; update(); } }
+function prev() { if (cur > 0) { cur--; update(); } }
+document.addEventListener('keydown', e => {
+  if (e.key==='ArrowRight') { e.preventDefault(); next(); }
+  if (e.key==='ArrowLeft') { e.preventDefault(); prev(); }
+});
+update();
+const noteKey = 'pc1-notes-ch7-nina';
+const ta = document.getElementById('notepad-text');
+ta.value = localStorage.getItem(noteKey) || '';
+ta.addEventListener('input', () => localStorage.setItem(noteKey, ta.value));
+let open = true;
+function toggleNotepad() { open=!open; document.getElementById('notepad-body').style.display=open?'block':'none'; document.getElementById('notepad-toggle').textContent=open?'−':'+'; }
+function clearNotes() { if(confirm('Clear all notes?')) { ta.value=''; localStorage.removeItem(noteKey); } }
+const pad = document.getElementById('notepad');
+const hdr = document.getElementById('notepad-header');
+let dragging=false, ox=0, oy=0;
+hdr.addEventListener('mousedown', e=>{dragging=true; ox=e.clientX-pad.getBoundingClientRect().left; oy=e.clientY-pad.getBoundingClientRect().top;});
+document.addEventListener('mousemove', e=>{if(!dragging)return; pad.style.left=(e.clientX-ox)+'px'; pad.style.top=(e.clientY-oy)+'px'; pad.style.right='auto'; pad.style.bottom='auto';});
+document.addEventListener('mouseup', ()=>dragging=false);
+</script>
+</body>
+</html>

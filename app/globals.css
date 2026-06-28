@@ -3,23 +3,35 @@
 @tailwind utilities;
 
 :root {
-  --primary: #1a1a2e;
-  --accent: #e94560;
+  --primary: #0d1a0d;
+  --primary-mid: #162b16;
+  --accent: #6dbf3a;
+  --accent-dark: #5aad2e;
 }
 
 body {
-  background-color: #f9f9fb;
-  color: #1a1a2e;
+  background-color: #f4f7f4;
+  color: #1a1a1a;
 }
 
 .btn-primary {
-  @apply bg-accent text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-600 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  @apply bg-accent text-primary font-bold px-6 py-3 rounded-lg hover:bg-accent-dark transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
 }
 
 .btn-secondary {
-  @apply bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  @apply bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-mid transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
 }
 
 .card {
   @apply bg-white rounded-xl shadow-sm border border-gray-100 p-6;
+}
+
+.card-dark {
+  @apply rounded-xl border border-white/10 p-6 text-white;
+  background-color: var(--primary-mid);
+}
+
+/* Cover tagline treatment */
+.cover-tagline {
+  @apply text-xs font-bold tracking-[0.25em] uppercase;
 }

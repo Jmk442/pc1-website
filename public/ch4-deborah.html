@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ch 4 — Narration Script · Deborah Arnell</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0a0a1a; --blue: #4a7fd4; --blue-dim: #3360a8;
+      --cream: #f9f6f0; --text: #1a1a2e; --muted: #666; --border: #ddd;
+      --font: Georgia, 'Times New Roman', serif;
+      --sans: system-ui, -apple-system, sans-serif;
+    }
+    body { font-family: var(--font); font-size: 19px; line-height: 1.9; color: var(--text); background: var(--cream); max-width: 680px; margin: 0 auto; padding: 0; }
+    .top-nav { position: sticky; top: 0; background: var(--dark); display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1.2rem; z-index: 100; }
+    .top-nav a { color: var(--blue); font-family: var(--sans); font-size: 0.78rem; font-weight: 700; text-decoration: none; }
+    .top-nav .badge { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .card { display: none; padding: 2.5rem 1.5rem 8rem; min-height: calc(100vh - 50px); }
+    .card.active { display: block; }
+    .context-card { background: var(--dark); }
+    .ctx-eyebrow { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.6rem; }
+    .ctx-title { font-family: var(--sans); font-size: clamp(1.3rem,4vw,1.9rem); font-weight: 900; color: white; margin-bottom: 1.5rem; line-height: 1.2; }
+    .context-card p { color: rgba(255,255,255,0.78); margin-bottom: 0.9rem; }
+    .context-card strong { color: white; }
+    .legend { display: flex; flex-direction: column; gap: 0.6rem; margin: 1.4rem 0; }
+    .legend-item { display: flex; align-items: center; gap: 0.8rem; font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+    .l-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .l-dot.script { background: var(--blue); }
+    .l-dot.cut { background: #e74c3c; }
+    .l-dot.adapt { background: #d4a843; }
+    .ctx-key-box { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 1.1rem 1.3rem; margin-top: 1.4rem; }
+    .ctx-key-box .key-label { font-family: var(--sans); font-size: 0.6rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.6rem; }
+    .ctx-key-box p { font-family: var(--sans); font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 0.3rem; line-height: 1.6; }
+    .card-label { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
+    .card-title { font-family: var(--sans); font-size: 1.2rem; font-weight: 900; color: var(--dark); margin-bottom: 2rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--dark); }
+    .script-card p { margin-bottom: 1.1rem; }
+    .script-card blockquote { margin: 1.2rem 0 1.2rem 1rem; padding-left: 1rem; border-left: 3px solid var(--blue); font-style: italic; color: #333; }
+    .script-card ul, .script-card ol { margin: 0.6rem 0 1.1rem 1.8rem; }
+    .script-card li { margin-bottom: 0.5rem; }
+    .spoken-table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.88rem; font-family: var(--sans); }
+    .spoken-table th { background: var(--dark); color: white; padding: 0.6rem 0.8rem; text-align: left; font-size: 0.76rem; }
+    .spoken-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .spoken-table tr:nth-child(even) td { background: rgba(0,0,0,0.03); }
+    .cut-card { background: #fff5f5; border: 2px solid #e74c3c; border-radius: 12px; }
+    .cut-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #c0392b; margin-bottom: 0.4rem; }
+    .cut-card h2 { font-family: var(--sans); font-size: 1.1rem; font-weight: 900; color: #7a0000; margin-bottom: 1rem; }
+    .cut-card p { font-size: 0.9rem; color: #8b0000; margin-bottom: 0.5rem; line-height: 1.7; }
+    .pause-line { margin-top: 1.5rem; padding: 1rem 1.2rem; background: #f0f4ff; border-left: 4px solid var(--blue); border-radius: 0 8px 8px 0; font-style: italic; color: #1a3a6e; font-size: 1rem; line-height: 1.8; }
+    .adapt-card { background: #fffbec; border: 2px solid #d4a843; border-radius: 12px; }
+    .adapt-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #a07c20; margin-bottom: 0.4rem; }
+    .adapt-card h2 { font-family: var(--sans); font-size: 1.1rem; font-weight: 900; color: #5a4000; margin-bottom: 1rem; }
+    .adapt-card p { font-size: 0.9rem; color: #5a4000; margin-bottom: 0.5rem; line-height: 1.7; }
+    .adapt-card .spoken { background: rgba(255,255,255,0.7); border-radius: 8px; padding: 1.2rem 1.4rem; margin-top: 1rem; font-family: var(--font); font-size: 1.05rem; font-style: italic; color: #3a2800; line-height: 1.9; }
+    .end-card { background: var(--dark); border-radius: 12px; text-align: center; }
+    .end-card .card-type { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+    .end-card h2 { font-family: var(--sans); font-size: 1.6rem; font-weight: 900; color: white; margin-bottom: 1.5rem; }
+    .end-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
+    .end-nav a { font-family: var(--sans); font-size: 0.9rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+    .bottom-controls { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.97); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.5rem; z-index: 100; }
+    #prev-btn { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; border: 1.5px solid var(--border); background: var(--cream); color: var(--text); border-radius: 8px; padding: 0.6rem 1.2rem; cursor: pointer; }
+    #prev-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    #next-btn { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; border: none; background: var(--blue); color: white; border-radius: 8px; padding: 0.6rem 1.4rem; cursor: pointer; }
+    .counter { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); }
+    @media print { .top-nav, .bottom-controls, #notepad { display: none !important; } .card { display: block !important; min-height: auto; } }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="deborah.html">← Deborah's Page</a>
+  <span class="badge">Chapter 4 of 9 · Part 2</span>
+  <a href="index.html">Hub →</a>
+</nav>
+
+<!-- Card 0: Context -->
+<div class="card context-card active" id="card-0">
+  <div class="ctx-eyebrow">🎙️ Before You Begin — Chapter 4</div>
+  <div class="ctx-title">Context — The C in C.R.A.F.T.</div>
+
+  <p>You're now in Part 2 — the solution. This is where the book shifts from problem to method. The energy here should change slightly: <strong>more practical, more forward-moving.</strong></p>
+
+  <p>The taxi analogy opens the chapter with a story. Play it — let the driver's confusion be felt. Then use it to land the idea of context as a focusing tool.</p>
+
+  <p>The Without/With Context comparison is an ADAPT card — you'll read a spoken version of the table rather than a table layout.</p>
+
+  <div class="legend">
+    <div class="legend-item"><span class="l-dot script"></span> Script — read aloud verbatim</div>
+    <div class="legend-item"><span class="l-dot cut"></span> Cut — do not read, for reference only</div>
+    <div class="legend-item"><span class="l-dot adapt"></span> Adapt — read the spoken version provided</div>
+  </div>
+
+  <div class="ctx-key-box">
+    <div class="key-label">What was cut</div>
+    <p>Activity 4.1 (Context Builder exercise)</p>
+    <p>University/Government sections 4.1–4.5 (technical analysis, enterprise sections)</p>
+    <p>The spoken contrast from the table is what you read instead</p>
+  </div>
+</div>
+
+<!-- Card 1: Script — Opening -->
+<div class="card script-card" id="card-1">
+  <div class="card-label">Script · Opening</div>
+  <div class="card-title">Setting the Boundaries</div>
+
+  <p>Imagine you get into a taxi.</p>
+
+  <p>You slam the door and say, "Take me there." The driver stares at you. Where? You haven't said which city you're in, which suburb you want, or even which direction to start driving. The driver could guess — but guessing wastes petrol, wastes time, and probably takes you somewhere wrong.</p>
+
+  <p>That is exactly what happens when you type a prompt into AI without context.</p>
+
+  <p>Context is the first letter in C.R.A.F.T. for a reason. It sets the boundaries of the entire conversation. It tells the AI:</p>
+
+  <ul>
+    <li>What subject you are talking about</li>
+    <li>Who the audience is — are you writing for your teacher, your friend, or a scientist?</li>
+    <li>What constraints matter — how long, how detailed, what to include or leave out</li>
+  </ul>
+
+  <p>Without context, the AI has millions of possible directions it could go. With context, you narrow it down to the handful that actually matter to you.</p>
+</div>
+
+<!-- Card 2: Adapt — Without Context vs With Context -->
+<div class="card adapt-card" id="card-2">
+  <div class="card-type">🔄 Adapt — Without Context vs With Context Table</div>
+  <h2>The Contrast — read as spoken comparison</h2>
+  <p>The book has a table here comparing two approaches. Read the spoken version below instead of trying to describe a table.</p>
+  <div class="spoken">
+    Without context: "Write about climate." Result — 800 words covering ice ages, greenhouse gases, polar bears, deforestation, and ocean currents. Half of it irrelevant. You delete it and try again.<br><br>
+    With context: "Write a 200-word summary of how data centres affect climate, for a Year 7 science class in Australia." Result — 200 words, focused, exactly what you needed. First attempt. No retry.<br><br>
+    That first attempt? It used electricity. A computer somewhere processed your words and sent them back. When you deleted it and tried again — that electricity was wasted.<br><br>
+    Now multiply that by millions of people, every day, all typing prompts without context.
+  </div>
+</div>
+
+<!-- Card 3: Script — The Three Parts -->
+<div class="card script-card" id="card-3">
+  <div class="card-label">Script · The Three Parts</div>
+  <div class="card-title">The Three Parts of Good Context</div>
+
+  <p>The three parts of good context:</p>
+
+  <ol>
+    <li><strong>Subject</strong> — What topic are you asking about? Be specific. "Climate" is vague. "How data centres affect climate" is precise.</li>
+    <li><strong>Audience</strong> — Who is going to read this? A 12-year-old needs different language than a professor.</li>
+    <li><strong>Constraints</strong> — How long should it be? What should it include? What should it leave out?</li>
+  </ol>
+
+  <p>Think of it this way: the more you tell the AI about your world, the less it has to guess. And every guess it doesn't have to make is energy it doesn't have to spend.</p>
+</div>
+
+<!-- Card 4: Cut — Activity 4.1 -->
+<div class="card cut-card" id="card-4">
+  <div class="card-type">✂️ Cut — Activity 4.1 (The Context Builder)</div>
+  <h2>Context Builder Exercise</h2>
+  <p>Students pick a school subject and write a context statement with topic, audience, and constraint, then compare AI outputs.</p>
+  <p>Classroom exercise — not suited to audio.</p>
+  <div class="pause-line">Pause here if you want to try building a context statement for something you're working on.</div>
+</div>
+
+<!-- Card 5: Cut — University/Government Sections 4.1–4.5 -->
+<div class="card cut-card" id="card-5">
+  <div class="card-type">✂️ Cut — University/Government Sections 4.1–4.5</div>
+  <h2>Technical Analysis Sections</h2>
+  <p>4.1 — Context as Search Space Reduction: LLM probability distributions, semantic cluster activation, pre-generation constraint mechanisms. Academic analysis.</p>
+  <p>4.2 — Quantifying the Context Effect: Metrics table (response length, retry rate, relevance score). The Year 7 contrast above covers this.</p>
+  <p>4.3 — Three Dimensions of Effective Context: Domain, audience, parameter specification. Covered in the spoken three-parts card.</p>
+  <p>4.4 — Enterprise Context Standards: Domain glossaries, audience templates, constraint libraries. Too operational for audio.</p>
+  <p>4.5 — Context and the Progressive Refinement Pipeline: Sets up C.R.A.F.T. cascade logic. Not needed — the flow is established.</p>
+</div>
+
+<!-- Card 6: End -->
+<div class="card end-card" id="card-6">
+  <div class="card-type">End of Chapter 4 Script</div>
+  <h2>Chapter 4 complete.</h2>
+  <div class="end-nav">
+    <a href="ch3-deborah.html">← Chapter 3</a>
+    <a href="ch5-deborah.html">Chapter 5 →</a>
+  </div>
+</div>
+
+<!-- Bottom Controls -->
+<div class="bottom-controls">
+  <button id="prev-btn" onclick="prev()" disabled>← Back</button>
+  <span class="counter">Card <span id="current-num">1</span> of 7</span>
+  <button id="next-btn" onclick="next()">Continue →</button>
+</div>
+
+<!-- Notepad -->
+<div id="notepad" style="position:fixed;bottom:70px;right:24px;width:280px;z-index:9999;font-family:system-ui,sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.22);border-radius:12px;overflow:hidden;">
+  <div id="notepad-header" style="background:#0a0a1a;color:white;padding:0.6rem 1rem;display:flex;justify-content:space-between;align-items:center;cursor:move;user-select:none;">
+    <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#4a7fd4;">📝 Notes</span>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button onclick="clearNotes()" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:0.75rem;padding:0;">✕ clear</button>
+      <button onclick="toggleNotepad()" id="notepad-toggle" style="background:none;border:none;color:white;cursor:pointer;font-size:1rem;padding:0;line-height:1;">−</button>
+    </div>
+  </div>
+  <div id="notepad-body" style="background:#fff;">
+    <textarea id="notepad-text" placeholder="Notes save automatically…" style="width:100%;height:180px;border:none;padding:0.9rem;font-family:inherit;font-size:0.85rem;line-height:1.6;resize:vertical;outline:none;display:block;"></textarea>
+    <div style="background:#f4f5f9;padding:0.35rem 1rem;font-size:0.65rem;color:#999;">Saves to this device only</div>
+  </div>
+</div>
+
+<script>
+const cards = [...document.querySelectorAll('.card')];
+let cur = 0;
+function update() {
+  cards.forEach((c,i) => c.classList.toggle('active', i===cur));
+  document.getElementById('current-num').textContent = cur + 1;
+  document.getElementById('prev-btn').disabled = cur === 0;
+  document.getElementById('next-btn').textContent = cur === cards.length-1 ? 'Back to Start ↺' : 'Continue →';
+  window.scrollTo(0,0);
+}
+function next() { if (cur < cards.length-1) { cur++; update(); } else { cur=0; update(); } }
+function prev() { if (cur > 0) { cur--; update(); } }
+document.addEventListener('keydown', e => {
+  if (e.key==='ArrowRight') { e.preventDefault(); next(); }
+  if (e.key==='ArrowLeft') { e.preventDefault(); prev(); }
+});
+update();
+const noteKey = 'pc1-notes-ch4-deborah';
+const ta = document.getElementById('notepad-text');
+ta.value = localStorage.getItem(noteKey) || '';
+ta.addEventListener('input', () => localStorage.setItem(noteKey, ta.value));
+let open = true;
+function toggleNotepad() { open=!open; document.getElementById('notepad-body').style.display=open?'block':'none'; document.getElementById('notepad-toggle').textContent=open?'−':'+'; }
+function clearNotes() { if(confirm('Clear all notes?')) { ta.value=''; localStorage.removeItem(noteKey); } }
+const pad = document.getElementById('notepad');
+const hdr = document.getElementById('notepad-header');
+let dragging=false, ox=0, oy=0;
+hdr.addEventListener('mousedown', e=>{dragging=true; ox=e.clientX-pad.getBoundingClientRect().left; oy=e.clientY-pad.getBoundingClientRect().top;});
+document.addEventListener('mousemove', e=>{if(!dragging)return; pad.style.left=(e.clientX-ox)+'px'; pad.style.top=(e.clientY-oy)+'px'; pad.style.right='auto'; pad.style.bottom='auto';});
+document.addEventListener('mouseup', ()=>dragging=false);
+</script>
+</body>
+</html>
