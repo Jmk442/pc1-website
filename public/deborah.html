@@ -6,10 +6,8 @@
   <title>Deborah Arnell — Narrator Handoff · PromptCraft 1</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --dark: #0a0a1a;
-      --mid: #14142b;
       --blue: #4a7fd4;
       --blue-dim: #3360a8;
       --text: #2d2d2d;
@@ -19,617 +17,215 @@
       --font: Georgia, 'Times New Roman', serif;
       --sans: system-ui, -apple-system, sans-serif;
     }
+    body { font-family: var(--font); font-size: 17px; line-height: 1.75; color: var(--text); background: #fff; max-width: 800px; margin: 0 auto; padding: 0 1.5rem 6rem; }
 
-    body {
-      font-family: var(--font);
-      font-size: 17px;
-      line-height: 1.75;
-      color: var(--text);
-      background: #fff;
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 0 1.5rem 6rem;
-    }
-
-    /* ── HEADER ── */
-    .header {
-      background: var(--dark);
-      color: white;
-      text-align: center;
-      padding: 3.5rem 2rem 2.5rem;
-      margin: 0 -1.5rem 3rem;
-    }
-    .header-eyebrow {
-      font-family: var(--sans);
-      font-size: 0.62rem;
-      font-weight: 800;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 1rem;
-    }
-    .header h1 {
-      font-family: var(--sans);
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 900;
-      color: white;
-      line-height: 1.2;
-      margin-bottom: 0.6rem;
-    }
+    .header { background: var(--dark); color: white; text-align: center; padding: 3.5rem 2rem 2.5rem; margin: 0 -1.5rem 3rem; }
+    .header-eyebrow { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.32em; text-transform: uppercase; color: var(--blue); margin-bottom: 1rem; }
+    .header h1 { font-family: var(--sans); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: white; line-height: 1.2; margin-bottom: 0.6rem; }
     .header h1 em { font-style: normal; color: var(--blue); }
-    .header .sub {
-      font-family: var(--sans);
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.45);
-      letter-spacing: 0.08em;
-    }
+    .header .sub { font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; }
 
-    /* ── LABELS / HEADINGS ── */
-    .label {
-      font-family: var(--sans);
-      font-size: 0.62rem;
-      font-weight: 800;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--blue-dim);
-      margin-bottom: 0.4rem;
-    }
-    h2 {
-      font-family: var(--sans);
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--dark);
-      line-height: 1.25;
-      margin-bottom: 1rem;
-    }
-    h3 {
-      font-family: var(--sans);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin: 1.6rem 0 0.45rem;
-    }
+    .label { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blue-dim); margin-bottom: 0.4rem; }
+    h2 { font-family: var(--sans); font-size: 1.45rem; font-weight: 900; color: var(--dark); line-height: 1.25; margin-bottom: 1rem; }
+    h3 { font-family: var(--sans); font-size: 1rem; font-weight: 700; color: var(--dark); margin: 1.8rem 0 0.5rem; }
     p { margin-bottom: 0.9rem; }
     p:last-child { margin-bottom: 0; }
     strong { font-weight: 700; }
+    ul { margin: 0.6rem 0 0.9rem 1.4rem; }
+    li { margin-bottom: 0.35rem; }
 
-    /* ── SECTION ── */
     .section { margin-bottom: 3rem; }
 
-    /* ── PERSONAL NOTE ── */
-    .personal {
-      background: var(--dark);
-      color: white;
-      border-radius: 12px;
-      padding: 2.5rem 2.5rem 2rem;
-      margin: 0 0 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .personal::before {
-      content: '\201C';
-      position: absolute;
-      top: -1rem;
-      left: 1.5rem;
-      font-size: 7rem;
-      color: rgba(74,127,212,0.1);
-      font-family: Georgia, serif;
-      line-height: 1;
-    }
+    .personal { background: var(--dark); color: white; border-radius: 12px; padding: 2.5rem 2.5rem 2rem; margin: 0 0 2rem; position: relative; overflow: hidden; }
+    .personal::before { content: '\201C'; position: absolute; top: -1rem; left: 1.5rem; font-size: 7rem; color: rgba(74,127,212,0.1); font-family: Georgia, serif; line-height: 1; }
     .personal p { color: rgba(255,255,255,0.82); position: relative; }
-    .personal .from {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      color: var(--blue);
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      margin-top: 1.4rem;
-    }
+    .personal .from { font-family: var(--sans); font-size: 0.78rem; color: var(--blue); font-weight: 600; letter-spacing: 0.1em; margin-top: 1.4rem; }
 
-    /* ── ROLE CARD ── */
-    .role-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin: 1.4rem 0;
-    }
-    @media (max-width: 540px) { .role-grid { grid-template-columns: 1fr; } }
-    .role-item {
-      background: var(--light);
-      border-radius: 8px;
-      padding: 1.1rem 1.3rem;
-    }
-    .role-item .ri-label {
-      font-family: var(--sans);
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--blue-dim);
-      margin-bottom: 0.35rem;
-    }
-    .role-item .ri-val {
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--dark);
-    }
+    .warning-box { background: #fff9e0; border: 2px solid #d4a843; border-radius: 8px; padding: 1.3rem 1.6rem; margin: 1.5rem 0; }
+    .warning-box .w-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #9a7b1c; margin-bottom: 0.5rem; }
+    .warning-box p { font-size: 0.92rem; color: #4a3800; }
+    .warning-box ul { font-size: 0.92rem; color: #4a3800; }
 
-    /* ── BOOK LINKS ── */
-    .book-links {
-      display: flex;
-      gap: 1rem;
-      margin: 1.4rem 0;
-      flex-wrap: wrap;
-    }
-    .book-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--dark);
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      padding: 0.75rem 1.4rem;
-      font-family: var(--sans);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      transition: background 0.2s;
-    }
-    .book-link:hover { background: var(--blue-dim); }
-    .book-link .icon { font-size: 1rem; }
+    .script-wrap { background: var(--dark); border-radius: 12px; padding: 2rem; margin: 1.8rem 0; position: relative; overflow: hidden; }
+    .script-wrap::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(74,127,212,0.05) 1px, transparent 1px); background-size: 22px 22px; pointer-events: none; }
+    .script-header { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.4rem; position: relative; }
+    .script-text { background: rgba(255,255,255,0.06); border: 1px solid rgba(74,127,212,0.2); border-radius: 8px; padding: 1.5rem 1.6rem; font-family: var(--font); font-size: 0.98rem; line-height: 1.95; color: rgba(255,255,255,0.88); position: relative; white-space: pre-wrap; }
+    .stage-dir { color: rgba(255,255,255,0.35); font-style: italic; font-size: 0.85em; }
 
-    /* ── SCRIPT BLOCK ── */
-    .script-wrap {
-      background: var(--dark);
-      border-radius: 12px;
-      padding: 2rem 2rem 1.8rem;
-      margin: 1.8rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .script-wrap::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(74,127,212,0.05) 1px, transparent 1px);
-      background-size: 22px 22px;
-      pointer-events: none;
-    }
-    .script-header {
-      font-family: var(--sans);
-      font-size: 0.62rem;
-      font-weight: 800;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 1.4rem;
-      position: relative;
-    }
-    .script-text {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(74,127,212,0.2);
-      border-radius: 8px;
-      padding: 1.5rem 1.6rem;
-      font-family: var(--font);
-      font-size: 1rem;
-      line-height: 1.9;
-      color: rgba(255,255,255,0.88);
-      position: relative;
-    }
-    .script-text em { color: rgba(255,255,255,0.42); font-style: italic; font-size: 0.85em; }
-    .script-note {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.32);
-      margin-top: 1rem;
-      position: relative;
-    }
-
-    /* ── TABLE ── */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: var(--sans);
-      font-size: 0.87rem;
-      margin: 1.4rem 0;
-    }
-    th {
-      background: var(--dark);
-      color: white;
-      text-align: left;
-      padding: 0.65rem 1rem;
-      font-weight: 700;
-      font-size: 0.78rem;
-      letter-spacing: 0.05em;
-    }
-    td {
-      padding: 0.65rem 1rem;
-      border-bottom: 1px solid var(--border);
-      color: #3a3a3a;
-      vertical-align: top;
-    }
+    table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.84rem; margin: 1.2rem 0; }
+    th { background: var(--dark); color: white; text-align: left; padding: 0.6rem 0.9rem; font-weight: 700; font-size: 0.76rem; letter-spacing: 0.04em; }
+    td { padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--border); color: #3a3a3a; vertical-align: top; line-height: 1.55; }
     tr:last-child td { border-bottom: none; }
     tr:nth-child(even) td { background: var(--light); }
+    .use { color: #1a7a3c; font-weight: 700; }
     .cut { color: #c0392b; font-weight: 700; }
-    .keep { color: #27ae60; font-weight: 700; }
     .adapt { color: #d68910; font-weight: 700; }
+    .flag { color: #8b4513; font-weight: 700; }
 
-    /* ── PHASE ROADMAP ── */
-    .phases { margin: 1.4rem 0; }
-    .phase-row {
-      display: flex;
-      gap: 1rem;
-      padding: 0.9rem 0;
-      border-bottom: 1px solid var(--border);
-      align-items: flex-start;
-    }
-    .phase-row:last-child { border-bottom: none; }
-    .phase-num {
-      font-family: var(--sans);
-      font-size: 1.1rem;
-      font-weight: 900;
-      color: var(--blue);
-      min-width: 2.2rem;
-      padding-top: 0.1rem;
-    }
-    .phase-content strong {
-      display: block;
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 0.2rem;
-    }
-    .phase-content span { font-size: 0.88rem; color: var(--muted); }
+    .chapter-head { font-family: var(--sans); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: var(--dark); background: #eef2ff; border-left: 3px solid var(--blue); padding: 0.55rem 0.9rem; margin: 1.6rem 0 0; }
 
-    /* ── DIVIDER ── */
-    .divider {
-      text-align: center;
-      margin: 2.5rem 0;
-      color: var(--blue);
-      font-size: 1rem;
-      letter-spacing: 0.6rem;
-      opacity: 0.3;
-    }
+    .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.2rem 0; }
+    @media (max-width: 540px) { .role-grid { grid-template-columns: 1fr; } }
+    .role-item { background: var(--light); border-radius: 8px; padding: 1rem 1.2rem; }
+    .role-item .ri-label { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-dim); margin-bottom: 0.3rem; }
+    .role-item .ri-val { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--dark); }
 
-    /* ── CONTACT ── */
-    .contact-block {
-      background: var(--light);
-      border-radius: 12px;
-      padding: 2rem 2rem;
-      text-align: center;
-      margin-top: 1rem;
-    }
-    .contact-block p {
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-    }
-    .contact-btn {
-      display: inline-block;
-      background: var(--dark);
-      color: white;
-      text-decoration: none;
-      border-radius: 9px;
-      padding: 0.9rem 2rem;
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      transition: background 0.2s;
-    }
+    .book-link { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--dark); color: white; text-decoration: none; border-radius: 8px; padding: 0.7rem 1.3rem; font-family: var(--sans); font-size: 0.85rem; font-weight: 700; margin: 0.5rem 0; transition: background 0.2s; }
+    .book-link:hover { background: var(--blue-dim); }
+
+    .contact-block { background: var(--light); border-radius: 12px; padding: 2rem; text-align: center; margin-top: 1rem; }
+    .contact-block p { font-family: var(--sans); font-size: 0.9rem; color: var(--muted); margin-bottom: 1.2rem; }
+    .contact-btn { display: inline-block; background: var(--dark); color: white; text-decoration: none; border-radius: 9px; padding: 0.9rem 2rem; font-family: var(--sans); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; transition: background 0.2s; }
     .contact-btn:hover { background: var(--blue-dim); }
 
-    /* ── FOOTER ── */
-    .footer {
-      text-align: center;
-      font-family: var(--sans);
-      font-size: 0.68rem;
-      color: #ccc;
-      margin-top: 5rem;
-      letter-spacing: 0.12em;
-      line-height: 2;
-    }
+    .divider { text-align: center; margin: 2.5rem 0; color: var(--blue); font-size: 1rem; letter-spacing: 0.6rem; opacity: 0.3; }
+
+    .pending { font-family: var(--sans); font-size: 0.85rem; color: var(--muted); background: var(--light); border-radius: 8px; padding: 1rem 1.3rem; margin: 1rem 0; font-style: italic; }
+
+    .footer { text-align: center; font-family: var(--sans); font-size: 0.68rem; color: #ccc; margin-top: 5rem; letter-spacing: 0.12em; line-height: 2; }
+    .phase-row { display: flex; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .phase-row:last-child { border-bottom: none; }
+    .phase-num { font-family: var(--sans); font-size: 1.1rem; font-weight: 900; color: var(--blue); min-width: 2.2rem; padding-top: 0.1rem; }
+    .phase-content strong { display: block; font-family: var(--sans); font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 0.2rem; }
+    .phase-content span { font-size: 0.88rem; color: var(--muted); }
   </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
+<a href="index.html" style="display:inline-flex;align-items:center;gap:0.4rem;font-family:system-ui,sans-serif;font-size:0.8rem;font-weight:700;color:#3360a8;text-decoration:none;padding:0.6rem 1rem;background:#f4f5f9;border-radius:0 0 8px 8px;margin-left:1.5rem;">← Back to Hub</a>
+
 <div class="header">
   <p class="header-eyebrow">Narrator Handoff · Confidential</p>
-  <h1>For <em>Deborah Arnell</em> —<br>English Recording</h1>
+  <h1>For <em>Deborah Arnell</em> —<br>English Audiobook</h1>
   <p class="sub">PromptCraft 1: Teaching Machines to Listen &nbsp;·&nbsp; By John Kenneally</p>
 </div>
 
 
-<!-- ── SECTION 1: PERSONAL NOTE ── -->
+<!-- ── NOTE FROM JOHN ── -->
 <div class="section">
-  <p class="label">A Note from John</p>
-  <h2>Before you start</h2>
-
+  <p class="label">From John</p>
+  <h2>A note before you start</h2>
   <div class="personal">
     <p>
-      Deborah — thank you for taking this on. This book has been a long time coming
-      and having the right voice for it matters more than I can properly express.
+      I hope this guide provides the clearest way to communicate what I'm aiming for.
+      I tried a few different approaches but found they only made things more complicated.
+      As you've heard me say — <em>keep the thing about the thing</em>.
+      This is my attempt to do exactly that.
     </p>
     <p>
-      This is not a technical manual. It is a book about communication — about how
-      we talk to machines, and why doing it well matters for the planet and for people.
-      I want listeners to feel that. I want the Year 7 sections to feel warm and clear.
-      I want the University sections to feel precise and grounded.
+      I hope the notes and directions throughout the manuscript provide everything you need.
+      Learning the audiobook production process has been both enjoyable and educational,
+      and I've tried to make the manuscript as narration-friendly as possible.
     </p>
     <p>
-      Read your opening script. Look through the production rules.
-      If anything feels off — anything at all — write to me before you record.
-      There is no rush. Getting it right is everything.
+      I've removed tables that simply repeated or reinforced concepts already explained in the text.
+      My rule has been: if a table only reiterates an existing idea, it doesn't need to be narrated.
+      If you come across a table that has been missed, interrupts the flow, or hasn't been converted —
+      please omit it, flag it for me, and continue with the next paragraph. We can address it later.
+    </p>
+    <p>
+      And Deborah — I would appreciate your opinion on the acronym question too.
+      Do you think C.R.A.F.T. and the other acronyms should remain in English across all language editions,
+      or should each edition develop native-language acronyms? Your instinct matters here.
     </p>
     <p class="from">— John Kenneally</p>
   </div>
 </div>
 
 
-<!-- ── SECTION 2: YOUR ROLE ── -->
+<!-- ── MANUSCRIPT PROTECTION ── -->
+<div class="section">
+  <div class="warning-box">
+    <p class="w-label">⚠️ Manuscript Protection — Read This First</p>
+    <p><strong>The original manuscript in Notion is the master source and must be protected.</strong></p>
+    <p style="margin-top:0.6rem;">When working with the production notes:</p>
+    <ul style="margin-top:0.5rem;">
+      <li>Do not edit, overwrite, or restructure the original manuscript pages.</li>
+      <li>Work from the Production Guide and chapter notes — these are the working documents.</li>
+      <li>If anything is unclear, stop and ask John before proceeding.</li>
+      <li>The audiobook is an <strong>adaptation</strong> of the manuscript — not a rewrite.</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ── ROLE ── -->
 <div class="section">
   <p class="label">Your Role</p>
-  <h2>What you are contributing</h2>
-
+  <h2>What you are recording</h2>
   <div class="role-grid">
-    <div class="role-item">
-      <p class="ri-label">Language</p>
-      <p class="ri-val">English (primary edition)</p>
-    </div>
-    <div class="role-item">
-      <p class="ri-label">Register</p>
-      <p class="ri-val">Year 7 clarity + University depth</p>
-    </div>
-    <div class="role-item">
-      <p class="ri-label">Credit</p>
-      <p class="ri-val">Narrator (English Audiobook)</p>
-    </div>
-    <div class="role-item">
-      <p class="ri-label">Platform</p>
-      <p class="ri-val">Audible (English)</p>
-    </div>
-    <div class="role-item">
-      <p class="ri-label">Script</p>
-      <p class="ri-val">Provided — adapted from book</p>
-    </div>
-    <div class="role-item">
-      <p class="ri-label">Chapters</p>
-      <p class="ri-val">Full book — Parts 1–6 (Ch 1–24)</p>
-    </div>
+    <div class="role-item"><p class="ri-label">Language</p><p class="ri-val">English (primary edition)</p></div>
+    <div class="role-item"><p class="ri-label">Register</p><p class="ri-val">Year 7 — accessible, warm, clear</p></div>
+    <div class="role-item"><p class="ri-label">Audience</p><p class="ri-val">General public, students, educators</p></div>
+    <div class="role-item"><p class="ri-label">Platform</p><p class="ri-val">Audible (English)</p></div>
+    <div class="role-item"><p class="ri-label">Delivery</p><p class="ri-val">Six parts — one at a time</p></div>
+    <div class="role-item"><p class="ri-label">Part 1</p><p class="ri-val">Walk-through, not a final take</p></div>
   </div>
-
-  <p>The full English book is here for your reference:</p>
-
-  <div class="book-links">
-    <a href="book-en.html" class="book-link"><span class="icon">📖</span> Read the English Book</a>
-  </div>
-</div>
-
-<div class="divider">· · ·</div>
-
-
-<!-- ── SECTION 3: OPENING SCRIPT ── -->
-<div class="section">
-  <p class="label">Recording Script — English</p>
-  <h2>Your opening script</h2>
-  <p>This is the text you read at the start of the audiobook. Say it out loud — it should feel natural. If anything sounds awkward, mark it and let me know.</p>
-
-  <div class="script-wrap">
-    <p class="script-header">Opening — Read this before Chapter 1</p>
-    <div class="script-text">
-      Welcome to PromptCraft 1: Teaching Machines to Listen.
-
-      <br><br>
-
-      This book has one purpose: to show you how to communicate with artificial intelligence
-      so clearly that it does exactly what you need — the first time.
-
-      <br><br>
-
-      At the centre is the C.R.A.F.T. method — five elements that turn a vague thought
-      into a precise instruction: Context, Role, Action, Format, and Tone.
-
-      <br><br>
-
-      Every chapter appears in two versions: one written for students around twelve years old —
-      plain, direct, with real examples. And one written for university students, professionals,
-      and policy makers — with more depth, more evidence, and more formal language.
-
-      <br><br>
-
-      You can read both. You can choose one. The book meets you where you are.
-
-      <br><br>
-
-      I'm <em>[narrator's name]</em>, and this is PromptCraft 1.
-    </div>
-    <p class="script-note">Note: Replace [narrator's name] with your own name.</p>
-  </div>
+  <p style="margin-top:1rem;">The full English book is here for your reference:</p>
+  <a href="book-en.html" class="book-link">📖 Read the English Book</a>
 </div>
 
 
-<!-- ── SECTION 4: CLOSING SCRIPT ── -->
+<!-- ── DELIVERY STRUCTURE ── -->
 <div class="section">
-  <p class="label">Closing Script</p>
-  <h2>End of the audiobook</h2>
-
-  <div class="script-wrap">
-    <p class="script-header">Closing — Read this after the final chapter</p>
-    <div class="script-text">
-      That was PromptCraft 1: Teaching Machines to Listen.
-
-      <br><br>
-
-      If you'd like to apply the C.R.A.F.T. method in your work or study,
-      the quick-reference cheat sheet is included at the back of this book in the Appendices.
-
-      <br><br>
-
-      You can also find courses, tools, and resources at promptcraft1.com —
-      built for individuals, classrooms, and organisations.
-
-      <br><br>
-
-      Better prompts. Better outcomes. Better world.
-    </div>
-  </div>
-</div>
-
-<div class="divider">· · ·</div>
-
-
-<!-- ── SECTION 5: DELIVERY STRUCTURE ── -->
-<div class="section">
-  <p class="label">Audiobook Structure</p>
-  <h2>Part by part — what to expect</h2>
+  <p class="label">How the Manuscript Is Being Sent</p>
+  <h2>Read this before anything else</h2>
+  <p>The book is divided into six parts. You will receive them <strong>one at a time.</strong> This is deliberate. The goal is not to hand you the entire manuscript and leave you to work through it alone. The goal is to keep the process moving, keep the energy high, and give John the opportunity to listen, adjust, and improve before the next part begins.</p>
+  <p>Six natural breaks. Six opportunities to check in. Six chances to catch anything that needs fixing before it becomes a habit.</p>
 
   <table>
-    <thead>
-      <tr>
-        <th>Part</th>
-        <th>Content</th>
-        <th>Chapters</th>
-        <th>Delivery note</th>
-      </tr>
-    </thead>
+    <thead><tr><th>Delivery</th><th>Content</th><th>Chapters</th></tr></thead>
     <tbody>
-      <tr>
-        <td><strong>Part 1</strong></td>
-        <td>Why This Matters (The Problem)</td>
-        <td>Ch 1–3</td>
-        <td>Accessible, conversational — warm pace</td>
-      </tr>
-      <tr>
-        <td><strong>Part 2</strong></td>
-        <td>The C.R.A.F.T. Method (The Solution)</td>
-        <td>Ch 4–9</td>
-        <td>Core content — clear and precise</td>
-      </tr>
-      <tr>
-        <td><strong>Part 3</strong></td>
-        <td>Industry Applications (The Proof)</td>
-        <td>Ch 10–15</td>
-        <td>Matter-of-fact; speak tables as prose</td>
-      </tr>
-      <tr>
-        <td><strong>Part 4</strong></td>
-        <td>The Environmental Case (The Stakes)</td>
-        <td>Ch 16–18</td>
-        <td>Serious tone; data delivered slowly and clearly</td>
-      </tr>
-      <tr>
-        <td><strong>Part 5</strong></td>
-        <td>Teaching Prompt Literacy (The Future)</td>
-        <td>Ch 19–21</td>
-        <td>Teaching mode — engaged, with warmth</td>
-      </tr>
-      <tr>
-        <td><strong>Part 6</strong></td>
-        <td>PC1 as Platform (The Business)</td>
-        <td>Ch 22–24</td>
-        <td>Forward-looking — measured optimism</td>
-      </tr>
+      <tr><td><strong>Part 1</strong></td><td>Why This Matters (The Problem)</td><td>1–3</td></tr>
+      <tr><td><strong>Part 2</strong></td><td>The C.R.A.F.T. Method (The Solution)</td><td>4–9</td></tr>
+      <tr><td><strong>Part 3</strong></td><td>Industry Applications (The Proof)</td><td>10–15</td></tr>
+      <tr><td><strong>Part 4</strong></td><td>The Environmental Case (The Stakes)</td><td>16–18</td></tr>
+      <tr><td><strong>Part 5</strong></td><td>Teaching Prompt Literacy (The Future)</td><td>19–21</td></tr>
+      <tr><td><strong>Part 6</strong></td><td>PC1 as Platform / Appendices</td><td>22–24 + Appendices</td></tr>
     </tbody>
   </table>
+
+  <div class="warning-box" style="margin-top:1.5rem;">
+    <p class="w-label">📌 Part 1 is a walk-through. Not a final take.</p>
+    <p>John is not expecting studio-quality audio from Part 1. He is expecting a first recording that gets you comfortable with the manuscript and the process, reveals anything unexpected — pacing, terminology, flow issues, places where the text doesn't feel natural to speak — and gives John something to listen to before Part 2 begins.</p>
+    <p style="margin-top:0.6rem;"><strong>Deborah</strong> — if Part 1 turns out to be first-take quality, that's a bonus. If it surfaces things to fix, that's exactly what it's for.</p>
+  </div>
 </div>
 
 
-<!-- ── SECTION 6: PRODUCTION RULES ── -->
+<!-- ── PHASES 1–4 ── -->
 <div class="section">
-  <p class="label">Production Rules</p>
-  <h2>What you cut, keep, and adapt</h2>
+  <p class="label">Production Roadmap</p>
+  <h2>Phases 1–4 — where we are and where we're going</h2>
+  <p>The most important thing right now is to get this out into the world. Build momentum. Everything else follows from that.</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Rule</th>
-        <th>Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Activity boxes / exercises</td>
-        <td class="cut">CUT</td>
-        <td>Written-book only — skip in the audiobook</td>
-      </tr>
-      <tr>
-        <td>Tables</td>
-        <td class="adapt">ADAPT</td>
-        <td>Read as a short prose list or summary</td>
-      </tr>
-      <tr>
-        <td>Year 7 + University sections</td>
-        <td class="keep">KEEP</td>
-        <td>Read both — they are the heart of the book</td>
-      </tr>
-      <tr>
-        <td>Phrases like "See Section X"</td>
-        <td class="cut">CUT</td>
-        <td>Not relevant in audio — omit cleanly</td>
-      </tr>
-      <tr>
-        <td>C.R.A.F.T. acronym letters (C, R, A, F, T)</td>
-        <td class="keep">KEEP</td>
-        <td>Spell them out when first introduced; use the word after</td>
-      </tr>
-      <tr>
-        <td>Industry acronyms (C.A.R.E.S., B.R.I.E.F., etc.)</td>
-        <td class="adapt">ADAPT</td>
-        <td>Introduce spelling first, then use the word naturally</td>
-      </tr>
-      <tr>
-        <td>Data / statistics</td>
-        <td class="keep">KEEP</td>
-        <td>Read exactly as written — slow and clear</td>
-      </tr>
-      <tr>
-        <td>Callout boxes</td>
-        <td class="adapt">ADAPT</td>
-        <td>Read the content; skip the box title unless it adds meaning</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<!-- ── SECTION 7: PHASE ROADMAP ── -->
-<div class="section">
-  <p class="label">Timeline</p>
-  <h2>Our four phases together</h2>
-
-  <div class="phases">
+  <div style="margin:1.4rem 0;">
     <div class="phase-row">
       <div class="phase-num">1</div>
       <div class="phase-content">
-        <strong>Read &amp; Familiarise</strong>
-        <span>Read the full English book. Flag anything that sounds unnatural when spoken aloud. We discuss before you record anything.</span>
+        <strong>Current — Get it out there</strong>
+        <span>English audiobook narrated by Deborah Arnell. Uses the <strong>Year 7 level</strong> prose — accessible, warm, clear. Audience: general public, students, anyone new to structured prompting. German audiobook narrated by Nina Banks. Both versions release together. Goal: establish presence, build audience, prove the concept.</span>
       </div>
     </div>
     <div class="phase-row">
       <div class="phase-num">2</div>
       <div class="phase-content">
-        <strong>Script Sign-off</strong>
-        <span>I send you the final adapted audiobook script. You confirm you are happy with it. No recording starts without mutual agreement.</span>
+        <strong>After Phase 1 gains traction</strong>
+        <span>The levels reverse. English edition expands to the <strong>University/Government level</strong> prose — the more formal, evidence-based version for professional and academic audiences. German edition produces a more accessible version equivalent to the Year 7 register.</span>
       </div>
     </div>
     <div class="phase-row">
       <div class="phase-num">3</div>
       <div class="phase-content">
-        <strong>Recording</strong>
-        <span>You record the audiobook. We go through quality together. Corrections as needed — take your time.</span>
+        <strong>Full German translation</strong>
+        <span>A full translation of the PromptCraft 1 book into German — not just the audiobook script, but the complete written edition. John and Nina to discuss scope and timeline. Does not begin until Phase 1 is live.</span>
       </div>
     </div>
     <div class="phase-row">
       <div class="phase-num">4</div>
       <div class="phase-content">
-        <strong>Release</strong>
-        <span>We agree on platform and release timing. Audible (English) is the primary target. Nothing goes live without both of us signing off.</span>
+        <strong>PC2</strong>
+        <span>PromptCraft 2 is the next book. It is nearly complete. The goal is that by the time PC2 is ready, PromptCraft 1 has built enough momentum to carry it. As John puts it: <em>"this becomes the little engine that could."</em></span>
       </div>
     </div>
   </div>
@@ -638,26 +234,409 @@
 <div class="divider">· · ·</div>
 
 
-<!-- ── CONTACT ── -->
+<!-- ── GLOBAL RULES ── -->
 <div class="section">
-  <p class="label">Questions? Notes?</p>
-  <h2>Write to John directly</h2>
+  <p class="label">Global Rules — Apply Across Every Chapter</p>
+  <h2>What you always cut, keep, and adapt</h2>
+  <table>
+    <thead><tr><th>Pattern</th><th>Rule</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Tables that repeat what the prose already says</td><td class="cut">✂️ CUT</td><td>The prose covers it. Do not read the table.</td></tr>
+      <tr><td>Tables that ARE the content (data, comparisons, verb lists)</td><td class="adapt">🔄 ADAPT</td><td>Convert to spoken form — read key figures only, not columns.</td></tr>
+      <tr><td>Activities / classroom exercises</td><td class="cut">✂️ CUT</td><td>Replace with: <em>"Pause here if you want to try this yourself before we move on."</em></td></tr>
+      <tr><td>Footnote references inline ([1], [2] etc.)</td><td class="cut">✂️ CUT</td><td>Omit all inline references.</td></tr>
+      <tr><td>Callout boxes ("Evidence: See Appendix S")</td><td class="cut">✂️ CUT</td><td>Omit entirely.</td></tr>
+      <tr><td>Teacher's Desk / Practitioner's Note / PC1 Mini-Card blocks</td><td class="cut">✂️ CUT</td><td>Editorial meta-content — not book content.</td></tr>
+      <tr><td>Forward reference lines at chapter ends</td><td class="use">✅ KEEP</td><td>Shorten to one sentence as a spoken transition.</td></tr>
+      <tr><td>"Part X complete" closers</td><td class="use">✅ KEEP</td><td>Good audio pacing.</td></tr>
+      <tr><td>Chapter epigraphs / opening quotes</td><td class="use">✅ KEEP</td><td>Strong audio moments.</td></tr>
+      <tr><td>Hyperlinks in text</td><td class="adapt">🔄 ADAPT</td><td>Read the organisation name only — drop the URL.</td></tr>
+      <tr><td>References / bibliography</td><td class="cut">✂️ CUT</td><td>Move to end-of-book spoken credits section, or omit.</td></tr>
+      <tr><td>How to Use This Book (front matter)</td><td class="cut">✂️ CUT</td><td>Visual navigation guide — no equivalent in audio. Replace with Cover Script.</td></tr>
+      <tr><td>Table of Contents</td><td class="cut">✂️ CUT</td><td>Audio players have chapter markers — TOC is file structure, not read aloud.</td></tr>
+    </tbody>
+  </table>
+</div>
 
-  <div class="contact-block">
-    <p>This page is just for you. If you have questions about the script, the recording process, or anything else — just hit the button below.</p>
-    <a href="mailto:johntilv4575@gmail.com?subject=PromptCraft%201%20—%20English%20Audiobook%20(Deborah)" class="contact-btn">
-      ✉️ &nbsp; Email John
-    </a>
+<div class="divider">· · ·</div>
+
+
+<!-- ── OPENING SCRIPT ── -->
+<div class="section">
+  <p class="label">Your Script — Read Before Chapter 1</p>
+  <h2>Cover script — English</h2>
+  <p>Read this before the Foreword. This is the title card section. Read it exactly as written.</p>
+  <div class="script-wrap">
+    <p class="script-header">🎙️ English Opening — Deborah Arnell</p>
+    <div class="script-text"><span class="stage-dir">[TITLE CARD — spoken]</span>
+PromptCraft 1. Teaching Machines to Listen.
+Written by John Kenneally.
+
+<span class="stage-dir">[INTRO — spoken]</span>
+PromptCraft is a sibling to prompt engineering — but far more personal.
+
+Where prompt engineering focuses on technical precision, PromptCraft focuses
+on you. Your words. Your intent. Your way of thinking. The system runs on a
+linguistic engine called C.R.A.F.T. — Context, Role, Action, Format, Tone —
+five elements that shape every interaction you have with AI.
+
+This book is not for people who simply want to use AI better. There are
+thousands of products out there — including this one — that achieve that
+result in thousands of different ways.
+
+What PromptCraft 1 gives you is something different. It gives you the ability
+to improve AI on your terms — in any situation, on any given day. More
+concisely. More efficiently. More personally. More controlled.
+
+For your business. For your home. For your family.
+
+Using your own words as the foundation of what comes back.
+
+This book explains what each element of C.R.A.F.T. does, why it works, and
+how to apply it across any field or discipline.
+
+Let's begin.</div>
   </div>
 </div>
 
 
-<!-- ── FOOTER ── -->
+<!-- ── CHAPTER NOTES ── -->
+<div class="section">
+  <p class="label">Chapter-by-Chapter Production Notes — English Column</p>
+  <h2>Parts 1 &amp; 2 — confirmed</h2>
+  <p>✅ USE = include and read &nbsp;·&nbsp; ✂️ CUT = do not read &nbsp;·&nbsp; 🔄 ADAPT = rework for spoken delivery &nbsp;·&nbsp; 🚩 FLAG = needs a decision</p>
+
+  <div class="chapter-head">PART 1 — WHY THIS MATTERS (Ch 1–3) · Year 7 level throughout</div>
+
+  <h3>Chapter 1 — What Happens When You Talk to AI</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Year 7 prose (Steps 1–4, key insight)</td><td class="use">✅ USE</td><td>Excellent audio narrative — concrete, sequential, relatable.</td></tr>
+      <tr><td>"You press Enter. Then what?" opening</td><td class="use">✅ USE</td><td>Strong hook — keep the structure.</td></tr>
+      <tr><td>Google energy statistics (0.24 Wh, 0.26ml)</td><td class="use">✅ USE</td><td>Critical data — read clearly and slowly.</td></tr>
+      <tr><td>University/Government version (1.1–1.5)</td><td class="cut">✂️ CUT</td><td>English edition uses Year 7 level only.</td></tr>
+      <tr><td>Activity 1.1 (Two-Question Experiment)</td><td class="cut">✂️ CUT</td><td>Replace with: <em>"Pause here if you want to try this yourself before we move on."</em></td></tr>
+      <tr><td>References list</td><td class="cut">✂️ CUT</td><td>Move to end-of-book sources section.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 2 — The Retry Problem</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Year 7 prose (The Loop, The Numbers, Email Lesson)</td><td class="use">✅ USE</td><td>The email analogy is gold for audio — universal and clear.</td></tr>
+      <tr><td>Retry numbers (600–800M prompts/day)</td><td class="use">✅ USE</td><td>Read these figures clearly — they land hard in audio.</td></tr>
+      <tr><td>Structured prompt example (World War 2 essay)</td><td class="use">✅ USE</td><td>Use as-is for the English version.</td></tr>
+      <tr><td>University/Government section (2.1–2.4)</td><td class="cut">✂️ CUT</td><td>English = Year 7 level only.</td></tr>
+      <tr><td>Retry cost table (Energy/Carbon/Water)</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read three headline numbers only: <em>"144 to 192 megawatt-hours of wasted energy every day. 18 to 24 tonnes of CO₂. Up to 208,000 litres of water."</em> Do not read the full table.</td></tr>
+      <tr><td>Activity 2.1 (Birthday Card Challenge)</td><td class="cut">✂️ CUT</td><td>Replace with: <em>"Try this yourself — same question, two versions. Count the retries."</em></td></tr>
+      <tr><td>Policy Recommendation 2.4</td><td class="cut">✂️ CUT</td><td>Too governance-heavy for audio.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 3 — The Hidden Cost</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Year 7 prose (Invisible Machine, The Numbers, The Part You Control)</td><td class="use">✅ USE</td><td>Excellent audio arc — builds from invisible → visible → actionable.</td></tr>
+      <tr><td>Infrastructure statistics (415 TWh, 165% growth, 5M gallons/day)</td><td class="use">✅ USE</td><td>Read slowly. These are the stakes.</td></tr>
+      <tr><td>"So What Do We Do?" closing</td><td class="use">✅ USE</td><td>Strong call-to-action close for Part 1.</td></tr>
+      <tr><td>University/Government (3.1–3.3)</td><td class="cut">✂️ CUT</td><td>English = Year 7 level only.</td></tr>
+      <tr><td>Part 1 Summary Table</td><td class="cut">✂️ CUT</td><td>TABLE REITERATES — replace with: <em>"Three chapters. One through-line: how you ask changes how hard the machine works — and that has a cost."</em></td></tr>
+      <tr><td>Activity 3.1 (Water Calculator)</td><td class="cut">✂️ CUT</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="chapter-head">PART 2 — THE C.R.A.F.T. METHOD (Ch 4–9) · Both versions — this is the heart of the book</div>
+
+  <h3>Chapter 4 — Context</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Taxi analogy (Year 7)</td><td class="use">✅ USE</td><td>Strong audio image. Keep it.</td></tr>
+      <tr><td>Without/With Context comparison</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read as contrast: <em>"Without context: 'Write about climate' gets you 800 words on ice ages and polar bears. With context: a 200-word summary on data centres for a Year 7 class. First attempt. No retry."</em></td></tr>
+      <tr><td>Three parts of good context (Subject, Audience, Constraints)</td><td class="use">✅ USE</td><td>Simple spoken list — works perfectly in audio.</td></tr>
+      <tr><td>University/Government (4.1–4.5)</td><td class="cut">✂️ CUT</td><td>English = Year 7 level only.</td></tr>
+      <tr><td>Activity 4.1</td><td class="cut">✂️ CUT</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 5 — Role</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>"Any expert in the world" opening</td><td class="use">✅ USE</td><td>Excellent audio hook.</td></tr>
+      <tr><td>Context Only vs Context + Role comparison</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read as spoken contrast.</td></tr>
+      <tr><td>Choosing the right role (3 rules)</td><td class="use">✅ USE</td><td>Clean spoken list.</td></tr>
+      <tr><td>Role Libraries section (5.3)</td><td class="cut">✂️ CUT</td><td>Too enterprise-focused for audio.</td></tr>
+      <tr><td>Activity 5.1</td><td class="cut">✂️ CUT</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 6 — Action</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>"One word changes everything" opening + verb examples</td><td class="use">✅ USE</td><td>The verb contrast ("Tell me" vs "Compare in a table") is excellent audio.</td></tr>
+      <tr><td>Power Verbs table (10 verbs)</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read as spoken list with a pause between each: <em>"List. Summarise. Compare. Explain. Analyse. Evaluate. Create. Classify. Predict. Justify."</em> Do not read the columns.</td></tr>
+      <tr><td>One-verb rule</td><td class="use">✅ USE</td><td></td></tr>
+      <tr><td>Bloom's Taxonomy table (6.2)</td><td class="cut">✂️ CUT</td><td>English = Year 7 level.</td></tr>
+      <tr><td>Activity 6.1</td><td class="cut">✂️ CUT</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 7 — Format</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>"World map / find your classroom" analogy</td><td class="use">✅ USE</td><td>Good English audio image.</td></tr>
+      <tr><td>Before/after comparison (renewable energy example)</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read as spoken contrast.</td></tr>
+      <tr><td>"If you need to…" format guide table</td><td class="adapt">🔄 ADAPT</td><td>Read as a spoken list of 5 pairs.</td></tr>
+      <tr><td>Format categories table (7.3)</td><td class="cut">✂️ CUT</td><td>TABLE REITERATES — covered in prose.</td></tr>
+      <tr><td>Activity 7.1</td><td class="cut">✂️ CUT</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 8 — Tone</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Doctor/dentist analogy (3 versions)</td><td class="use">✅ USE</td><td>Superb audio moment — read all three versions with distinct delivery.</td></tr>
+      <tr><td>Tone spectrum table</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read as a spoken list: 6 tones, one sentence each.</td></tr>
+      <tr><td>Friendly vs Formal comparison table</td><td class="use">✅ USE</td><td>Read both versions — the contrast is the lesson.</td></tr>
+      <tr><td>Tone mismatch table (8.2)</td><td class="cut">✂️ CUT</td><td>TABLE REITERATES — the prose covers it.</td></tr>
+      <tr><td>Activity 8.1</td><td class="cut">✂️ CUT</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 9 — Putting It All Together</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Full C.R.A.F.T. build (water industry example)</td><td class="use">✅ USE</td><td>Read exactly as written.</td></tr>
+      <tr><td>C.R.A.F.T. element table (building blocks)</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read as a spoken build through each of the 5 elements.</td></tr>
+      <tr><td>Side-by-side metrics table (bad vs C.R.A.F.T.)</td><td class="adapt">🔄 ADAPT</td><td>Read headline numbers only: <em>"800 words vs 300. Three retries vs zero. 0.72 watt-hours vs 0.24. A 67% energy reduction from one structured prompt."</em></td></tr>
+      <tr><td>"Think Before You Prompt" challenge</td><td class="cut">✂️ CUT</td><td>Classroom activity.</td></tr>
+      <tr><td>Enterprise Implementation Guide (9.2)</td><td class="cut">✂️ CUT</td><td>Too operational for audio.</td></tr>
+      <tr><td>Part 2 Summary Table</td><td class="cut">✂️ CUT</td><td>TABLE REITERATES — use this spoken closer: <em>"Five elements. One pipeline. Context sets the world. Role sets the expert. Action sets the task. Format sets the shape. Tone sets the voice. Used together: 32 to 48 percent less energy. First time, every time."</em></td></tr>
+    </tbody>
+  </table>
+
+  <div class="chapter-head">PARTS 3–6 + APPENDICES — Detailed notes to follow after Part 1 is confirmed</div>
+
+  <table>
+    <thead><tr><th>Part</th><th>Chapters</th><th>Primary audio challenge for English version</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Part 3</strong> — Industry Applications</td>
+        <td>10–15</td>
+        <td>Six industry acronyms — C.A.R.E.S., B.R.I.E.F., T.E.A.C.H., S.T.A.K.E., D.E.B.U.G., P.I.T.C.H. Each has a full table that IS the content and needs spoken conversion. Read each element of each acronym clearly on first introduction.</td>
+      </tr>
+      <tr>
+        <td><strong>Part 4</strong> — Environmental Case</td>
+        <td>16–18</td>
+        <td>Heavy data sections — slow, clear delivery throughout. Chapter 18 (the 5 C's of Sustainability) needs special treatment — detailed notes to follow.</td>
+      </tr>
+      <tr>
+        <td><strong>Part 5</strong> — Teaching Prompt Literacy</td>
+        <td>19–21</td>
+        <td>Education policy angle. English version stays at Year 7 register — warm, engaging, forward-looking.</td>
+      </tr>
+      <tr>
+        <td><strong>Part 6</strong> — PC1 as Platform</td>
+        <td>22–24</td>
+        <td>🚩 FLAG — John to confirm whether Part 6 belongs in the audiobook at all. SaaS/business content may not suit the audio audience. Await instruction before recording.</td>
+      </tr>
+      <tr>
+        <td><strong>Appendices</strong></td>
+        <td>A, B, D, E, F, S</td>
+        <td>✂️ CUT entirely from audio. Replace with one spoken line: <em>"Full appendices — including the C.R.A.F.T. cheat sheet — are available in the print and ebook editions at promptcraft1.com."</em></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pending">Detailed chapter-by-chapter notes for Parts 3–6 will be provided by John before each part begins recording. Do not record Parts 3–6 until you have received the notes and John has confirmed.</div>
+</div>
+
+<div class="divider">· · ·</div>
+
+
+<!-- ── CHAPTER SCRIPTS ── -->
+<div class="section">
+  <p class="label">Chapter-by-Chapter Narration Scripts</p>
+  <h2>Your annotated scripts</h2>
+  <p>Each chapter opens as a clean, print-ready page. What was cut is marked in red so you know it's gone. What was adapted is marked in amber with the spoken version you'll actually read. The prose itself is formatted for comfortable, uninterrupted reading.</p>
+
+  <div style="margin-top:1.8rem;">
+    <p class="label" style="margin-bottom:0.8rem;">Part 1 — Why This Matters (Chapters 1–3)</p>
+    <div style="display:flex;flex-direction:column;gap:0.6rem;">
+      <a href="ch1-deborah.html" style="display:flex;align-items:center;justify-content:space-between;background:#0a0a1a;color:white;border-radius:8px;padding:1rem 1.4rem;text-decoration:none;font-family:system-ui,sans-serif;">
+        <div>
+          <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#4a7fd4;margin-bottom:0.25rem;">Chapter 1</div>
+          <div style="font-size:1rem;font-weight:700;">What Happens When You Talk to AI</div>
+        </div>
+        <div style="font-size:0.8rem;color:#4a7fd4;font-weight:700;">Open →</div>
+      </a>
+      <a href="ch2-deborah.html" style="display:flex;align-items:center;justify-content:space-between;background:#0a0a1a;color:white;border-radius:8px;padding:1rem 1.4rem;text-decoration:none;font-family:system-ui,sans-serif;">
+        <div>
+          <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#4a7fd4;margin-bottom:0.25rem;">Chapter 2</div>
+          <div style="font-size:1rem;font-weight:700;">The Retry Problem</div>
+        </div>
+        <div style="font-size:0.8rem;color:#4a7fd4;font-weight:700;">Open →</div>
+      </a>
+      <a href="ch3-deborah.html" style="display:flex;align-items:center;justify-content:space-between;background:#0a0a1a;color:white;border-radius:8px;padding:1rem 1.4rem;text-decoration:none;font-family:system-ui,sans-serif;opacity:0.5;pointer-events:none;">
+        <div>
+          <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#4a7fd4;margin-bottom:0.25rem;">Chapter 3</div>
+          <div style="font-size:1rem;font-weight:700;">The Hidden Cost</div>
+        </div>
+        <div style="font-size:0.8rem;color:#888;font-weight:700;">Coming soon</div>
+      </a>
+    </div>
+
+    <p class="label" style="margin-top:2rem;margin-bottom:0.8rem;">Part 2 — The C.R.A.F.T. Method (Chapters 4–9)</p>
+    <div style="display:flex;flex-direction:column;gap:0.6rem;">
+      <a href="ch4-deborah.html" style="display:flex;align-items:center;justify-content:space-between;background:#0a0a1a;color:white;border-radius:8px;padding:1rem 1.4rem;text-decoration:none;font-family:system-ui,sans-serif;opacity:0.5;pointer-events:none;">
+        <div>
+          <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#4a7fd4;margin-bottom:0.25rem;">Chapter 4</div>
+          <div style="font-size:1rem;font-weight:700;">Context</div>
+        </div>
+        <div style="font-size:0.8rem;color:#888;font-weight:700;">Coming soon</div>
+      </a>
+      <a href="ch5-deborah.html" style="display:flex;align-items:center;justify-content:space-between;background:#0a0a1a;color:white;border-radius:8px;padding:1rem 1.4rem;text-decoration:none;font-family:system-ui,sans-serif;opacity:0.5;pointer-events:none;">
+        <div>
+          <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#4a7fd4;margin-bottom:0.25rem;">Chapter 5</div>
+          <div style="font-size:1rem;font-weight:700;">Role</div>
+        </div>
+        <div style="font-size:0.8rem;color:#888;font-weight:700;">Coming soon</div>
+      </a>
+      <a href="ch6-deborah.html" style="display:flex;align-items:center;justify-content:space-between;background:#0a0a1a;color:white;border-radius:8px;padding:1rem 1.4rem;text-decoration:none;font-family:system-ui,sans-serif;opacity:0.5;pointer-events:none;">
+        <div>
+          <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#4a7fd4;margin-bottom:0.25rem;">Chapter 6</div>
+          <div style="font-size:1rem;font-weight:700;">Action</div>
+        </div>
+        <div style="font-size:0.8rem;color:#888;font-weight:700;">Coming soon</div>
+      </a>
+      <a href="ch7-deborah.html" style="display:flex;align-items:center;justify-content:space-between;background:#0a0a1a;color:white;border-radius:8px;padding:1rem 1.4rem;text-decoration:none;font-family:system-ui,sans-serif;opacity:0.5;pointer-events:none;">
+        <div>
+          <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#4a7fd4;margin-bottom:0.25rem;">Chapter 7</div>
+          <div style="font-size:1rem;font-weight:700;">Format</div>
+        </div>
+        <div style="font-size:0.8rem;color:#888;font-weight:700;">Coming soon</div>
+      </a>
+      <a href="ch8-deborah.html" style="display:flex;align-items:center;justify-content:space-between;background:#0a0a1a;color:white;border-radius:8px;padding:1rem 1.4rem;text-decoration:none;font-family:system-ui,sans-serif;opacity:0.5;pointer-events:none;">
+        <div>
+          <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#4a7fd4;margin-bottom:0.25rem;">Chapter 8</div>
+          <div style="font-size:1rem;font-weight:700;">Tone</div>
+        </div>
+        <div style="font-size:0.8rem;color:#888;font-weight:700;">Coming soon</div>
+      </a>
+      <a href="ch9-deborah.html" style="display:flex;align-items:center;justify-content:space-between;background:#0a0a1a;color:white;border-radius:8px;padding:1rem 1.4rem;text-decoration:none;font-family:system-ui,sans-serif;opacity:0.5;pointer-events:none;">
+        <div>
+          <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#4a7fd4;margin-bottom:0.25rem;">Chapter 9</div>
+          <div style="font-size:1rem;font-weight:700;">Putting It All Together</div>
+        </div>
+        <div style="font-size:0.8rem;color:#888;font-weight:700;">Coming soon</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+
+<!-- ── CLOSING SCRIPT ── -->
+<div class="section">
+  <p class="label">Closing Script — Read After the Final Chapter</p>
+  <h2>Audiobook close</h2>
+  <div class="script-wrap">
+    <p class="script-header">🎙️ Closing — Deborah Arnell</p>
+    <div class="script-text">That's PromptCraft 1.
+
+Five letters. One habit. A measurably better way to talk to AI.
+
+If you want the full print edition, the industry guides, or the C.R.A.F.T.
+cheat sheet, visit promptcraft1.com.
+
+And if this changed how you prompt — tell someone.
+
+<span class="stage-dir">[NARRATOR CREDIT]</span>
+The English edition was narrated by Deborah Arnell.
+
+PromptCraft 1. Written by John Kenneally.</div>
+  </div>
+</div>
+
+
+<!-- ── CONTACT ── -->
+<div class="section">
+  <p class="label">Questions?</p>
+  <h2>Write to John directly</h2>
+  <div class="contact-block">
+    <p>This page is only for you. If you have any questions about the script, the production notes, or anything else — reach out before you record.</p>
+    <a href="mailto:johntilv4575@gmail.com?subject=PromptCraft%201%20—%20English%20Audiobook%20(Deborah%20Arnell)" class="contact-btn">✉️ &nbsp; Email John</a>
+  </div>
+</div>
+
 <p class="footer">
   PROMPTCRAFT 1 &nbsp;·&nbsp; NARRATOR HANDOFF — DEBORAH ARNELL &nbsp;·&nbsp; CONFIDENTIAL<br>
   This page is for Deborah Arnell only. Not linked publicly.<br>
   © John Kenneally &nbsp;·&nbsp; johntilv4575@gmail.com
 </p>
+
+
+<!-- ── FLOATING NOTEPAD ── -->
+<div id="notepad" style="position:fixed;bottom:24px;right:24px;width:300px;z-index:9999;font-family:system-ui,sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.22);border-radius:12px;overflow:hidden;">
+  <div id="notepad-header" style="background:#0a0a1a;color:white;padding:0.6rem 1rem;display:flex;justify-content:space-between;align-items:center;cursor:move;user-select:none;">
+    <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#4a7fd4;">📝 My Notes</span>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button onclick="clearNotes()" title="Clear notes" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:0.75rem;padding:0;">✕ clear</button>
+      <button onclick="toggleNotepad()" id="notepad-toggle" style="background:none;border:none;color:white;cursor:pointer;font-size:1rem;padding:0;line-height:1;">−</button>
+    </div>
+  </div>
+  <div id="notepad-body" style="background:#fff;">
+    <textarea id="notepad-text" placeholder="Type your notes here — they save automatically to this device…" style="width:100%;height:220px;border:none;padding:1rem;font-family:inherit;font-size:0.85rem;line-height:1.65;color:#2d2d2d;resize:vertical;outline:none;display:block;"></textarea>
+    <div style="background:#f4f5f9;padding:0.4rem 1rem;font-size:0.68rem;color:#999;letter-spacing:0.05em;">Saves to this device only · Private</div>
+  </div>
+</div>
+
+<script>
+  // Load saved notes
+  const noteKey = 'pc1-notes-deborah';
+  const ta = document.getElementById('notepad-text');
+  ta.value = localStorage.getItem(noteKey) || '';
+  ta.addEventListener('input', () => localStorage.setItem(noteKey, ta.value));
+
+  // Toggle open/closed
+  let open = true;
+  function toggleNotepad() {
+    open = !open;
+    document.getElementById('notepad-body').style.display = open ? 'block' : 'none';
+    document.getElementById('notepad-toggle').textContent = open ? '−' : '+';
+  }
+
+  // Clear notes
+  function clearNotes() {
+    if (confirm('Clear all your notes?')) { ta.value = ''; localStorage.removeItem(noteKey); }
+  }
+
+  // Drag to move
+  const pad = document.getElementById('notepad');
+  const hdr = document.getElementById('notepad-header');
+  let dragging = false, ox = 0, oy = 0;
+  hdr.addEventListener('mousedown', e => {
+    dragging = true;
+    ox = e.clientX - pad.getBoundingClientRect().left;
+    oy = e.clientY - pad.getBoundingClientRect().top;
+  });
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    pad.style.right = 'auto';
+    pad.style.bottom = 'auto';
+    pad.style.left = (e.clientX - ox) + 'px';
+    pad.style.top  = (e.clientY - oy) + 'px';
+  });
+  document.addEventListener('mouseup', () => dragging = false);
+</script>
 
 </body>
 </html>

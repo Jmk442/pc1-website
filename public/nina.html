@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nina Banks — Narrator Handoff · PromptCraft 1</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --dark: #0d1a0d;
-      --mid: #162b16;
       --green: #6dbf3a;
       --green-dim: #4a8a28;
       --text: #2d2d2d;
@@ -19,647 +17,469 @@
       --font: Georgia, 'Times New Roman', serif;
       --sans: system-ui, -apple-system, sans-serif;
     }
+    body { font-family: var(--font); font-size: 17px; line-height: 1.75; color: var(--text); background: #fff; max-width: 800px; margin: 0 auto; padding: 0 1.5rem 6rem; }
 
-    body {
-      font-family: var(--font);
-      font-size: 17px;
-      line-height: 1.75;
-      color: var(--text);
-      background: #fff;
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 0 1.5rem 6rem;
-    }
-
-    /* ── HEADER ── */
-    .header {
-      background: var(--dark);
-      color: white;
-      text-align: center;
-      padding: 3.5rem 2rem 2.5rem;
-      margin: 0 -1.5rem 3rem;
-    }
-    .header-eyebrow {
-      font-family: var(--sans);
-      font-size: 0.62rem;
-      font-weight: 800;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 1rem;
-    }
-    .header h1 {
-      font-family: var(--sans);
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 900;
-      color: white;
-      line-height: 1.2;
-      margin-bottom: 0.6rem;
-    }
+    .header { background: var(--dark); color: white; text-align: center; padding: 3.5rem 2rem 2.5rem; margin: 0 -1.5rem 3rem; }
+    .header-eyebrow { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.32em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; }
+    .header h1 { font-family: var(--sans); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: white; line-height: 1.2; margin-bottom: 0.6rem; }
     .header h1 em { font-style: normal; color: var(--green); }
-    .header .sub {
-      font-family: var(--sans);
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.45);
-      letter-spacing: 0.08em;
-    }
+    .header .sub { font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; }
 
-    /* ── LABELS / HEADINGS ── */
-    .label {
-      font-family: var(--sans);
-      font-size: 0.62rem;
-      font-weight: 800;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--green-dim);
-      margin-bottom: 0.4rem;
-    }
-    h2 {
-      font-family: var(--sans);
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--dark);
-      line-height: 1.25;
-      margin-bottom: 1rem;
-    }
-    h3 {
-      font-family: var(--sans);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin: 1.6rem 0 0.45rem;
-    }
+    .label { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--green-dim); margin-bottom: 0.4rem; }
+    h2 { font-family: var(--sans); font-size: 1.45rem; font-weight: 900; color: var(--dark); line-height: 1.25; margin-bottom: 1rem; }
+    h3 { font-family: var(--sans); font-size: 1rem; font-weight: 700; color: var(--dark); margin: 1.8rem 0 0.5rem; }
     p { margin-bottom: 0.9rem; }
     p:last-child { margin-bottom: 0; }
     strong { font-weight: 700; }
+    ul { margin: 0.6rem 0 0.9rem 1.4rem; }
+    li { margin-bottom: 0.35rem; }
 
-    /* ── SECTION ── */
     .section { margin-bottom: 3rem; }
 
-    /* ── PERSONAL NOTE ── */
-    .personal {
-      background: var(--dark);
-      color: white;
-      border-radius: 12px;
-      padding: 2.5rem 2.5rem 2rem;
-      margin: 0 0 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .personal::before {
-      content: '\201C';
-      position: absolute;
-      top: -1rem;
-      left: 1.5rem;
-      font-size: 7rem;
-      color: rgba(109,191,58,0.1);
-      font-family: Georgia, serif;
-      line-height: 1;
-    }
+    .personal { background: var(--dark); color: white; border-radius: 12px; padding: 2.5rem 2.5rem 2rem; margin: 0 0 2rem; position: relative; overflow: hidden; }
+    .personal::before { content: '\201C'; position: absolute; top: -1rem; left: 1.5rem; font-size: 7rem; color: rgba(109,191,58,0.1); font-family: Georgia, serif; line-height: 1; }
     .personal p { color: rgba(255,255,255,0.82); position: relative; }
-    .personal .from {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      color: var(--green);
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      margin-top: 1.4rem;
-    }
+    .personal .from { font-family: var(--sans); font-size: 0.78rem; color: var(--green); font-weight: 600; letter-spacing: 0.1em; margin-top: 1.4rem; }
 
-    /* ── QUESTION BOX ── */
-    .question-box {
-      background: #fff9e6;
-      border-left: 4px solid #d4a843;
-      border-radius: 0 8px 8px 0;
-      padding: 1.4rem 1.8rem;
-      margin: 1.5rem 0;
-    }
-    .question-box .q-label {
-      font-family: var(--sans);
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #9a7b1c;
-      margin-bottom: 0.6rem;
-    }
-    .question-box p { color: #4a3800; font-size: 0.95rem; }
+    .question-box { background: #fff9e0; border: 2px solid #d4a843; border-radius: 8px; padding: 1.3rem 1.6rem; margin: 1.5rem 0; }
+    .question-box .q-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #9a7b1c; margin-bottom: 0.5rem; }
+    .question-box p { font-size: 0.92rem; color: #4a3800; }
 
-    /* ── ROLE CARD ── */
-    .role-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin: 1.4rem 0;
-    }
-    @media (max-width: 540px) { .role-grid { grid-template-columns: 1fr; } }
-    .role-item {
-      background: var(--light);
-      border-radius: 8px;
-      padding: 1.1rem 1.3rem;
-    }
-    .role-item .ri-label {
-      font-family: var(--sans);
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--green-dim);
-      margin-bottom: 0.35rem;
-    }
-    .role-item .ri-val {
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--dark);
-    }
+    .warning-box { background: #fff9e0; border: 2px solid #d4a843; border-radius: 8px; padding: 1.3rem 1.6rem; margin: 1.5rem 0; }
+    .warning-box .w-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #9a7b1c; margin-bottom: 0.5rem; }
+    .warning-box p { font-size: 0.92rem; color: #4a3800; }
+    .warning-box ul { font-size: 0.92rem; color: #4a3800; }
 
-    /* ── BOOK LINKS ── */
-    .book-links {
-      display: flex;
-      gap: 1rem;
-      margin: 1.4rem 0;
-      flex-wrap: wrap;
-    }
-    .book-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--dark);
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      padding: 0.75rem 1.4rem;
-      font-family: var(--sans);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      transition: background 0.2s;
-    }
-    .book-link:hover { background: var(--green-dim); }
-    .book-link .icon { font-size: 1rem; }
+    .info-box { background: var(--light); border-left: 4px solid var(--green); border-radius: 0 8px 8px 0; padding: 1.2rem 1.5rem; margin: 1.4rem 0; }
+    .info-box p { font-size: 0.92rem; color: #3a4a3a; }
+    .info-box ul { font-size: 0.92rem; color: #3a4a3a; }
 
-    /* ── SCRIPT BLOCK ── */
-    .script-wrap {
-      background: var(--dark);
-      border-radius: 12px;
-      padding: 2rem 2rem 1.8rem;
-      margin: 1.8rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .script-wrap::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(109,191,58,0.05) 1px, transparent 1px);
-      background-size: 22px 22px;
-      pointer-events: none;
-    }
-    .script-header {
-      font-family: var(--sans);
-      font-size: 0.62rem;
-      font-weight: 800;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 1.4rem;
-      position: relative;
-    }
-    .script-text {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(109,191,58,0.2);
-      border-radius: 8px;
-      padding: 1.5rem 1.6rem;
-      font-family: var(--font);
-      font-size: 1rem;
-      line-height: 1.9;
-      color: rgba(255,255,255,0.88);
-      position: relative;
-    }
-    .script-text em { color: rgba(255,255,255,0.45); font-style: italic; font-size: 0.85em; }
-    .script-note {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.35);
-      margin-top: 1rem;
-      position: relative;
-    }
+    .script-wrap { background: var(--dark); border-radius: 12px; padding: 2rem; margin: 1.8rem 0; position: relative; overflow: hidden; }
+    .script-wrap::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(109,191,58,0.05) 1px, transparent 1px); background-size: 22px 22px; pointer-events: none; }
+    .script-header { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--green); margin-bottom: 1.4rem; position: relative; }
+    .script-text { background: rgba(255,255,255,0.06); border: 1px solid rgba(109,191,58,0.2); border-radius: 8px; padding: 1.5rem 1.6rem; font-family: var(--font); font-size: 0.98rem; line-height: 1.95; color: rgba(255,255,255,0.88); position: relative; white-space: pre-wrap; }
+    .stage-dir { color: rgba(255,255,255,0.35); font-style: italic; font-size: 0.85em; }
+    .script-note { font-family: var(--sans); font-size: 0.78rem; color: rgba(255,255,255,0.32); margin-top: 1rem; position: relative; }
 
-    /* ── TABLE ── */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: var(--sans);
-      font-size: 0.87rem;
-      margin: 1.4rem 0;
-    }
-    th {
-      background: var(--dark);
-      color: white;
-      text-align: left;
-      padding: 0.65rem 1rem;
-      font-weight: 700;
-      font-size: 0.78rem;
-      letter-spacing: 0.05em;
-    }
-    td {
-      padding: 0.65rem 1rem;
-      border-bottom: 1px solid var(--border);
-      color: #3a3a3a;
-      vertical-align: top;
-    }
+    table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.84rem; margin: 1.2rem 0; }
+    th { background: var(--dark); color: white; text-align: left; padding: 0.6rem 0.9rem; font-weight: 700; font-size: 0.76rem; letter-spacing: 0.04em; }
+    td { padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--border); color: #3a3a3a; vertical-align: top; line-height: 1.55; }
     tr:last-child td { border-bottom: none; }
     tr:nth-child(even) td { background: var(--light); }
+    .use { color: #1a7a3c; font-weight: 700; }
     .cut { color: #c0392b; font-weight: 700; }
-    .keep { color: #27ae60; font-weight: 700; }
     .adapt { color: #d68910; font-weight: 700; }
+    .flag { color: #8b4513; font-weight: 700; }
 
-    /* ── PHASE ROADMAP ── */
-    .phases { margin: 1.4rem 0; }
-    .phase-row {
-      display: flex;
-      gap: 1rem;
-      padding: 0.9rem 0;
-      border-bottom: 1px solid var(--border);
-      align-items: flex-start;
-    }
-    .phase-row:last-child { border-bottom: none; }
-    .phase-num {
-      font-family: var(--sans);
-      font-size: 1.1rem;
-      font-weight: 900;
-      color: var(--green);
-      min-width: 2.2rem;
-      padding-top: 0.1rem;
-    }
-    .phase-content strong {
-      display: block;
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 0.2rem;
-    }
-    .phase-content span { font-size: 0.88rem; color: var(--muted); }
+    .chapter-head { font-family: var(--sans); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: var(--dark); background: #eef6e8; border-left: 3px solid var(--green); padding: 0.55rem 0.9rem; margin: 1.6rem 0 0; }
 
-    /* ── DIVIDER ── */
-    .divider {
-      text-align: center;
-      margin: 2.5rem 0;
-      color: var(--green);
-      font-size: 1rem;
-      letter-spacing: 0.6rem;
-      opacity: 0.35;
-    }
+    .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.2rem 0; }
+    @media (max-width: 540px) { .role-grid { grid-template-columns: 1fr; } }
+    .role-item { background: var(--light); border-radius: 8px; padding: 1rem 1.2rem; }
+    .role-item .ri-label { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green-dim); margin-bottom: 0.3rem; }
+    .role-item .ri-val { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--dark); }
 
-    /* ── CONTACT ── */
-    .contact-block {
-      background: var(--light);
-      border-radius: 12px;
-      padding: 2rem 2rem;
-      text-align: center;
-      margin-top: 1rem;
-    }
-    .contact-block p {
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-    }
-    .contact-btn {
-      display: inline-block;
-      background: var(--dark);
-      color: white;
-      text-decoration: none;
-      border-radius: 9px;
-      padding: 0.9rem 2rem;
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      transition: background 0.2s;
-    }
+    .book-link { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--dark); color: white; text-decoration: none; border-radius: 8px; padding: 0.7rem 1.3rem; font-family: var(--sans); font-size: 0.85rem; font-weight: 700; margin: 0.5rem 0; transition: background 0.2s; }
+    .book-link:hover { background: var(--green-dim); }
+
+    .contact-block { background: var(--light); border-radius: 12px; padding: 2rem; text-align: center; margin-top: 1rem; }
+    .contact-block p { font-family: var(--sans); font-size: 0.9rem; color: var(--muted); margin-bottom: 1.2rem; }
+    .contact-btn { display: inline-block; background: var(--dark); color: white; text-decoration: none; border-radius: 9px; padding: 0.9rem 2rem; font-family: var(--sans); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; transition: background 0.2s; }
     .contact-btn:hover { background: var(--green-dim); }
 
-    /* ── FOOTER ── */
-    .footer {
-      text-align: center;
-      font-family: var(--sans);
-      font-size: 0.68rem;
-      color: #ccc;
-      margin-top: 5rem;
-      letter-spacing: 0.12em;
-      line-height: 2;
-    }
+    .divider { text-align: center; margin: 2.5rem 0; color: var(--green); font-size: 1rem; letter-spacing: 0.6rem; opacity: 0.3; }
+    .pending { font-family: var(--sans); font-size: 0.85rem; color: var(--muted); background: var(--light); border-radius: 8px; padding: 1rem 1.3rem; margin: 1rem 0; font-style: italic; }
+    .phase-row { display: flex; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .phase-row:last-child { border-bottom: none; }
+    .phase-num { font-family: var(--sans); font-size: 1.1rem; font-weight: 900; color: var(--green); min-width: 2.2rem; padding-top: 0.1rem; }
+    .phase-content strong { display: block; font-family: var(--sans); font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 0.2rem; }
+    .phase-content span { font-size: 0.88rem; color: var(--muted); }
+    .footer { text-align: center; font-family: var(--sans); font-size: 0.68rem; color: #ccc; margin-top: 5rem; letter-spacing: 0.12em; line-height: 2; }
   </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
+<a href="index.html" style="display:inline-flex;align-items:center;gap:0.4rem;font-family:system-ui,sans-serif;font-size:0.8rem;font-weight:700;color:#4a8a28;text-decoration:none;padding:0.6rem 1rem;background:#f4f7f4;border-radius:0 0 8px 8px;margin-left:1.5rem;">← Back to Hub</a>
+
 <div class="header">
   <p class="header-eyebrow">Narrator Handoff · Confidential</p>
-  <h1>Für <em>Nina Banks</em> —<br>Deutsche Aufnahme</h1>
-  <p class="sub">PromptCraft 1: Teaching Machines to Listen &nbsp;·&nbsp; Von John Kenneally</p>
+  <h1>For <em>Nina Banks</em> —<br>German Audiobook</h1>
+  <p class="sub">PromptCraft 1: Teaching Machines to Listen &nbsp;·&nbsp; By John Kenneally</p>
 </div>
 
 
-<!-- ── SECTION 1: PERSONAL NOTE ── -->
+<!-- ── NOTE FROM JOHN ── -->
 <div class="section">
-  <p class="label">Persönliche Notiz</p>
-  <h2>Eine Nachricht von John</h2>
-
+  <p class="label">From John</p>
+  <h2>A note before you start</h2>
   <div class="personal">
     <p>
-      Nina — du hast das Buch jetzt vor dir. Ich weiß, das ist eine Menge auf einmal.
-      Aber du bist genau die Person, der ich diesen Text anvertrauen möchte.
+      I hope this guide provides the clearest way to communicate what I'm aiming for.
+      I tried a few different approaches but found they only made things more complicated.
+      As you've heard me say — <em>keep the thing about the thing</em>.
+      This is my attempt to do exactly that.
     </p>
     <p>
-      Ich brauche keine wortgetreue Übersetzung. Ich brauche jemanden, der das Buch
-      auf Deutsch <em>fühlt</em> — der versteht, warum ein Satz so klingt wie er klingt,
-      und ihn dann so hinschreibt, dass er sich auf Deutsch genauso natürlich anfühlt.
-      Das bist du.
+      I hope the notes and directions throughout the manuscript provide everything you need.
+      Learning the audiobook production process has been both enjoyable and educational,
+      and I've tried to make the manuscript as narration-friendly as possible.
     </p>
     <p>
-      Diese Seite ist alles, was du brauchst, bevor wir ins Studio gehen.
-      Lies das Eröffnungsskript. Schau dir die Produktionsregeln an.
-      Wenn du Fragen hast — schreib mir einfach. Die Schaltfläche ist ganz unten.
+      I've removed tables that simply repeated or reinforced concepts already explained in the text.
+      My rule has been: if a table only reiterates an existing idea, it doesn't need to be narrated.
+      If you come across a table that has been missed, interrupts the flow, or hasn't been converted —
+      please omit it, flag it for me, and continue with the next paragraph. We can address it later.
+    </p>
+    <p>
+      Nina — there is no pressure on Part 1. Record it in whatever environment you have.
+      The goal is a first pass, not a finished product.
+      Everything discovered in Part 1 makes Part 2 better.
     </p>
     <p class="from">— John Kenneally</p>
   </div>
 
   <div class="question-box">
-    <p class="q-label">Offene Frage — bitte gib mir deine Meinung</p>
+    <p class="q-label">A question for you — please give me your instinct</p>
     <p>
-      <strong>Soll die Abkürzung C.R.A.F.T. im Deutschen unverändert bleiben,</strong>
-      oder soll eine eigenständige deutsche Abkürzung entwickelt werden,
-      die die gleichen Konzepte abdeckt aber auf Deutsch steht?
-      Deine Einschätzung als Muttersprachlerin hat hier mehr Gewicht als alles andere.
+      <strong>Do you think the acronyms should be language-specific rather than remaining in English when translated into German and other languages?</strong>
+    </p>
+    <p style="margin-top:0.6rem;">
+      My instinct is that they should be created in the reader's native language.
+      Since the system works more through meaning and nuance than the specific words themselves,
+      I feel locally developed acronyms would be more natural, memorable, and personally meaningful.
+    </p>
+    <p style="margin-top:0.6rem;">
+      For example, if someone were learning the PC1 system in German, would it feel more authentic
+      and impactful if the acronym was built from German words rather than using English words like
+      <strong>C.R.A.F.T.</strong> or <strong>S.P.E.A.K.</strong>?
+    </p>
+    <p style="margin-top:0.6rem;">
+      Am I overthinking this — or would you personally prefer native-language acronyms
+      in a translated edition? I'm asking now because I'd rather make the right decision
+      before we proceed than change direction later.
     </p>
   </div>
 </div>
 
 
-<!-- ── SECTION 2: DEINE ROLLE ── -->
+<!-- ── MANUSCRIPT PROTECTION ── -->
 <div class="section">
-  <p class="label">Deine Rolle</p>
-  <h2>Was du beiträgst</h2>
+  <div class="warning-box">
+    <p class="w-label">⚠️ Manuscript Protection — Read This First</p>
+    <p><strong>The original manuscript in Notion is the master source and must be protected.</strong></p>
+    <p style="margin-top:0.6rem;">When working with the production notes:</p>
+    <ul style="margin-top:0.5rem;">
+      <li>Do not edit, overwrite, or restructure the original manuscript pages.</li>
+      <li>Work from the Production Guide and chapter notes — these are the working documents.</li>
+      <li>If anything is unclear, stop and ask John before proceeding.</li>
+      <li>The audiobook is an <strong>adaptation</strong> of the manuscript — not a rewrite.</li>
+    </ul>
+  </div>
+</div>
 
+
+<!-- ── YOUR ROLE ── -->
+<div class="section">
+  <p class="label">Your Role</p>
+  <h2>What you are producing</h2>
   <div class="role-grid">
-    <div class="role-item">
-      <p class="ri-label">Sprache</p>
-      <p class="ri-val">Deutsch (Muttersprache)</p>
-    </div>
-    <div class="role-item">
-      <p class="ri-label">Register</p>
-      <p class="ri-val">Jahrgang 11–12 / Universität</p>
-    </div>
-    <div class="role-item">
-      <p class="ri-label">Kredit</p>
-      <p class="ri-val">Übersetzerin, Beiträgerin, Sprecherin</p>
-    </div>
-    <div class="role-item">
-      <p class="ri-label">Royalties</p>
-      <p class="ri-val">33 % netto (dt. Edition + Hörbuch)</p>
-    </div>
-    <div class="role-item">
-      <p class="ri-label">Skript</p>
-      <p class="ri-val">Selbst übersetzen + anpassen</p>
-    </div>
-    <div class="role-item">
-      <p class="ri-label">Plattform</p>
-      <p class="ri-val">Audible DE (gemeinsam abgestimmt)</p>
-    </div>
+    <div class="role-item"><p class="ri-label">Language</p><p class="ri-val">German — you translate yourself</p></div>
+    <div class="role-item"><p class="ri-label">Register</p><p class="ri-val">Year 11–12 (age 16–18)</p></div>
+    <div class="role-item"><p class="ri-label">Audience</p><p class="ri-val">Senior school, educators</p></div>
+    <div class="role-item"><p class="ri-label">Platform</p><p class="ri-val">Audible DE (agreed jointly)</p></div>
+    <div class="role-item"><p class="ri-label">Credit</p><p class="ri-val">Translator, Contributor, Voice Artist</p></div>
+    <div class="role-item"><p class="ri-label">Royalties</p><p class="ri-val">33% net — German edition + audiobook</p></div>
   </div>
 
-  <p>Das englische Original liegt hier für dich bereit. Die deutsche Ausgabe — <em>deine</em> Übersetzung — entsteht gemeinsam mit dir:</p>
-
-  <div class="book-links">
-    <a href="book-en.html" class="book-link"><span class="icon">📖</span> Englische Originalausgabe</a>
+  <div class="info-box">
+    <p><strong>How the German version differs from the English:</strong></p>
+    <ul>
+      <li>The English audiobook uses Year 7 prose (accessible, warm, general public).</li>
+      <li>The German audiobook uses Year 11–12 register (clear, reasoned, evidence-aware — not university formal, not primary school simple).</li>
+      <li>This means: for most chapters, you will draw from the <strong>University/Government level prose</strong> in the manuscript as your base, and soften it to Year 11–12 register in your translation.</li>
+      <li>Avoid Australian-specific references (curriculum names, local slang, cricket/football analogies). Replace with neutral equivalents.</li>
+      <li>Keep all data points, energy statistics, and C.R.A.F.T. structure — these translate universally.</li>
+    </ul>
   </div>
+
+  <p>The full English book is here for your reference source:</p>
+  <a href="book-en.html" class="book-link">📖 Read the English Book (your source)</a>
 </div>
 
 <div class="divider">· · ·</div>
 
 
-<!-- ── SECTION 3: ERÖFFNUNGSSKRIPT ── -->
+<!-- ── DELIVERY STRUCTURE ── -->
 <div class="section">
-  <p class="label">Aufnahmeskript — Deutsch</p>
-  <h2>Dein Eröffnungsskript</h2>
-  <p>Das ist der Text, den du am Anfang des Hörbuchs einsprichst. Lies ihn laut vor — er sollte sich natürlich anfühlen. Wenn etwas sperrig klingt, mark es und schreib mir.</p>
+  <p class="label">How the Manuscript Is Being Sent</p>
+  <h2>Read this before anything else</h2>
+  <p>The book is divided into six parts. You will receive them <strong>one at a time.</strong> This is deliberate. The goal is not to hand you the entire manuscript and leave you to work through it alone. The goal is to keep the process moving, keep the energy high, and give John the opportunity to listen, adjust, and improve before the next part begins.</p>
+  <p>Six natural breaks. Six opportunities to check in. Six chances to catch anything that needs fixing before it becomes a habit.</p>
 
-  <div class="script-wrap">
-    <p class="script-header">Eröffnung — Spreche dies zu Beginn von Kapitel 1</p>
-    <div class="script-text">
-      Willkommen bei PromptCraft 1: Teaching Machines to Listen — in der deutschen Fassung.
+  <table>
+    <thead><tr><th>Delivery</th><th>Content</th><th>Chapters</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Part 1</strong></td><td>Why This Matters (The Problem)</td><td>1–3</td></tr>
+      <tr><td><strong>Part 2</strong></td><td>The C.R.A.F.T. Method (The Solution)</td><td>4–9</td></tr>
+      <tr><td><strong>Part 3</strong></td><td>Industry Applications (The Proof)</td><td>10–15</td></tr>
+      <tr><td><strong>Part 4</strong></td><td>The Environmental Case (The Stakes)</td><td>16–18</td></tr>
+      <tr><td><strong>Part 5</strong></td><td>Teaching Prompt Literacy (The Future)</td><td>19–21</td></tr>
+      <tr><td><strong>Part 6</strong></td><td>PC1 as Platform / Appendices</td><td>22–24 + Appendices</td></tr>
+    </tbody>
+  </table>
 
-      <br><br>
-
-      Dieses Buch hat ein einziges Ziel: dir beibringen, wie du mit künstlicher Intelligenz
-      so kommunizierst, dass sie genau das tut, was du brauchst — beim ersten Mal.
-
-      <br><br>
-
-      Im Mittelpunkt steht die C.R.A.F.T.-Methode. Fünf Elemente, die einen vagen Gedanken
-      in eine präzise Anweisung verwandeln: Kontext, Rolle, Aktion, Format und Ton.
-
-      <br><br>
-
-      Jedes Kapitel erscheint in zwei Versionen: eine für Schülerinnen und Schüler
-      ab etwa 12 Jahren — klar und direkt. Und eine für Universitätsstudierende,
-      Fachleute und Behörden — mit mehr Tiefe und formaler Sprache.
-
-      <br><br>
-
-      Du kannst beide lesen. Du kannst dir eine aussuchen. Das Buch trifft dich dort,
-      wo du gerade stehst.
-
-      <br><br>
-
-      Ich bin <em>[Name der Sprecherin]</em>, und das ist PromptCraft 1.
-    </div>
-    <p class="script-note">Hinweis: Ersetze [Name der Sprecherin] durch deinen eigenen Namen.</p>
+  <div class="warning-box" style="margin-top:1.5rem;">
+    <p class="w-label">📌 Part 1 is a walk-through. Not a final take.</p>
+    <p>John knows you have concerns about recording. There is no pressure on Part 1. Record it in whatever environment you have. The goal is a first pass, not a finished product. Everything discovered in Part 1 makes Part 2 better.</p>
   </div>
 </div>
 
 
-<!-- ── SECTION 4: ABSCHLUSS ── -->
+<!-- ── PHASES 1–4 ── -->
 <div class="section">
-  <p class="label">Abschlussskript</p>
-  <h2>Zum Ende des Hörbuchs</h2>
+  <p class="label">Production Roadmap</p>
+  <h2>Phases 1–4 — where we are and where we're going</h2>
+  <p>The most important thing right now is to get this out into the world. Build momentum. Everything else follows from that.</p>
 
-  <div class="script-wrap">
-    <p class="script-header">Abschluss — Spreche dies nach dem letzten Kapitel</p>
-    <div class="script-text">
-      Das war PromptCraft 1: Teaching Machines to Listen — auf Deutsch.
-
-      <br><br>
-
-      Wenn du die C.R.A.F.T.-Methode in deinem Alltag anwenden möchtest,
-      findest du die Kurzübersicht im Anhang dieses Buches.
-      Außerdem gibt es auf promptcraft1.com weitere Ressourcen, Kurse
-      und Werkzeuge — auf Englisch und bald auch auf Deutsch.
-
-      <br><br>
-
-      Bessere Prompts. Bessere Ergebnisse. Bessere Welt.
-    </div>
-  </div>
-</div>
-
-<div class="divider">· · ·</div>
-
-
-<!-- ── SECTION 5: DELIVERY STRUCTURE ── -->
-<div class="section">
-  <p class="label">Aufbau des Hörbuchs</p>
-  <h2>Struktur und Lieferung — Teil für Teil</h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Teil</th>
-        <th>Inhalt</th>
-        <th>Kapitel</th>
-        <th>Hinweis</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Teil 1</strong></td>
-        <td>Warum das wichtig ist (Das Problem)</td>
-        <td>Kap. 1–3</td>
-        <td>Einleitend, zugänglich — normales Sprechtempo</td>
-      </tr>
-      <tr>
-        <td><strong>Teil 2</strong></td>
-        <td>Die C.R.A.F.T.-Methode (Die Lösung)</td>
-        <td>Kap. 4–9</td>
-        <td>Kerninhalt — klar und deutlich</td>
-      </tr>
-      <tr>
-        <td><strong>Teil 3</strong></td>
-        <td>Branchenspezifische Anwendungen (Der Beweis)</td>
-        <td>Kap. 10–15</td>
-        <td>Sachlich und direkt; Tabellen als Fließtext sprechen</td>
-      </tr>
-      <tr>
-        <td><strong>Teil 4</strong></td>
-        <td>Der ökologische Aspekt (Die Verantwortung)</td>
-        <td>Kap. 16–18</td>
-        <td>Ernsthafter Ton; Daten langsam und klar vortragen</td>
-      </tr>
-      <tr>
-        <td><strong>Teil 5</strong></td>
-        <td>Prompt-Kompetenz vermitteln (Die Zukunft)</td>
-        <td>Kap. 19–21</td>
-        <td>Lehrend; engagiert und mit Wärme</td>
-      </tr>
-      <tr>
-        <td><strong>Teil 6</strong></td>
-        <td>PC1 als Plattform (Das Geschäftsmodell)</td>
-        <td>Kap. 22–24</td>
-        <td>Vorausschauend; sachlich aber optimistisch</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<!-- ── SECTION 6: PRODUCTION RULES ── -->
-<div class="section">
-  <p class="label">Produktionsregeln</p>
-  <h2>Was du schneidest, behältst und anpasst</h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Regel</th>
-        <th>Kommentar</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Aktivitätsboxen / Aufgaben</td>
-        <td class="cut">KÜRZEN</td>
-        <td>Nur für das schriftliche Buch — im Hörbuch weglassen</td>
-      </tr>
-      <tr>
-        <td>Tabellen</td>
-        <td class="adapt">ANPASSEN</td>
-        <td>Als kurze Aufzählung oder Fließtext sprechen</td>
-      </tr>
-      <tr>
-        <td>Vergleichsbeispiele (Y7 / Uni)</td>
-        <td class="keep">BEHALTEN</td>
-        <td>Beide Versionen vorlesen — sie sind der Kern des Buchs</td>
-      </tr>
-      <tr>
-        <td>Formulierungen wie "Lese Abschnitt X"</td>
-        <td class="cut">KÜRZEN</td>
-        <td>Im Hörbuch nicht sinnvoll — einfach weglassen</td>
-      </tr>
-      <tr>
-        <td>C.R.A.F.T. / T.E.A.C.H. usw. (Akronyme)</td>
-        <td class="adapt">ANPASSEN</td>
-        <td>Deine Entscheidung — Englisch behalten oder dt. Version entwickeln</td>
-      </tr>
-      <tr>
-        <td>Zitate und Zahlen</td>
-        <td class="keep">BEHALTEN</td>
-        <td>Genau so sprechen — langsam und klar</td>
-      </tr>
-      <tr>
-        <td>Abkürzungen (z. B. "KI" für "AI")</td>
-        <td class="adapt">ANPASSEN</td>
-        <td>Wo sinnvoll, deutsche Fachbegriffe verwenden</td>
-      </tr>
-      <tr>
-        <td>Persönliche Anreden (z. B. "du" vs. "Sie")</td>
-        <td class="adapt">ANPASSEN</td>
-        <td>Deiner Einschätzung nach — das Buch ist zugänglich, also eher "du"</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<!-- ── SECTION 7: PHASE ROADMAP ── -->
-<div class="section">
-  <p class="label">Zeitplan</p>
-  <h2>Die vier Phasen unserer Zusammenarbeit</h2>
-
-  <div class="phases">
+  <div style="margin:1.4rem 0;">
     <div class="phase-row">
       <div class="phase-num">1</div>
       <div class="phase-content">
-        <strong>Lektüre &amp; Feedback</strong>
-        <span>Du liest das Buch (DE + EN). Du gibst mir Feedback zur Übersetzung und zur Akronyme-Frage. Wir sprechen über offene Punkte.</span>
+        <strong>Current — Get it out there</strong>
+        <span>English audiobook narrated by Deborah Arnell (Year 7 register). German audiobook narrated by Nina Banks — you translate the English script into German at <strong>Year 11–12 register</strong> and record it yourself. Both versions release together. Goal: establish presence, build audience, prove the concept.</span>
       </div>
     </div>
     <div class="phase-row">
       <div class="phase-num">2</div>
       <div class="phase-content">
-        <strong>Skript-Finalisierung</strong>
-        <span>Du erstellst das endgültige Hörbuch-Skript auf Deutsch. Ich gebe dir mein OK. Keine Aufnahme ohne gegenseitiges Einverständnis.</span>
+        <strong>After Phase 1 gains traction</strong>
+        <span>The levels reverse. English expands to University/Government level prose. German produces a more accessible version at Year 7 equivalent register — reaching a broader German-speaking audience.</span>
       </div>
     </div>
     <div class="phase-row">
       <div class="phase-num">3</div>
       <div class="phase-content">
-        <strong>Aufnahme</strong>
-        <span>Du nimmst das Hörbuch auf. Wir gehen gemeinsam durch die Qualitätsprüfung. Korrekturen nach Bedarf.</span>
+        <strong>Full German translation — John and Nina to discuss</strong>
+        <span>A full translation of the PromptCraft 1 book into German — not just the audiobook script, but the complete written edition. Scope, timeline, and approach to be agreed between you and John. Does not begin until Phase 1 is live and Phase 2 is planned.</span>
       </div>
     </div>
     <div class="phase-row">
       <div class="phase-num">4</div>
       <div class="phase-content">
-        <strong>Veröffentlichung</strong>
-        <span>Wir stimmen die Plattform ab (Audible DE und andere). Beide unterschreiben, bevor irgendwas live geht. Deine 33 % netto ab Tag 1.</span>
+        <strong>PC2</strong>
+        <span>PromptCraft 2 is the next book. It is nearly complete. The goal is that by the time PC2 is ready, PromptCraft 1 has built enough momentum to carry it. As John puts it: <em>"this becomes the little engine that could."</em></span>
       </div>
     </div>
   </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+
+<!-- ── OPENING SCRIPT ── -->
+<div class="section">
+  <p class="label">Your Opening Script — in English for you to translate</p>
+  <h2>Cover script — German version</h2>
+  <p>This is the script written at Year 11–12 English level for you to translate into German. Read the English, understand the register, then produce your German version. This is not a word-for-word translation — make it feel written in German, not translated into it.</p>
+
+  <div class="script-wrap">
+    <p class="script-header">🎙️ German Opening — source text for Nina Banks to translate</p>
+    <div class="script-text"><span class="stage-dir">[TITLE CARD — spoken]</span>
+PromptCraft 1. Teaching Machines to Listen.
+By John Kenneally.
+
+<span class="stage-dir">[INTRO — spoken]</span>
+PromptCraft is related to prompt engineering — but the two are not the same.
+
+Prompt engineering is largely technical. PromptCraft is personal. It is built
+around the way you think, the words you use, and the outcomes you actually need.
+The system is driven by a linguistic framework called C.R.A.F.T. — Context,
+Role, Action, Format, Tone — five structured elements that govern every
+interaction between a person and an AI system.
+
+This is not a book for people who simply want to use AI better. There are
+countless tools and systems that already do that, in countless ways.
+
+PromptCraft 1 offers something more specific: the ability to shape AI responses
+the way you want them shaped — in any situation, any context, any day. More
+precisely. More efficiently. More personally. And with far greater control.
+
+For your studies. For your work. For the organisations and communities you
+belong to.
+
+Using your own language as the foundation of what the system returns.
+
+This book explains what each element of C.R.A.F.T. does, why it works, and
+how to apply it across any field or discipline.</div>
+    <p class="script-note">Translate this into German at Year 11–12 register. Then send John your German version for confirmation before recording.</p>
+  </div>
+</div>
+
+
+<!-- ── CHAPTER NOTES ── -->
+<div class="section">
+  <p class="label">Chapter-by-Chapter Production Notes — German Column</p>
+  <h2>Parts 1 &amp; 2 — confirmed</h2>
+  <p>✅ USE = include &nbsp;·&nbsp; ✂️ CUT = omit &nbsp;·&nbsp; 🔄 ADAPT = rework for German audio &nbsp;·&nbsp; 🚩 FLAG = needs a decision before recording</p>
+  <p><strong>Base text for German:</strong> Unless noted, use the <strong>University/Government level prose</strong> as your starting point and soften to Year 11–12 register.</p>
+
+  <div class="chapter-head">PART 1 — WHY THIS MATTERS (Ch 1–3)</div>
+
+  <h3>Chapter 1 — What Happens When You Talk to AI</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes for German version</th></tr></thead>
+    <tbody>
+      <tr><td>Year 7 prose (Steps 1–4, key insight)</td><td class="adapt">🔄 ADAPT</td><td>Adapt to Year 11–12 — keep the concrete sequence, raise the register.</td></tr>
+      <tr><td>"You press Enter. Then what?" opening</td><td class="adapt">🔄 ADAPT</td><td>Strong hook — keep the structure, adjust vocabulary for German register.</td></tr>
+      <tr><td>Google energy statistics (0.24 Wh, 0.26ml)</td><td class="use">✅ USE</td><td>Critical data — translate and read clearly and slowly.</td></tr>
+      <tr><td>University/Government version (1.1–1.5)</td><td class="use">✅ USE as base</td><td>German draws from this section, rewritten to Year 11–12 register.</td></tr>
+      <tr><td>Policy Implications section (1.4)</td><td class="adapt">🔄 ADAPT</td><td>Too formal as-is — shorten to 2–3 spoken sentences in German.</td></tr>
+      <tr><td>Activity 1.1 (Two-Question Experiment)</td><td class="cut">✂️ CUT</td><td>Replace with: <em>"Pause here if you want to try this yourself before we move on."</em></td></tr>
+      <tr><td>References list</td><td class="cut">✂️ CUT</td><td>Move to end-of-book sources section.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 2 — The Retry Problem</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes for German version</th></tr></thead>
+    <tbody>
+      <tr><td>Year 7 prose (The Loop, The Numbers, Email Lesson)</td><td class="adapt">🔄 ADAPT</td><td>The email analogy is universal — keep it, raise register slightly.</td></tr>
+      <tr><td>Retry numbers (600–800M prompts/day)</td><td class="use">✅ USE</td><td>Read these clearly — they land hard in audio.</td></tr>
+      <tr><td>Structured prompt example (World War 2 essay)</td><td class="adapt">🔄 ADAPT</td><td>Swap to a more universal example — not specific to an Australian school assessment format.</td></tr>
+      <tr><td>University/Government section (2.1–2.4)</td><td class="use">✅ USE as base</td><td>Draw from 2.1 (quantifying retries) and 2.3 (behavioural economics) — skip 2.4 policy table.</td></tr>
+      <tr><td>Retry cost table (Energy/Carbon/Water)</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read three headline numbers only: <em>"144 to 192 megawatt-hours of wasted energy every day. 18 to 24 tonnes of CO₂. Up to 208,000 litres of water."</em></td></tr>
+      <tr><td>Activity 2.1</td><td class="cut">✂️ CUT</td><td>Replace with brief spoken closer.</td></tr>
+      <tr><td>Policy Recommendation 2.4</td><td class="cut">✂️ CUT</td><td>Too governance-heavy for audio.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 3 — The Hidden Cost</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes for German version</th></tr></thead>
+    <tbody>
+      <tr><td>Year 7 prose (Invisible Machine, The Numbers, The Part You Control)</td><td class="adapt">🔄 ADAPT</td><td>Excellent arc — adapt to Year 11–12 register.</td></tr>
+      <tr><td>Infrastructure statistics (415 TWh, 165% growth, 5M gallons/day)</td><td class="use">✅ USE</td><td>Read slowly. These are the stakes.</td></tr>
+      <tr><td>"So What Do We Do?" closing</td><td class="adapt">🔄 ADAPT</td><td>Strong close for Part 1 — adapt register for German.</td></tr>
+      <tr><td>University/Government (3.1–3.3)</td><td class="adapt">🔄 ADAPT</td><td>Use 3.1 (infrastructure trajectory) as base — 3.2 and 3.3 too policy-dense.</td></tr>
+      <tr><td>Part 1 Summary Table</td><td class="cut">✂️ CUT</td><td>TABLE REITERATES — replace with spoken transition: <em>"Three chapters. One through-line: how you ask changes how hard the machine works — and that has a cost."</em></td></tr>
+      <tr><td>Activity 3.1 / Teacher's Desk / Mini-Card</td><td class="cut">✂️ CUT</td><td>All editorial meta-content — omit.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="chapter-head">PART 2 — THE C.R.A.F.T. METHOD (Ch 4–9) · Heart of the book — both versions need this in full</div>
+
+  <h3>Chapter 4 — Context</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes for German version</th></tr></thead>
+    <tbody>
+      <tr><td>Taxi analogy (Year 7)</td><td class="cut">✂️ CUT</td><td>German version uses the formal reasoning approach instead.</td></tr>
+      <tr><td>Without/With Context comparison</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read as spoken contrast.</td></tr>
+      <tr><td>Three parts of good context (Subject, Audience, Constraints)</td><td class="use">✅ USE</td><td>Simple spoken list — works perfectly in audio.</td></tr>
+      <tr><td>University/Government (4.1–4.5)</td><td class="adapt">🔄 ADAPT</td><td>Use 4.2 numbers and 4.3 (three dimensions) — skip 4.4 enterprise section.</td></tr>
+      <tr><td>Context effect metrics (4.2)</td><td class="adapt">🔄 ADAPT</td><td>Read three headline stats only — token reduction, retry rate, relevance score.</td></tr>
+      <tr><td>Activity 4.1</td><td class="cut">✂️ CUT</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 5 — Role</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes for German version</th></tr></thead>
+    <tbody>
+      <tr><td>"Any expert in the world" opening</td><td class="adapt">🔄 ADAPT</td><td>Universal hook — adapt register.</td></tr>
+      <tr><td>Context Only vs Context + Role comparison</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read as spoken contrast.</td></tr>
+      <tr><td>Choosing the right role (3 rules)</td><td class="use">✅ USE</td><td>Clean spoken list.</td></tr>
+      <tr><td>Role-priming efficiency (5.2)</td><td class="adapt">🔄 ADAPT</td><td>Read 3 headline figures only: retry rate 2.4 → 0.6, tokens 1,840 → 680.</td></tr>
+      <tr><td>Role Libraries section (5.3)</td><td class="cut">✂️ CUT</td><td>Too enterprise-focused for audio.</td></tr>
+      <tr><td>Activity 5.1</td><td class="cut">✂️ CUT</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 6 — Action</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes for German version</th></tr></thead>
+    <tbody>
+      <tr><td>"One word changes everything" opening</td><td class="use">✅ USE</td><td>Keep in translation — the contrast works universally.</td></tr>
+      <tr><td>Power Verbs table (10 verbs)</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read as a spoken list. Find the German equivalents for each verb. Pause between each.</td></tr>
+      <tr><td>One-verb rule</td><td class="use">✅ USE</td><td></td></tr>
+      <tr><td>Bloom's Taxonomy table (6.2)</td><td class="adapt">🔄 ADAPT</td><td>Reference Bloom's briefly in one sentence — don't read the full table.</td></tr>
+      <tr><td>Action precision metrics (6.1)</td><td class="adapt">🔄 ADAPT</td><td>Headline only: <em>"Precise action language reduces output tokens by 74% and retry rate by 90%."</em></td></tr>
+      <tr><td>Activity 6.1</td><td class="cut">✂️ CUT</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 7 — Format</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes for German version</th></tr></thead>
+    <tbody>
+      <tr><td>"World map / find your classroom" analogy</td><td class="cut">✂️ CUT</td><td>German uses the formal argument instead.</td></tr>
+      <tr><td>Before/after comparison (renewable energy example)</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read as spoken contrast.</td></tr>
+      <tr><td>"If you need to…" format guide table</td><td class="cut">✂️ CUT</td><td>Cover same ground in prose for the German version.</td></tr>
+      <tr><td>Reformatting cost (7.2)</td><td class="adapt">🔄 ADAPT</td><td>One sentence: <em>"A reformat is a full regeneration. Every time. 67 to 74 percent of the tokens were wasted."</em></td></tr>
+      <tr><td>Format categories table (7.3)</td><td class="cut">✂️ CUT</td><td>TABLE REITERATES — covered in prose.</td></tr>
+      <tr><td>Activity 7.1</td><td class="cut">✂️ CUT</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 8 — Tone</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes for German version</th></tr></thead>
+    <tbody>
+      <tr><td>Doctor/dentist analogy (3 versions)</td><td class="adapt">🔄 ADAPT</td><td>Keep the structure — adjust register for German. All three versions work in audio.</td></tr>
+      <tr><td>Tone spectrum table</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read as spoken list: 6 tones, one sentence each.</td></tr>
+      <tr><td>Friendly vs Formal comparison table</td><td class="use">✅ USE</td><td>Read both versions — the contrast is the lesson.</td></tr>
+      <tr><td>Tone mismatch table (8.2)</td><td class="cut">✂️ CUT</td><td>TABLE REITERATES — prose covers it.</td></tr>
+      <tr><td>Institutional tone standards (8.3)</td><td class="adapt">🔄 ADAPT</td><td>Two sentences maximum.</td></tr>
+      <tr><td>Activity 8.1</td><td class="cut">✂️ CUT</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chapter 9 — Putting It All Together</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Rule</th><th>Notes for German version</th></tr></thead>
+    <tbody>
+      <tr><td>Full C.R.A.F.T. build (water industry example)</td><td class="adapt">🔄 ADAPT</td><td>Use the same structure but with a more neutral example — not "Year 7 Geography, Australian Curriculum".</td></tr>
+      <tr><td>C.R.A.F.T. element table</td><td class="adapt">🔄 ADAPT</td><td>TABLE IS CONTENT — read as a spoken build through each of the 5 elements.</td></tr>
+      <tr><td>Side-by-side metrics (bad vs C.R.A.F.T.)</td><td class="adapt">🔄 ADAPT</td><td>Read headline numbers: <em>"800 words vs 300. Three retries vs zero. 0.72 watt-hours vs 0.24. A 67% energy reduction from one structured prompt."</em></td></tr>
+      <tr><td>Progressive constraint pipeline (9.1)</td><td class="adapt">🔄 ADAPT</td><td>Read final row only: <em>"All five elements together reduce the inference search space by 83 to 95 percent."</em></td></tr>
+      <tr><td>Enterprise Implementation Guide (9.2)</td><td class="cut">✂️ CUT</td><td>Too operational for audio.</td></tr>
+      <tr><td>Policy Recommendation (9.4)</td><td class="cut">✂️ CUT</td><td>Policy document content — not audio content.</td></tr>
+      <tr><td>Part 2 Summary Table</td><td class="cut">✂️ CUT</td><td>TABLE REITERATES — use spoken closer: <em>"Five elements. One pipeline. Context sets the world. Role sets the expert. Action sets the task. Format sets the shape. Tone sets the voice. Used together: 32 to 48 percent less energy. First time, every time."</em></td></tr>
+    </tbody>
+  </table>
+
+  <div class="chapter-head">PARTS 3–6 + APPENDICES — Detailed notes to follow after Part 1 is confirmed</div>
+
+  <table>
+    <thead><tr><th>Part</th><th>Chapters</th><th>Primary audio challenge for German version</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Part 3</strong> — Industry Applications</td>
+        <td>10–15</td>
+        <td>Six industry acronyms — C.A.R.E.S., B.R.I.E.F., T.E.A.C.H., S.T.A.K.E., D.E.B.U.G., P.I.T.C.H. Each has a full table that IS the content. German version will need special treatment — these are English acronyms and will need a decision on whether to adapt or translate.</td>
+      </tr>
+      <tr>
+        <td><strong>Part 4</strong> — Environmental Case</td>
+        <td>16–18</td>
+        <td>Heavy data sections. German version uses University/Government prose as base, softened. All statistics translate universally — read them slowly and clearly.</td>
+      </tr>
+      <tr>
+        <td><strong>Part 5</strong> — Teaching Prompt Literacy</td>
+        <td>19–21</td>
+        <td>Education policy angle — German version will differ significantly from English here. Australian curriculum references must be replaced with neutral equivalents. Detailed notes to follow.</td>
+      </tr>
+      <tr>
+        <td><strong>Part 6</strong> — PC1 as Platform</td>
+        <td>22–24</td>
+        <td>🚩 FLAG — John to confirm whether Part 6 belongs in the German audiobook. SaaS/business content — assess before translating. Await instruction.</td>
+      </tr>
+      <tr>
+        <td><strong>Appendices</strong></td>
+        <td>A, B, D, E, F, S</td>
+        <td>✂️ CUT entirely from audio. Replace with one spoken line directing listeners to promptcraft1.com for the full print edition.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pending">Detailed chapter-by-chapter notes for Parts 3–6 will be provided by John before each part begins. Do not record Parts 3–6 until you have received the notes and John has confirmed.</div>
 </div>
 
 <div class="divider">· · ·</div>
@@ -667,24 +487,70 @@
 
 <!-- ── CONTACT ── -->
 <div class="section">
-  <p class="label">Fragen? Anmerkungen?</p>
-  <h2>Schreib mir direkt</h2>
-
+  <p class="label">Questions?</p>
+  <h2>Write to John directly</h2>
   <div class="contact-block">
-    <p>Diese Seite ist nur für dich. Wenn du Fragen zum Skript, zur Aufnahme oder zur Zusammenarbeit hast — einfach auf den Knopf drücken.</p>
-    <a href="mailto:johntilv4575@gmail.com?subject=PromptCraft%201%20—%20Hörbuch%20DE%20(Nina)" class="contact-btn">
-      ✉️ &nbsp; John schreiben
-    </a>
+    <p>This page is only for you. Questions about the script, the production notes, the acronym question, or anything else — reach out before you record.</p>
+    <a href="mailto:johntilv4575@gmail.com?subject=PromptCraft%201%20—%20German%20Audiobook%20(Nina%20Banks)" class="contact-btn">✉️ &nbsp; Email John</a>
   </div>
 </div>
 
-
-<!-- ── FOOTER ── -->
 <p class="footer">
-  PROMPTCRAFT 1 &nbsp;·&nbsp; NARRATOR HANDOFF — NINA BANKS &nbsp;·&nbsp; VERTRAULICH<br>
-  Diese Seite ist nur für Nina. Nicht öffentlich verlinkt.<br>
+  PROMPTCRAFT 1 &nbsp;·&nbsp; NARRATOR HANDOFF — NINA BANKS &nbsp;·&nbsp; CONFIDENTIAL<br>
+  This page is for Nina Banks only. Not linked publicly.<br>
   © John Kenneally &nbsp;·&nbsp; johntilv4575@gmail.com
 </p>
+
+
+<!-- ── FLOATING NOTEPAD ── -->
+<div id="notepad" style="position:fixed;bottom:24px;right:24px;width:300px;z-index:9999;font-family:system-ui,sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.22);border-radius:12px;overflow:hidden;">
+  <div id="notepad-header" style="background:#0d1a0d;color:white;padding:0.6rem 1rem;display:flex;justify-content:space-between;align-items:center;cursor:move;user-select:none;">
+    <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6dbf3a;">📝 My Notes</span>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button onclick="clearNotes()" title="Clear notes" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:0.75rem;padding:0;">✕ clear</button>
+      <button onclick="toggleNotepad()" id="notepad-toggle" style="background:none;border:none;color:white;cursor:pointer;font-size:1rem;padding:0;line-height:1;">−</button>
+    </div>
+  </div>
+  <div id="notepad-body" style="background:#fff;">
+    <textarea id="notepad-text" placeholder="Type your notes here — they save automatically to this device…" style="width:100%;height:220px;border:none;padding:1rem;font-family:inherit;font-size:0.85rem;line-height:1.65;color:#2d2d2d;resize:vertical;outline:none;display:block;"></textarea>
+    <div style="background:#f4f7f4;padding:0.4rem 1rem;font-size:0.68rem;color:#999;letter-spacing:0.05em;">Saves to this device only · Private</div>
+  </div>
+</div>
+
+<script>
+  const noteKey = 'pc1-notes-nina';
+  const ta = document.getElementById('notepad-text');
+  ta.value = localStorage.getItem(noteKey) || '';
+  ta.addEventListener('input', () => localStorage.setItem(noteKey, ta.value));
+
+  let open = true;
+  function toggleNotepad() {
+    open = !open;
+    document.getElementById('notepad-body').style.display = open ? 'block' : 'none';
+    document.getElementById('notepad-toggle').textContent = open ? '−' : '+';
+  }
+
+  function clearNotes() {
+    if (confirm('Clear all your notes?')) { ta.value = ''; localStorage.removeItem(noteKey); }
+  }
+
+  const pad = document.getElementById('notepad');
+  const hdr = document.getElementById('notepad-header');
+  let dragging = false, ox = 0, oy = 0;
+  hdr.addEventListener('mousedown', e => {
+    dragging = true;
+    ox = e.clientX - pad.getBoundingClientRect().left;
+    oy = e.clientY - pad.getBoundingClientRect().top;
+  });
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    pad.style.right = 'auto';
+    pad.style.bottom = 'auto';
+    pad.style.left = (e.clientX - ox) + 'px';
+    pad.style.top  = (e.clientY - oy) + 'px';
+  });
+  document.addEventListener('mouseup', () => dragging = false);
+</script>
 
 </body>
 </html>

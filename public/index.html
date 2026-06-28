@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PromptCraft 1 — Private Workspace</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0d1a0d;
+      --green: #6dbf3a;
+      --green-dim: #4a8a28;
+      --blue: #4a7fd4;
+      --gold: #d4a843;
+      --text: #2d2d2d;
+      --muted: #666;
+      --light: #f5f7f5;
+      --border: #dde6dd;
+      --font: Georgia, 'Times New Roman', serif;
+      --sans: system-ui, -apple-system, sans-serif;
+    }
+    body { font-family: var(--font); font-size: 17px; line-height: 1.75; color: var(--text); background: #fff; max-width: 780px; margin: 0 auto; padding: 0 1.5rem 6rem; }
+
+    /* HEADER */
+    .header { background: var(--dark); color: white; text-align: center; padding: 3.5rem 2rem 2.8rem; margin: 0 -1.5rem 3rem; position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(109,191,58,0.06) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; }
+    .header-eyebrow { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.32em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; position: relative; }
+    .header h1 { font-family: var(--sans); font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; color: white; line-height: 1.2; margin-bottom: 0.5rem; position: relative; }
+    .header h1 em { font-style: normal; color: var(--green); }
+    .header .sub { font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; position: relative; }
+
+    /* SECTIONS */
+    .section { margin-bottom: 3rem; }
+    .label { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--green-dim); margin-bottom: 0.4rem; }
+    h2 { font-family: var(--sans); font-size: 1.45rem; font-weight: 900; color: var(--dark); line-height: 1.25; margin-bottom: 1rem; }
+    h3 { font-family: var(--sans); font-size: 1rem; font-weight: 700; color: var(--dark); margin: 1.6rem 0 0.5rem; }
+    p { margin-bottom: 0.9rem; }
+    p:last-child { margin-bottom: 0; }
+    strong { font-weight: 700; }
+    ul { margin: 0.6rem 0 0.9rem 1.4rem; }
+    li { margin-bottom: 0.35rem; }
+
+    /* PERSONAL NOTE */
+    .personal { background: var(--dark); color: white; border-radius: 12px; padding: 2.5rem 2.5rem 2rem; margin-bottom: 2rem; position: relative; overflow: hidden; }
+    .personal::before { content: '\201C'; position: absolute; top: -1rem; left: 1.5rem; font-size: 7rem; color: rgba(109,191,58,0.1); font-family: Georgia, serif; line-height: 1; }
+    .personal p { color: rgba(255,255,255,0.82); position: relative; margin-bottom: 0.85rem; }
+    .personal p:last-child { margin-bottom: 0; }
+    .personal .from { font-family: var(--sans); font-size: 0.78rem; color: var(--green); font-weight: 600; letter-spacing: 0.1em; margin-top: 1.4rem; }
+
+    /* NARRATOR CARDS */
+    .narrator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.4rem 0; }
+    @media (max-width: 540px) { .narrator-grid { grid-template-columns: 1fr; } }
+    .narrator-card { border-radius: 10px; overflow: hidden; text-decoration: none; display: block; transition: transform 0.15s; }
+    .narrator-card:hover { transform: translateY(-2px); }
+    .narrator-card .card-top { padding: 1.4rem 1.4rem 1rem; }
+    .narrator-card .card-role { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .narrator-card .card-name { font-family: var(--sans); font-size: 1.2rem; font-weight: 900; color: white; line-height: 1.2; margin-bottom: 0.25rem; }
+    .narrator-card .card-desc { font-family: var(--sans); font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+    .narrator-card .card-btn { display: block; text-align: center; padding: 0.7rem; font-family: var(--sans); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+    .card-deborah .card-top { background: #0a0a1a; }
+    .card-deborah .card-role { color: var(--blue); }
+    .card-deborah .card-btn { background: rgba(74,127,212,0.15); color: var(--blue); }
+    .card-deborah:hover .card-btn { background: rgba(74,127,212,0.3); }
+    .card-nina .card-top { background: var(--dark); }
+    .card-nina .card-role { color: var(--green); }
+    .card-nina .card-btn { background: rgba(109,191,58,0.12); color: var(--green); }
+    .card-nina:hover .card-btn { background: rgba(109,191,58,0.25); }
+
+    /* BOOK LINK */
+    .book-card { display: flex; align-items: center; gap: 1.2rem; background: var(--light); border-radius: 10px; padding: 1.2rem 1.4rem; text-decoration: none; margin: 1rem 0; transition: background 0.2s; }
+    .book-card:hover { background: #eaf0ea; }
+    .book-card .book-icon { font-size: 2rem; }
+    .book-card .book-text strong { display: block; font-family: var(--sans); font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.15rem; }
+    .book-card .book-text span { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); }
+
+    /* STATUS BOARD */
+    .status-item { display: flex; gap: 0.9rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .status-item:last-child { border-bottom: none; }
+    .status-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0; }
+    .dot-done { background: var(--green); }
+    .dot-active { background: var(--gold); }
+    .dot-next { background: #ccc; }
+    .status-content strong { display: block; font-family: var(--sans); font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 0.15rem; }
+    .status-content span { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+
+    /* IDEAS */
+    .idea-item { display: flex; gap: 0.9rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .idea-item:last-child { border-bottom: none; }
+    .idea-num { font-family: var(--sans); font-size: 0.75rem; font-weight: 900; color: var(--green); min-width: 1.6rem; padding-top: 0.15rem; }
+    .idea-content strong { display: block; font-family: var(--sans); font-size: 0.88rem; font-weight: 700; color: var(--dark); margin-bottom: 0.15rem; }
+    .idea-content span { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+
+    /* MESSAGES */
+    .message { background: var(--light); border-radius: 10px; padding: 1.3rem 1.5rem; margin-bottom: 1rem; }
+    .message .msg-from { font-family: var(--sans); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .message .msg-from.from-john { color: var(--green-dim); }
+    .message p { font-size: 0.92rem; color: #3a3a3a; }
+    .reply-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.2rem; }
+    .reply-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--dark); color: white; text-decoration: none; border-radius: 8px; padding: 0.65rem 1.2rem; font-family: var(--sans); font-size: 0.8rem; font-weight: 700; transition: background 0.2s; }
+    .reply-btn:hover { background: var(--green-dim); }
+
+    .divider { text-align: center; margin: 2.5rem 0; color: var(--green); font-size: 1rem; letter-spacing: 0.6rem; opacity: 0.3; }
+    .footer { text-align: center; font-family: var(--sans); font-size: 0.68rem; color: #ccc; margin-top: 5rem; letter-spacing: 0.12em; line-height: 2; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <p class="header-eyebrow">Private Workspace · PromptCraft 1</p>
+  <h1>Teaching Machines<br>to <em>Listen</em></h1>
+  <p class="sub">John Kenneally &nbsp;·&nbsp; Deborah Arnell &nbsp;·&nbsp; Nina Banks</p>
+</div>
+
+
+<!-- ── JOHN'S INTRODUCTION ── -->
+<div class="section">
+  <p class="label">From John</p>
+  <h2>Welcome — and thank you both</h2>
+
+  <div class="personal">
+    <p>
+      Deborah. Nina. I want to take a moment before we get into the work to say something properly.
+    </p>
+    <p>
+      You two haven't met. But you're both part of the same project now, and I think you should know a little about each other and why I chose you both.
+    </p>
+    <p>
+      <strong>Deborah</strong> — you're giving this book its English voice. The Year 7 level prose is warm, direct, and human — and that's exactly the quality I need from a narrator. You bring that naturally.
+    </p>
+    <p>
+      <strong>Nina</strong> — you're not just narrating. You're translating, adapting, and performing. You're producing the German edition in a register — Year 11 to 12 — that sits between accessible and academic. That takes real skill and real judgement. I trust yours.
+    </p>
+    <p>
+      This page is our shared space. I'll use it to keep you both updated on where the project is, what's coming next, and any new ideas. You can always reach me through your individual pages.
+    </p>
+    <p>
+      The website is nearly built. Amazon Audible distribution is the target for both editions. And PromptCraft 2 is already half written — but that's a conversation for later.
+    </p>
+    <p>
+      Let's make something good.
+    </p>
+    <p class="from">— John Kenneally</p>
+  </div>
+</div>
+
+
+<!-- ── NARRATOR PAGES ── -->
+<div class="section">
+  <p class="label">Your Pages</p>
+  <h2>Each narrator's private handoff</h2>
+  <div class="narrator-grid">
+    <a href="deborah.html" class="narrator-card card-deborah">
+      <div class="card-top">
+        <p class="card-role">English Narrator</p>
+        <p class="card-name">Deborah Arnell</p>
+        <p class="card-desc">Full production guide · Opening &amp; closing scripts · Chapter notes Ch 1–9</p>
+      </div>
+      <div class="card-btn">Open Deborah's Page →</div>
+    </a>
+    <a href="nina.html" class="narrator-card card-nina">
+      <div class="card-top">
+        <p class="card-role">German Narrator &amp; Translator</p>
+        <p class="card-name">Nina Banks</p>
+        <p class="card-desc">Full production guide · Source scripts to translate · Chapter notes Ch 1–9</p>
+      </div>
+      <div class="card-btn">Open Nina's Page →</div>
+    </a>
+  </div>
+
+  <a href="book-en.html" class="book-card">
+    <span class="book-icon">📖</span>
+    <div class="book-text">
+      <strong>PromptCraft 1 — Full English Book</strong>
+      <span>All 24 chapters · Scrollable · Use as your reference source</span>
+    </div>
+  </a>
+</div>
+
+<div class="divider">· · ·</div>
+
+
+<!-- ── PROJECT STATUS ── -->
+<div class="section">
+  <p class="label">Where We Are</p>
+  <h2>Project status — updated 28 June 2026</h2>
+
+  <div>
+    <div class="status-item">
+      <div class="status-dot dot-done"></div>
+      <div class="status-content">
+        <strong>✅ Book manuscript — complete</strong>
+        <span>All 24 chapters written. Both reading levels (Year 7 and University/Government) across all 6 parts. Full English HTML edition live.</span>
+      </div>
+    </div>
+    <div class="status-item">
+      <div class="status-dot dot-done"></div>
+      <div class="status-content">
+        <strong>✅ Audiobook Production Guide — complete (Parts 1–2)</strong>
+        <span>Chapter-by-chapter USE / CUT / ADAPT notes done for Chapters 1–9. Parts 3–6 scaffold in place. Full guide on both narrator pages.</span>
+      </div>
+    </div>
+    <div class="status-item">
+      <div class="status-dot dot-done"></div>
+      <div class="status-content">
+        <strong>✅ Narrator pages — live</strong>
+        <span>Deborah's and Nina's handoff pages built and deployed. Full production guide embedded. Scripts included.</span>
+      </div>
+    </div>
+    <div class="status-item">
+      <div class="status-dot dot-active"></div>
+      <div class="status-content">
+        <strong>🔄 Part 1 recording — in progress</strong>
+        <span>Both narrators reviewing their scripts. Part 1 (Chapters 1–3) is the first recording — a walk-through, not a final take.</span>
+      </div>
+    </div>
+    <div class="status-item">
+      <div class="status-dot dot-next"></div>
+      <div class="status-content">
+        <strong>⏳ Audible distribution — coming</strong>
+        <span>English and German editions targeting Amazon Audible. Both versions to release together. Timeline confirmed once Part 1 is done.</span>
+      </div>
+    </div>
+    <div class="status-item">
+      <div class="status-dot dot-next"></div>
+      <div class="status-content">
+        <strong>⏳ Production notes Parts 3–6 — pending</strong>
+        <span>Detailed chapter notes for Chapters 10–24 to be written once Part 1–2 recordings are confirmed. One part at a time.</span>
+      </div>
+    </div>
+    <div class="status-item">
+      <div class="status-dot dot-next"></div>
+      <div class="status-content">
+        <strong>⏳ PromptCraft 2 — nearly ready</strong>
+        <span>PC2 is half written. It waits for PC1 to build momentum first. The little engine that could.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+
+<!-- ── MESSAGES ── -->
+<div class="section">
+  <p class="label">From the Desk of John</p>
+  <h2>Messages &amp; updates</h2>
+
+  <div class="message">
+    <p class="msg-from from-john">📌 John Kenneally · 28 June 2026</p>
+    <p>
+      The workspace is live. Both pages are built. The full book is there for reference.
+      Your production guides are embedded on your pages — no login, no searching.
+    </p>
+    <p style="margin-top:0.7rem;">
+      When you're ready to start, read through your page from top to bottom first.
+      Then read Chapters 1–3 of the book. Then record Part 1 at whatever pace feels right.
+      Send me the file when you're done and I'll come back to you before Part 2 begins.
+    </p>
+    <p style="margin-top:0.7rem;">
+      Any question at all — use the button below. I'll reply quickly.
+    </p>
+  </div>
+
+  <div class="reply-btns">
+    <a href="mailto:johntilv4575@gmail.com?subject=PromptCraft%201%20—%20Message%20from%20Deborah" class="reply-btn">✉️ Deborah — Reply to John</a>
+    <a href="mailto:johntilv4575@gmail.com?subject=PromptCraft%201%20—%20Message%20from%20Nina" class="reply-btn" style="background:#0d1a0d;">✉️ Nina — Reply to John</a>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+
+<!-- ── IDEA REPOSITORY ── -->
+<div class="section">
+  <p class="label">Idea Repository</p>
+  <h2>Things worth exploring</h2>
+  <p>Ideas that are in the mix — not promises, just possibilities being tracked here so nothing gets lost.</p>
+
+  <div>
+    <div class="idea-item">
+      <div class="idea-num">01</div>
+      <div class="idea-content">
+        <strong>Native-language acronyms</strong>
+        <span>Should C.R.A.F.T. remain in English across all editions, or should each language develop its own acronym? Nina's input is specifically requested. Deborah's too. Decision needed before Parts 3–6 are recorded.</span>
+      </div>
+    </div>
+    <div class="idea-item">
+      <div class="idea-num">02</div>
+      <div class="idea-content">
+        <strong>Spanish edition</strong>
+        <span>Next language after German. Narrator and translator to be identified. PC1 expansion plan includes Spanish as the third edition.</span>
+      </div>
+    </div>
+    <div class="idea-item">
+      <div class="idea-num">03</div>
+      <div class="idea-content">
+        <strong>School and diocese pipeline</strong>
+        <span>Catholic school appointment in progress. Diocese pipeline being built. Audiobook + classroom edition could serve this market directly.</span>
+      </div>
+    </div>
+    <div class="idea-item">
+      <div class="idea-num">04</div>
+      <div class="idea-content">
+        <strong>PC1 as a course platform</strong>
+        <span>Online courses built around C.R.A.F.T. — for individuals, classrooms, and organisations. Separate from the audiobook. Stage 2 of the website build.</span>
+      </div>
+    </div>
+    <div class="idea-item">
+      <div class="idea-num">05</div>
+      <div class="idea-content">
+        <strong>University/Government English audiobook (Phase 2)</strong>
+        <span>After Phase 1 gains traction, the English edition gets a second version at University/Government register. Different audience, different narrator register.</span>
+      </div>
+    </div>
+    <div class="idea-item">
+      <div class="idea-num">06</div>
+      <div class="idea-content">
+        <strong>PromptCraft 2</strong>
+        <span>Nearly written. Waits for PC1 to build momentum. Same model — English first, German second. Nina and Deborah would have first right of offer.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── FOOTER ── -->
+<p class="footer">
+  PROMPTCRAFT 1 &nbsp;·&nbsp; TEACHING MACHINES TO LISTEN &nbsp;·&nbsp; PRIVATE WORKSPACE<br>
+  John Kenneally &amp; Narrators &nbsp;·&nbsp; johntilv4575@gmail.com<br>
+  © 2026 John Kenneally
+</p>
+
+
+<!-- ── FLOATING NOTEPAD ── -->
+<div id="notepad" style="position:fixed;bottom:24px;right:24px;width:300px;z-index:9999;font-family:system-ui,sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.22);border-radius:12px;overflow:hidden;">
+  <div id="notepad-header" style="background:#0d1a0d;color:white;padding:0.6rem 1rem;display:flex;justify-content:space-between;align-items:center;cursor:move;user-select:none;">
+    <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6dbf3a;">📝 Notes — John</span>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button onclick="clearNotes()" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:0.75rem;padding:0;">✕ clear</button>
+      <button onclick="toggleNotepad()" id="notepad-toggle" style="background:none;border:none;color:white;cursor:pointer;font-size:1rem;padding:0;line-height:1;">−</button>
+    </div>
+  </div>
+  <div id="notepad-body" style="background:#fff;">
+    <textarea id="notepad-text" placeholder="Your private notes — project ideas, updates to write, things to remember…" style="width:100%;height:220px;border:none;padding:1rem;font-family:inherit;font-size:0.85rem;line-height:1.65;color:#2d2d2d;resize:vertical;outline:none;display:block;"></textarea>
+    <div style="background:#f5f7f5;padding:0.4rem 1rem;font-size:0.68rem;color:#999;letter-spacing:0.05em;">Saves to this device only · Private</div>
+  </div>
+</div>
+
+<script>
+  const noteKey = 'pc1-notes-john-hub';
+  const ta = document.getElementById('notepad-text');
+  ta.value = localStorage.getItem(noteKey) || '';
+  ta.addEventListener('input', () => localStorage.setItem(noteKey, ta.value));
+
+  let open = true;
+  function toggleNotepad() {
+    open = !open;
+    document.getElementById('notepad-body').style.display = open ? 'block' : 'none';
+    document.getElementById('notepad-toggle').textContent = open ? '−' : '+';
+  }
+
+  function clearNotes() {
+    if (confirm('Clear all your notes?')) { ta.value = ''; localStorage.removeItem(noteKey); }
+  }
+
+  const pad = document.getElementById('notepad');
+  const hdr = document.getElementById('notepad-header');
+  let dragging = false, ox = 0, oy = 0;
+  hdr.addEventListener('mousedown', e => {
+    dragging = true;
+    ox = e.clientX - pad.getBoundingClientRect().left;
+    oy = e.clientY - pad.getBoundingClientRect().top;
+  });
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    pad.style.right = 'auto';
+    pad.style.bottom = 'auto';
+    pad.style.left = (e.clientX - ox) + 'px';
+    pad.style.top  = (e.clientY - oy) + 'px';
+  });
+  document.addEventListener('mouseup', () => dragging = false);
+</script>
+
+</body>
+</html>

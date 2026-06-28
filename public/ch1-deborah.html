@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ch 1 — Narration Script · Deborah Arnell</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0a0a1a;
+      --blue: #4a7fd4;
+      --blue-dim: #3360a8;
+      --cream: #f9f6f0;
+      --text: #1a1a2e;
+      --muted: #666;
+      --border: #ddd;
+      --cut-bg: #fff5f5;
+      --cut-border: #e74c3c;
+      --cut-text: #8b0000;
+      --adapt-bg: #fffbec;
+      --adapt-border: #d4a843;
+      --adapt-text: #7a5a00;
+      --note-bg: #f0f4ff;
+      --note-border: #4a7fd4;
+      --note-text: #1a3a6e;
+      --font: Georgia, 'Times New Roman', serif;
+      --sans: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      font-size: 18px;
+      line-height: 1.9;
+      color: var(--text);
+      background: var(--cream);
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.5rem 8rem;
+    }
+
+    /* ── NAV ── */
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 0; margin-bottom: 0; border-bottom: 1px solid var(--border); }
+    .nav a { font-family: var(--sans); font-size: 0.78rem; font-weight: 700; color: var(--blue); text-decoration: none; display: flex; align-items: center; gap: 0.3rem; }
+    .nav a:hover { color: var(--blue-dim); }
+    .nav .chapter-badge { font-family: var(--sans); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── HEADER ── */
+    .chapter-header { padding: 2.5rem 0 2rem; border-bottom: 2px solid var(--dark); margin-bottom: 2.5rem; }
+    .chapter-header .part-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
+    .chapter-header h1 { font-family: var(--sans); font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 900; color: var(--dark); line-height: 1.2; margin-bottom: 0.8rem; }
+    .chapter-header .meta { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .chapter-header .meta span { display: flex; align-items: center; gap: 0.3rem; }
+
+    /* ── CONTEXT BOX ── */
+    .context-box { background: var(--note-bg); border: 1.5px solid var(--note-border); border-radius: 8px; padding: 1.2rem 1.5rem; margin-bottom: 2.5rem; }
+    .context-box .ctx-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--note-text); margin-bottom: 0.5rem; }
+    .context-box p { font-family: var(--sans); font-size: 0.85rem; color: var(--note-text); line-height: 1.6; margin-bottom: 0.4rem; }
+    .context-box p:last-child { margin-bottom: 0; }
+
+    /* ── NARRATION TEXT ── */
+    .narration { margin-bottom: 0; }
+    .narration h2 { font-family: var(--font); font-size: 1.25rem; font-weight: 700; color: var(--dark); margin: 2.2rem 0 0.8rem; }
+    .narration p { margin-bottom: 1rem; }
+    .narration blockquote { border-left: 3px solid var(--blue); margin: 1rem 0 1rem 0; padding: 0.3rem 0 0.3rem 1.2rem; font-style: italic; color: #3a3a5a; }
+    .narration ol, .narration ul { margin: 0.8rem 0 1rem 1.6rem; }
+    .narration li { margin-bottom: 0.4rem; }
+    .narration strong { font-weight: 700; }
+    .narration em { font-style: italic; }
+
+    /* ── PAUSE LINE ── */
+    .pause-line { font-family: var(--sans); font-size: 0.85rem; font-style: italic; color: var(--blue-dim); border-left: 3px solid var(--blue); padding: 0.4rem 0.8rem; margin: 1.2rem 0; background: rgba(74,127,212,0.06); border-radius: 0 6px 6px 0; }
+
+    /* ── ANNOTATION: CUT ── */
+    .annotation-cut { background: var(--cut-bg); border: 1.5px solid var(--cut-border); border-radius: 8px; padding: 0.9rem 1.2rem; margin: 1.8rem 0 0.5rem; }
+    .annotation-cut .ann-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cut-border); margin-bottom: 0.35rem; }
+    .annotation-cut .ann-title { font-family: var(--sans); font-size: 0.88rem; font-weight: 700; color: var(--cut-text); margin-bottom: 0.25rem; }
+    .annotation-cut .ann-reason { font-family: var(--sans); font-size: 0.82rem; color: #b02020; line-height: 1.5; }
+
+    /* ── ANNOTATION: ADAPT ── */
+    .annotation-adapt { background: var(--adapt-bg); border: 1.5px solid var(--adapt-border); border-radius: 8px; padding: 0.9rem 1.2rem; margin: 1.8rem 0 0.5rem; }
+    .annotation-adapt .ann-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--adapt-border); margin-bottom: 0.35rem; }
+    .annotation-adapt .ann-title { font-family: var(--sans); font-size: 0.88rem; font-weight: 700; color: var(--adapt-text); margin-bottom: 0.25rem; }
+    .annotation-adapt .ann-reason { font-family: var(--sans); font-size: 0.82rem; color: #8a6200; line-height: 1.5; }
+    .annotation-adapt .ann-spoken { margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid var(--adapt-border); font-family: var(--font); font-size: 0.9rem; color: var(--text); font-style: italic; line-height: 1.7; }
+    .annotation-adapt .ann-spoken strong { font-style: normal; font-family: var(--sans); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--adapt-text); display: block; margin-bottom: 0.3rem; }
+
+    /* ── SECTION DIVIDER ── */
+    .section-div { border: none; border-top: 1px dashed #ccc; margin: 2.5rem 0; }
+
+    /* ── FOOTNOTE ── */
+    .footnote-inline { font-family: var(--sans); font-size: 0.75rem; color: var(--muted); vertical-align: super; }
+
+    /* ── END CARD ── */
+    .end-card { background: var(--dark); color: white; border-radius: 12px; padding: 2rem; text-align: center; margin-top: 3rem; }
+    .end-card p { font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
+    .end-card .next-link { display: inline-block; background: var(--blue); color: white; text-decoration: none; border-radius: 8px; padding: 0.7rem 1.5rem; font-family: var(--sans); font-size: 0.85rem; font-weight: 700; }
+
+    /* ── FOOTER ── */
+    .footer { text-align: center; font-family: var(--sans); font-size: 0.68rem; color: #bbb; margin-top: 4rem; letter-spacing: 0.1em; line-height: 2; }
+
+    /* ── PRINT ── */
+    @media print {
+      .nav, .end-card, #notepad { display: none; }
+      body { background: white; }
+      .annotation-cut, .annotation-adapt { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<div class="nav">
+  <a href="deborah.html">← Deborah's Page</a>
+  <span class="chapter-badge">Chapter 1 of 24 · English Script</span>
+  <a href="index.html">Hub →</a>
+</div>
+
+
+<!-- ── CHAPTER HEADER ── -->
+<div class="chapter-header">
+  <p class="part-label">Part 1 — Why This Matters (The Problem)</p>
+  <h1>Chapter 1 —<br>What Happens When You Talk to AI</h1>
+  <div class="meta">
+    <span>🎙 Deborah Arnell</span>
+    <span>📖 English edition</span>
+    <span>🎯 Year 7 register — warm, clear, accessible</span>
+  </div>
+</div>
+
+
+<!-- ── CONTEXT BOX ── -->
+<div class="context-box">
+  <p class="ctx-label">📌 Before you read — narrator context</p>
+  <p><strong>Tone for this chapter:</strong> Curious and friendly. You're talking to a twelve-year-old who has never thought about what actually happens when they press Enter. Lead them through it, step by step, like a good teacher who finds this genuinely interesting.</p>
+  <p><strong>Pace:</strong> Slightly slower than conversational. The energy statistics in Step 4 and The Key Insight — read those clearly. Let the numbers land before moving on.</p>
+  <p><strong>What was removed and why:</strong> The University/Government version of this chapter (sections 1.1–1.5) has been cut entirely — this is the Year 7 edition. The classroom activity has been replaced with a single spoken pause invitation. References have been removed. All changes are marked inline below as you read.</p>
+</div>
+
+
+<!-- ── NARRATION SCRIPT ── -->
+<div class="narration">
+
+  <h2>You Press Enter. Then What?</h2>
+
+  <p>You're sitting in class. You open ChatGPT on your laptop. You type:</p>
+
+  <blockquote>"Tell me about space"</blockquote>
+
+  <p>You press Enter. An answer appears in a few seconds. Easy.</p>
+
+  <p>But what actually happened in those few seconds? Where did your words go? What did the computer do with them? And why does it matter?</p>
+
+  <p>Let's follow your question on its journey.</p>
+
+  <hr class="section-div">
+
+  <h2>Step 1 — Your Words Become Numbers</h2>
+
+  <p>AI doesn't read English. It doesn't read any language, actually. It reads <strong>numbers</strong>.</p>
+
+  <p>The moment you press Enter, your question gets chopped into tiny pieces called <strong>tokens</strong>. A token is usually a word or part of a word. The sentence "Tell me about space" becomes roughly four tokens. Each token gets turned into a number that the AI can work with.</p>
+
+  <p>Think of it like a translator at the United Nations. You speak English. The translator turns your words into something the other person can understand. Except here, the "other person" is a machine that only understands maths.</p>
+
+  <hr class="section-div">
+
+  <h2>Step 2 — Your Question Travels to a Data Centre</h2>
+
+  <p>Your tokens don't stay on your laptop. They travel — through cables, across networks — to a <strong>data centre</strong>. A data centre is a building full of thousands of very powerful computers, all working together.</p>
+
+  <p>These buildings are enormous. Some are the size of several football fields. They run 24 hours a day, 7 days a week. And they need two things to keep running:</p>
+
+  <ol>
+    <li><strong>Electricity</strong> — to power the computers</li>
+    <li><strong>Water</strong> — to cool them down, because they get incredibly hot</li>
+  </ol>
+
+  <p>Your little question — "Tell me about space" — just activated a small part of one of those massive buildings.</p>
+
+  <hr class="section-div">
+
+  <h2>Step 3 — The Machine Starts Guessing</h2>
+
+  <p>Here's the part most people don't know: <strong>AI doesn't look up answers</strong>. It's not like a search engine that finds a webpage. Instead, it <strong>generates</strong> an answer, one word at a time, by predicting what word should come next.</p>
+
+  <p>It's like the world's most advanced autocomplete. Your phone predicts the next word when you text. AI does the same thing — but with the knowledge of millions of books, websites, and documents built into its training.</p>
+
+  <p>The problem? Your question was vague.</p>
+
+  <p>"Tell me about space."</p>
+
+  <p>Space as in… outer space? Personal space? Storage space? Keyboard space bar? The AI doesn't know which one you mean. So it has to consider <strong>all the possibilities</strong> and make its best guess.</p>
+
+  <p>That guessing takes work. More possibilities equals more calculations equals more electricity equals more water for cooling.</p>
+
+  <hr class="section-div">
+
+  <h2>Step 4 — The Answer Comes Back</h2>
+
+  <p>The AI picks the most likely meaning, generates an answer token by token, and sends it back to your screen. The whole thing takes a few seconds.</p>
+
+  <p>But here's the catch: because your question was vague, there's a good chance the answer isn't what you wanted. Maybe it gave you a three-paragraph essay about the solar system when you just needed a definition of "outer space" for your science homework.</p>
+
+  <p>So what do you do? <strong>You try again.</strong> You retype. You rephrase. Each retry runs the whole process again — tokens, data centre, calculations, electricity, water.</p>
+
+  <p>Google has measured this. One AI text prompt uses about <strong>0.24 watt-hours of electricity</strong> and <strong>0.26 millilitres of water</strong>. Tiny amounts. But multiply that by the 200 million people using AI every day, many of them retrying 3 or 4 times, and the numbers become massive.</p>
+
+  <hr class="section-div">
+
+  <h2>The Key Insight</h2>
+
+  <p>The quality of your question determines how hard the machine works.</p>
+
+  <p>A vague question makes the AI guess. Guessing costs energy. The answer often misses the mark, so you retry. Each retry costs more energy.</p>
+
+  <p>A <strong>clear, structured question</strong> does the opposite. It tells the AI exactly what you need. Less guessing. Better answer. First time. Less energy.</p>
+
+  <p>That's why learning to prompt well isn't just a tech skill — it's an <strong>environmental skill</strong>. And in the next chapter, we'll see just how big the retry problem really is.</p>
+
+  <p>But first — is there a way to structure every question so the AI gets it right the first time? There is. It's called <strong>C.R.A.F.T.</strong> And it might be the most important five letters in AI.</p>
+
+  <p>We'll unpack them in Chapter 4.</p>
+
+
+  <!-- ── ANNOTATION: Activity cut ── -->
+  <div class="annotation-cut">
+    <p class="ann-label">✂️ Removed after this point</p>
+    <p class="ann-title">Activity 1.1 — "The Two-Question Experiment"</p>
+    <p class="ann-reason">Classroom exercise — students open an AI tool and compare two prompts. Not suitable for audio. Replaced with a single spoken pause invitation on the next line. Continue reading from there.</p>
+  </div>
+
+  <p class="pause-line">Pause here if you'd like to try that yourself before we move on.</p>
+
+
+  <!-- ── ANNOTATION: Uni/Gov section cut ── -->
+  <div class="annotation-cut">
+    <p class="ann-label">✂️ Removed — entire section</p>
+    <p class="ann-title">University/Government Version — Sections 1.1 through 1.5</p>
+    <p class="ann-reason">The English audiobook uses Year 7 level prose only. The University/Government version of this chapter (covering the inference pipeline, ambiguity tax, scale calculations, policy implications, and forward reference) has been cut in full. If you wish to read it for context, it is in the full English book. Do not read it aloud.</p>
+  </div>
+
+
+  <!-- ── ANNOTATION: References cut ── -->
+  <div class="annotation-cut">
+    <p class="ann-label">✂️ Removed — references list</p>
+    <p class="ann-title">References [1] through [6]</p>
+    <p class="ann-reason">Inline references and the bibliography are not read aloud. All sources are consolidated in the print edition. If a spoken credits section is added to the audiobook, John will include it at the very end.</p>
+  </div>
+
+
+  <!-- ── ANNOTATION: Editorial blocks cut ── -->
+  <div class="annotation-cut">
+    <p class="ann-label">✂️ Removed — editorial meta-content</p>
+    <p class="ann-title">Teacher's Desk · Practitioner's Note · PC1 Mini-Card</p>
+    <p class="ann-reason">These sections appear at the end of Part 1 in the book. They are editorial tools for classroom and professional readers — not book content. They do not appear in the audiobook.</p>
+  </div>
+
+</div>
+
+
+<!-- ── END CARD ── -->
+<div class="end-card">
+  <p>Chapter 1 complete. When you're ready, continue to Chapter 2.</p>
+  <a href="ch2-deborah.html" class="next-link">Chapter 2 — The Retry Problem →</a>
+</div>
+
+
+<p class="footer">
+  PROMPTCRAFT 1 &nbsp;·&nbsp; CH 1 NARRATOR SCRIPT — DEBORAH ARNELL &nbsp;·&nbsp; CONFIDENTIAL<br>
+  © John Kenneally
+</p>
+
+
+<!-- ── FLOATING NOTEPAD ── -->
+<div id="notepad" style="position:fixed;bottom:24px;right:24px;width:300px;z-index:9999;font-family:system-ui,sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.22);border-radius:12px;overflow:hidden;">
+  <div id="notepad-header" style="background:#0a0a1a;color:white;padding:0.6rem 1rem;display:flex;justify-content:space-between;align-items:center;cursor:move;user-select:none;">
+    <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#4a7fd4;">📝 Ch 1 Notes</span>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button onclick="clearNotes()" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:0.75rem;padding:0;">✕ clear</button>
+      <button onclick="toggleNotepad()" id="notepad-toggle" style="background:none;border:none;color:white;cursor:pointer;font-size:1rem;padding:0;line-height:1;">−</button>
+    </div>
+  </div>
+  <div id="notepad-body" style="background:#fff;">
+    <textarea id="notepad-text" placeholder="Notes for Chapter 1 — pacing, flagged lines, questions for John…" style="width:100%;height:200px;border:none;padding:1rem;font-family:inherit;font-size:0.85rem;line-height:1.65;color:#2d2d2d;resize:vertical;outline:none;display:block;"></textarea>
+    <div style="background:#f4f5f9;padding:0.4rem 1rem;font-size:0.68rem;color:#999;">Saves here · Private · Ch 1 Deborah</div>
+  </div>
+</div>
+
+<script>
+  const noteKey = 'pc1-notes-ch1-deborah';
+  const ta = document.getElementById('notepad-text');
+  ta.value = localStorage.getItem(noteKey) || '';
+  ta.addEventListener('input', () => localStorage.setItem(noteKey, ta.value));
+  let open = true;
+  function toggleNotepad() {
+    open = !open;
+    document.getElementById('notepad-body').style.display = open ? 'block' : 'none';
+    document.getElementById('notepad-toggle').textContent = open ? '−' : '+';
+  }
+  function clearNotes() {
+    if (confirm('Clear Chapter 1 notes?')) { ta.value = ''; localStorage.removeItem(noteKey); }
+  }
+  const pad = document.getElementById('notepad');
+  const hdr = document.getElementById('notepad-header');
+  let dragging = false, ox = 0, oy = 0;
+  hdr.addEventListener('mousedown', e => { dragging = true; ox = e.clientX - pad.getBoundingClientRect().left; oy = e.clientY - pad.getBoundingClientRect().top; });
+  document.addEventListener('mousemove', e => { if (!dragging) return; pad.style.right='auto'; pad.style.bottom='auto'; pad.style.left=(e.clientX-ox)+'px'; pad.style.top=(e.clientY-oy)+'px'; });
+  document.addEventListener('mouseup', () => dragging = false);
+</script>
+
+</body>
+</html>

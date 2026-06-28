@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ch 2 — Narration Script · Deborah Arnell</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0a0a1a;
+      --blue: #4a7fd4;
+      --blue-dim: #3360a8;
+      --cream: #f9f6f0;
+      --text: #1a1a2e;
+      --muted: #666;
+      --border: #ddd;
+      --cut-bg: #fff5f5;
+      --cut-border: #e74c3c;
+      --cut-text: #8b0000;
+      --adapt-bg: #fffbec;
+      --adapt-border: #d4a843;
+      --adapt-text: #7a5a00;
+      --note-bg: #f0f4ff;
+      --note-border: #4a7fd4;
+      --note-text: #1a3a6e;
+      --font: Georgia, 'Times New Roman', serif;
+      --sans: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      font-size: 18px;
+      line-height: 1.9;
+      color: var(--text);
+      background: var(--cream);
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.5rem 8rem;
+    }
+
+    /* ── NAV ── */
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 0; border-bottom: 1px solid var(--border); }
+    .nav a { font-family: var(--sans); font-size: 0.78rem; font-weight: 700; color: var(--blue); text-decoration: none; display: flex; align-items: center; gap: 0.3rem; }
+    .nav a:hover { color: var(--blue-dim); }
+    .nav .chapter-badge { font-family: var(--sans); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── HEADER ── */
+    .chapter-header { padding: 2.5rem 0 2rem; border-bottom: 2px solid var(--dark); margin-bottom: 2.5rem; }
+    .chapter-header .part-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
+    .chapter-header h1 { font-family: var(--sans); font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 900; color: var(--dark); line-height: 1.2; margin-bottom: 0.8rem; }
+    .chapter-header .meta { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); }
+
+    /* ── CONTEXT BOX ── */
+    .context-box { background: var(--note-bg); border-left: 4px solid var(--note-border); border-radius: 0 8px 8px 0; padding: 1.4rem 1.6rem; margin: 0 0 2.5rem; }
+    .context-box .ctx-label { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blue-dim); margin-bottom: 0.6rem; }
+    .context-box p { font-size: 0.92rem; color: var(--note-text); line-height: 1.65; margin-bottom: 0.5rem; }
+    .context-box p:last-child { margin-bottom: 0; }
+    .context-box strong { color: var(--dark); }
+
+    /* ── PROSE ── */
+    h2 { font-family: var(--sans); font-size: 1.1rem; font-weight: 800; color: var(--dark); letter-spacing: 0.02em; margin: 2.2rem 0 0.8rem; }
+    p { margin-bottom: 1.1rem; }
+    p:last-child { margin-bottom: 0; }
+    blockquote { margin: 1.2rem 0 1.2rem 1.2rem; padding-left: 1.2rem; border-left: 3px solid var(--blue); font-style: italic; color: #333; }
+    ul { margin: 0.6rem 0 1.1rem 1.6rem; }
+    li { margin-bottom: 0.5rem; }
+    strong { font-weight: 700; }
+
+    /* ── ANNOTATIONS ── */
+    .annotation-cut {
+      background: var(--cut-bg);
+      border: 1.5px solid var(--cut-border);
+      border-radius: 8px;
+      padding: 1rem 1.4rem;
+      margin: 1.5rem 0;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--cut-text);
+    }
+    .annotation-cut .ann-label { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 0.4rem; color: var(--cut-border); }
+    .annotation-cut p { font-size: 0.85rem; color: var(--cut-text); margin-bottom: 0.3rem; }
+    .annotation-cut p:last-child { margin-bottom: 0; }
+
+    .annotation-adapt {
+      background: var(--adapt-bg);
+      border: 1.5px solid var(--adapt-border);
+      border-radius: 8px;
+      padding: 1rem 1.4rem;
+      margin: 1.5rem 0;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--adapt-text);
+    }
+    .annotation-adapt .ann-label { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 0.4rem; color: #a07c20; }
+    .annotation-adapt p { font-size: 0.85rem; color: var(--adapt-text); margin-bottom: 0.3rem; }
+    .annotation-adapt p:last-child { margin-bottom: 0; }
+
+    /* ── PAUSE LINE ── */
+    .pause-line {
+      border-left: 4px solid var(--blue);
+      padding: 0.8rem 1.2rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #2a4a7a;
+      background: #f0f4ff;
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .divider { text-align: center; color: var(--muted); letter-spacing: 0.4em; margin: 3rem 0 2.5rem; font-size: 0.9rem; }
+
+    /* ── END CARD ── */
+    .end-card { margin-top: 4rem; background: var(--dark); color: white; border-radius: 12px; padding: 2rem 2rem; text-align: center; }
+    .end-card .ec-label { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.8rem; }
+    .end-card .ec-nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+    .end-card a { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+    .end-card a:hover { color: #7aaaf0; }
+
+    /* ── PRINT ── */
+    @media print {
+      .nav, .end-card, #notepad { display: none !important; }
+      body { background: white; font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<div class="nav">
+  <a href="deborah.html">← Deborah's Page</a>
+  <span class="chapter-badge">Chapter 2 of 9 · Part 1</span>
+  <a href="index.html">Hub →</a>
+</div>
+
+<!-- ── HEADER ── -->
+<div class="chapter-header">
+  <div class="part-label">Part 1 — Why This Matters</div>
+  <h1>Chapter 2 — The Retry Problem</h1>
+  <div class="meta">Narration script for Deborah Arnell &nbsp;·&nbsp; Year 7 register &nbsp;·&nbsp; English edition</div>
+</div>
+
+<!-- ── CONTEXT BOX ── -->
+<div class="context-box">
+  <div class="ctx-label">🎙️ Narrator context — read this before you record</div>
+  <p><strong>Where you are:</strong> Chapter 1 set up the world — AI uses real electricity and water with every prompt. Now you're landing the scale of the problem. This chapter is where the stakes click into place.</p>
+  <p><strong>Tone:</strong> Start curious, almost conversational — like you're noticing something together with the listener. Build momentum through the numbers section. Land the email lesson with quiet authority — it's the big conceptual shift. The structured prompt at the end should be read slowly and clearly. Let it land.</p>
+  <p><strong>What was cut:</strong> Activity 2.1 (Birthday Card Challenge) → classroom exercise, replaced with a pause line. University/Government version (sections 2.1–2.2) → technical analysis not suited to audio. References list → print only.</p>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- SCRIPT BEGINS                          -->
+<!-- ══════════════════════════════════════ -->
+
+<h2>The Loop Nobody Talks About</h2>
+
+<p>Here's something that happens millions of times a day, all around the world.</p>
+
+<p>Someone opens ChatGPT. They type:</p>
+
+<blockquote>"Write me an essay about World War 2"</blockquote>
+
+<p>The AI writes something. It's... okay. But it's too long. It's about the wrong part of the war. It uses words they don't understand.</p>
+
+<p>So they try again:</p>
+
+<blockquote>"Make it shorter"</blockquote>
+
+<p>Still not right. Now it's too short and it dropped the important bits.</p>
+
+<blockquote>"Add more about D-Day but keep it under 300 words"</blockquote>
+
+<p>Closer. But the tone is wrong — it sounds like a university textbook, not a Year 7 assignment.</p>
+
+<blockquote>"Make it simpler"</blockquote>
+
+<p>Four attempts. Four times the computer ran through millions of calculations. Four times the data centre used electricity and water.</p>
+
+<p>This is <strong>the retry loop</strong>. And it's happening on a massive scale.</p>
+
+
+<h2>The Numbers</h2>
+
+<p>Remember from Chapter 1: one AI prompt uses about <strong>0.24 watt-hours of electricity</strong> and <strong>0.26 millilitres of water</strong>.</p>
+
+<p>Now do the maths:</p>
+
+<ul>
+  <li><strong>200 million people</strong> use AI tools every day</li>
+  <li>Most of them retry <strong>3–4 times</strong> per task</li>
+  <li>That's <strong>600–800 million unnecessary prompts</strong> daily</li>
+  <li>At 0.24 watt-hours each — that's <strong>144 to 192 megawatt-hours of wasted energy. Every day.</strong></li>
+</ul>
+
+<p>To put that in perspective: 192 megawatt-hours is enough electricity to power about <strong>640 Australian homes for a day</strong>. Wasted. Every single day. Just because people didn't know how to ask properly the first time.</p>
+
+
+<h2>The Email Lesson</h2>
+
+<p>When email was new, nobody taught people how to use it. People wrote entire letters as emails — "Dear Sir/Madam..." for a message that could have been one line. It was chaos. Then schools started teaching email skills.</p>
+
+<p><strong>AI prompting is at that same moment right now.</strong> Most people are doing the equivalent of writing a formal letter when they should be writing a text message.</p>
+
+
+<h2>What a Structured Prompt Looks Like</h2>
+
+<p>Let's go back to that World War 2 essay. Instead of four attempts:</p>
+
+<blockquote>"You are a Year 7 history teacher. Write a 250-word essay about the D-Day landings for a school assignment. Use simple language a 12-year-old would understand. Include one statistic and one quote. Use a formal but friendly tone."</blockquote>
+
+<p>That's one prompt. One attempt. One good answer. One quarter of the electricity. One quarter of the water.</p>
+
+
+<!-- ACTIVITY 2.1 — CUT -->
+<div class="annotation-cut">
+  <div class="ann-label">✂️ Cut — Activity 2.1 (The Birthday Card Challenge)</div>
+  <p>Classroom exercise. Students calculate energy savings from reducing retries.</p>
+  <p>Not suited to audio — interactive and written. Replaced with pause line below.</p>
+</div>
+
+<div class="pause-line">
+  Pause here if you'd like to try that yourself — pick any task you'd normally use AI for, and see how much difference a structured prompt makes.
+</div>
+
+
+<div class="divider">· · ·</div>
+
+
+<!-- UNIVERSITY/GOVERNMENT VERSION — CUT -->
+<div class="annotation-cut">
+  <div class="ann-label">✂️ Cut — University/Government Version (Sections 2.1–2.2)</div>
+  <p><strong>Section 2.1 — Quantifying the Retry Cycle:</strong> Technical table with per-prompt energy, carbon, and water multiplied across 200M users. Dense data analysis for policy readers.</p>
+  <p><strong>Section 2.2 — Policy Recommendation: Prompt Quality Benchmarks:</strong> Organisational recommendations — linting, testing, review, reporting. Operational framework not suited to audio.</p>
+  <p>The Year 7 version covers the same core insight in a more accessible form. Nothing is lost for the listener.</p>
+</div>
+
+
+<!-- REFERENCES — CUT -->
+<div class="annotation-cut">
+  <div class="ann-label">✂️ Cut — References [1] [2]</div>
+  <p>Google (2025) and Capgemini (2025) citations. Print and ebook only — available at promptcraft1.com.</p>
+</div>
+
+
+<!-- ── END CARD ── -->
+<div class="end-card">
+  <div class="ec-label">End of Chapter 2 script</div>
+  <div class="ec-nav">
+    <a href="ch1-deborah.html">← Chapter 1</a>
+    <a href="deborah.html">Deborah's Page</a>
+    <a href="ch3-deborah.html">Chapter 3 →</a>
+  </div>
+</div>
+
+
+<!-- ── FLOATING NOTEPAD ── -->
+<div id="notepad" style="position:fixed;bottom:24px;right:24px;width:300px;z-index:9999;font-family:system-ui,sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.22);border-radius:12px;overflow:hidden;">
+  <div id="notepad-header" style="background:#0a0a1a;color:white;padding:0.6rem 1rem;display:flex;justify-content:space-between;align-items:center;cursor:move;user-select:none;">
+    <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#4a7fd4;">📝 My Notes</span>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button onclick="clearNotes()" title="Clear notes" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:0.75rem;padding:0;">✕ clear</button>
+      <button onclick="toggleNotepad()" id="notepad-toggle" style="background:none;border:none;color:white;cursor:pointer;font-size:1rem;padding:0;line-height:1;">−</button>
+    </div>
+  </div>
+  <div id="notepad-body" style="background:#fff;">
+    <textarea id="notepad-text" placeholder="Type your notes here — they save automatically to this device…" style="width:100%;height:220px;border:none;padding:1rem;font-family:inherit;font-size:0.85rem;line-height:1.65;color:#2d2d2d;resize:vertical;outline:none;display:block;"></textarea>
+    <div style="background:#f4f5f9;padding:0.4rem 1rem;font-size:0.68rem;color:#999;letter-spacing:0.05em;">Saves to this device only · Private</div>
+  </div>
+</div>
+
+<script>
+  const noteKey = 'pc1-notes-ch2-deborah';
+  const ta = document.getElementById('notepad-text');
+  ta.value = localStorage.getItem(noteKey) || '';
+  ta.addEventListener('input', () => localStorage.setItem(noteKey, ta.value));
+
+  let open = true;
+  function toggleNotepad() {
+    open = !open;
+    document.getElementById('notepad-body').style.display = open ? 'block' : 'none';
+    document.getElementById('notepad-toggle').textContent = open ? '−' : '+';
+  }
+
+  function clearNotes() {
+    if (confirm('Clear all your notes?')) { ta.value = ''; localStorage.removeItem(noteKey); }
+  }
+
+  const pad = document.getElementById('notepad');
+  const hdr = document.getElementById('notepad-header');
+  let dragging = false, ox = 0, oy = 0;
+  hdr.addEventListener('mousedown', e => {
+    dragging = true;
+    ox = e.clientX - pad.getBoundingClientRect().left;
+    oy = e.clientY - pad.getBoundingClientRect().top;
+  });
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    pad.style.left = (e.clientX - ox) + 'px';
+    pad.style.top = (e.clientY - oy) + 'px';
+    pad.style.right = 'auto';
+    pad.style.bottom = 'auto';
+  });
+  document.addEventListener('mouseup', () => dragging = false);
+</script>
+
+</body>
+</html>
