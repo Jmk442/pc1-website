@@ -1,35 +1,25 @@
-# PC1 Website — How to Talk to Machines
+# PC1 Website — PromptCraft 1
 
-The official website for PromptCraft One (PC1) and "How to Talk to Machines" by John Kenneally.
+The official website for PromptCraft 1 — How to Talk to Machines by John Kenneally.
 
 ## What this website does
 
-- Markets the PC1 book ("How to Talk to Machines")
-- Sells downloadable products via external checkout (Gumroad / Stripe)
-- Hosts the PC1 course library
-- Provides a classroom home for educators
-- Runs the Start Here quiz and recommendation engine
-- Hosts the PC1 library of articles
-- Tracks the marketing diary and launch plan
-- Provides a dashboard preview (Stage 1 — browser only, no login required)
+- Sells PromptCraft 1 (PDF + EPUB) via a single Gumroad checkout point
+- Explains the C.R.A.F.T. method
+- Hosts a small resources area for prompt-literacy articles
+- Collects update-list interest (provider connection comes later)
 
 ## Before you start
 
 You need:
-- Node.js installed (version 18 or later) — download from nodejs.org
-- A terminal (Terminal on Mac, Command Prompt or PowerShell on Windows)
+
+- Node.js 18 or later — download from nodejs.org
+- A terminal
 
 ## How to install
 
-Open your terminal. Navigate to this folder:
-
 ```
 cd pc1-website
-```
-
-Install dependencies:
-
-```
 npm install
 ```
 
@@ -39,72 +29,34 @@ npm install
 npm run dev
 ```
 
-Open your browser and go to: http://localhost:3000
+Open: http://localhost:3000
 
-## How to replace product checkout links
+## How to connect Gumroad later
 
-Open the file: `data/products.ts`
+Open `data/pc1Product.ts`.
 
-Find each product entry. Replace the `checkoutLink` value with your real Gumroad or Stripe Payment Link URL.
-
-Example:
-```
-checkoutLink: 'https://yourname.gumroad.com/l/pc1-book',
-```
-
-## How to add articles to the library
-
-Create a Markdown file in: `content/library/articles/`
-
-Example filename: `what-is-a-prompt.md`
-
-Articles will be integrated into the Library page once the content rendering is wired up.
-
-## How to deploy to Netlify
-
-1. Create a free account at netlify.com
-2. Click "Add new site" → "Import an existing project"
-3. Connect your GitHub repository
-4. Build command: `npm run build`
-5. Publish directory: `.next`
-6. Click Deploy
-
-Or use the Netlify CLI:
+Set:
 
 ```
-npm install -g netlify-cli
-netlify init
-netlify deploy --prod
+gumroadUrl: 'https://yourname.gumroad.com/l/your-product',
+checkoutStatus: 'live',
 ```
 
-## What is Stage 1
+Do not put checkout URLs anywhere else.
 
-Stage 1 is the launchable website. It includes:
-- Public pages
-- Product cards with external checkout links
-- Course library
-- Start Here quiz
-- Dashboard preview (browser storage only)
+## How to add a resource article
 
-No login, no database, no Stripe Checkout integration.
+1. Add a Markdown file in `content/resources/`
+2. Add matching metadata in `data/articles.ts`
 
-## What requires Stage 2
+## How to deploy (later)
 
-Stage 2 adds:
-- User accounts (Supabase Auth)
-- Protected downloads
-- Stripe Checkout and webhooks
-- Database-backed course progress
-- Customer dashboard
+Build command: `npm run build`
 
-## Updating product links
+Publish directory: `out`
 
-Edit `data/products.ts`. Each product has a `checkoutLink` field. Replace `GUMROAD_LINK_*` placeholders with real URLs.
-
-## Updating the marketing diary
-
-Edit `content/marketing/diary.md` or update the `app/marketing-diary/page.tsx` file directly for now.
+Do not promote production without the owner approval phrase.
 
 ## Support
 
-This project was built with Claude Code. For questions, see CLAUDE.md for the project rules and architecture notes.
+See CLAUDE.md for project rules.

@@ -1,9 +1,8 @@
 # dependencies
 /node_modules
 
-# Next.js
-/.next/
-/out/
+# TypeScript
+*.tsbuildinfo
 
 # production
 /build
@@ -26,3 +25,11 @@ yarn-error.log*
 
 # Netlify
 .netlify
+
+# Local-only private production material — do not publish or commit
+/_private/
+/Audio -Book-Recordings/
+
+# Draft catalogues — not live product truth
+/courses/considered-courses.ts
+/courses/considered-products.ts

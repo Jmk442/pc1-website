@@ -15,7 +15,7 @@ const config: Config = {
         'accent-dark': '#5aad2e',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
     },
   },

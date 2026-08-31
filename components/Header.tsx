@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { navLinks } from '@/data/navigation'
+import CheckoutButton from '@/components/CheckoutButton'
 
 function LeafMark({ size = 32 }: { size?: number }) {
   return (
@@ -20,21 +21,19 @@ export default function Header() {
     <header className="bg-primary text-white sticky top-0 z-50 shadow-lg border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2.5">
+          <Link href="/" className="flex items-center gap-2.5 min-w-0">
             <LeafMark size={32} />
-            <div>
+            <div className="min-w-0">
               <span className="font-black text-lg text-white tracking-tight">PromptCraft</span>
               <span className="text-accent font-black text-lg"> 1</span>
-              <p className="cover-tagline text-white/40 leading-none" style={{ fontSize: '0.55rem' }}>
-                BETTER PROMPTS. BETTER OUTCOMES.{' '}
-                <span className="text-accent">BETTER WORLD.</span>
+              <p className="cover-tagline text-white/40 leading-none truncate" style={{ fontSize: '0.55rem' }}>
+                How to Talk to Machines
               </p>
             </div>
           </Link>
 
-          {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
-            {navLinks.slice(0, 7).map((link) => (
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -43,15 +42,11 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/start"
-              className="ml-2 px-4 py-2 rounded bg-accent text-primary text-sm font-bold hover:bg-accent-dark transition-colors"
-            >
-              Start Here
-            </Link>
+            <span className="ml-2">
+              <CheckoutButton className="btn-primary text-sm px-4 py-2" />
+            </span>
           </nav>
 
-          {/* Mobile menu button */}
           <button
             className="lg:hidden p-2 rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white"
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -65,7 +60,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile nav */}
       {open && (
         <nav className="lg:hidden bg-primary border-t border-white/10 px-4 pb-4" aria-label="Mobile navigation">
           {navLinks.map((link) => (
@@ -78,6 +72,9 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <div className="pt-4" onClick={() => setOpen(false)}>
+            <CheckoutButton className="btn-primary w-full text-center block" />
+          </div>
         </nav>
       )}
     </header>

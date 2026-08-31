@@ -9,5 +9,8 @@ export interface Product {
   featured?: boolean
 }
 
-// No products added yet — waiting for John's actual product details and Gumroad links.
+/**
+ * Historical multi-product catalogue is not live truth.
+ * Launch product configuration: data/pc1Product.ts
+ */
 export const products: Product[] = []
