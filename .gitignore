@@ -4,6 +4,10 @@
 # TypeScript
 *.tsbuildinfo
 
+# Next.js
+/.next/
+/out/
+
 # production
 /build
 
