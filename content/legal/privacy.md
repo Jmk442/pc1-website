@@ -63,7 +63,7 @@ We take practical steps to look after information, but no method of transmission
 
 ## Access, correction and contact
 
-To ask about, correct or delete information you supplied through this site, use the [contact form](/contact/).
+To ask about, correct or delete information you supplied through this site, email [john@spiralbeyondcompliance.com.au](mailto:john@spiralbeyondcompliance.com.au) or use the [contact form](/contact/).
 
 ## Third-party links
 

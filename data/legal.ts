@@ -1,5 +1,8 @@
 export const legalUpdated = '1 September 2026'
 
+/** Current public PC1 contact and customer-support email. */
+export const publicContactEmail = 'john@spiralbeyondcompliance.com.au'
+
 export const legalLinks = [
   { label: 'Terms', href: '/terms' },
   { label: 'Privacy', href: '/privacy' },

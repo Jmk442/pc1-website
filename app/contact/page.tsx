@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { seo } from '@/data/seo'
+import { publicContactEmail } from '@/data/legal'
 import EmailCapture from '@/components/EmailCapture'
 
 export const metadata: Metadata = {
@@ -14,7 +15,16 @@ export default function ContactPage() {
       <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">Contact</p>
       <h1 className="text-4xl font-extrabold text-primary mb-4">Get in touch</h1>
       <p className="text-gray-500 mb-8">
-        Questions about PromptCraft 1, teaching the method, the update list, or a purchase — write below.
+        Questions about PromptCraft 1, teaching the method, the update list, a purchase, or a refund — write below, or email John Kenneally.
+      </p>
+
+      <p className="mb-8">
+        <a
+          href={`mailto:${publicContactEmail}`}
+          className="text-primary font-semibold underline hover:text-accent break-all"
+        >
+          {publicContactEmail}
+        </a>
       </p>
 
       <div className="card mb-10">

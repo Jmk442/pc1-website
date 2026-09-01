@@ -52,7 +52,7 @@ A place on the update list is not a purchase or a preorder.
 
 When checkout is connected, purchase will be processed by Gumroad. After a successful purchase, Gumroad will deliver the PDF and EPUB files according to its download process.
 
-If you have a delivery or download problem, contact us through the [contact form](/contact/) and, once checkout is live, through Gumroad's purchase support as well.
+If you have a delivery or download problem, contact John Kenneally at [john@spiralbeyondcompliance.com.au](mailto:john@spiralbeyondcompliance.com.au), or through the [contact form](/contact/). Once checkout is live, also use Gumroad's purchase support.
 
 Until Gumroad is connected, this site does not complete payment and does not deliver the files.
 
@@ -94,4 +94,4 @@ These terms are governed by the laws of Australia. If a dispute arises, the cour
 
 ## Contact
 
-Questions about these terms can be sent through the [contact form](/contact/).
+Questions about these terms can be sent to [john@spiralbeyondcompliance.com.au](mailto:john@spiralbeyondcompliance.com.au) or through the [contact form](/contact/).
