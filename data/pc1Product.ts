@@ -10,8 +10,8 @@ export interface Pc1Product {
   publishingModel: string
   edition: string
   language: string
-  priceUsd: string
-  currency: 'USD'
+  priceAud: string
+  currency: 'AUD'
   formats: string
   isbn: 'UNASSIGNED'
   coverSrc: string
@@ -34,8 +34,8 @@ export const pc1Product: Pc1Product = {
   publishingModel: 'Self-published',
   edition: 'First edition, 2026',
   language: 'English',
-  priceUsd: '19.95',
-  currency: 'USD',
+  priceAud: '19.95',
+  currency: 'AUD',
   formats: 'PDF + EPUB',
   isbn: 'UNASSIGNED',
   coverSrc: '/images/pc1-cover.jpg',
@@ -44,12 +44,13 @@ export const pc1Product: Pc1Product = {
   checkoutStatus: 'live',
 }
 
-export const priceLabel = `USD ${pc1Product.priceUsd}`
+export const priceLabel = `A$${pc1Product.priceAud}`
 
 /** Public CTA label. */
 export const buyCtaLabel = 'Buy PromptCraft 1'
 
-export const checkoutDisclosure = 'Secure checkout and digital delivery through Gumroad.'
+export const checkoutDisclosure =
+  'Secure checkout and digital delivery through Gumroad. Applicable taxes are calculated at checkout.'
 
 /**
  * One checkout configuration point.
