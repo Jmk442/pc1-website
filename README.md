@@ -31,14 +31,14 @@ npm run dev
 
 Open: http://localhost:3000
 
-## How to connect Gumroad later
+## How to connect Gumroad
 
 Open `data/pc1Product.ts`.
 
-Set:
+Checkout lives only there:
 
 ```
-gumroadUrl: 'https://yourname.gumroad.com/l/your-product',
+gumroadUrl: 'https://promptcraftone.gumroad.com/l/promptcraft-1',
 checkoutStatus: 'live',
 ```
 

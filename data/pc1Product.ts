@@ -22,7 +22,7 @@ export interface Pc1Product {
 
 /**
  * Single governed product configuration for PromptCraft 1.
- * Insert the real Gumroad URL here later. Do not scatter checkout URLs.
+ * Checkout URL lives only here. Do not scatter Gumroad URLs.
  */
 export const pc1Product: Pc1Product = {
   id: 'pc1-book',
@@ -40,14 +40,16 @@ export const pc1Product: Pc1Product = {
   isbn: 'UNASSIGNED',
   coverSrc: '/images/pc1-cover.jpg',
   coverAlt: 'Cover of PromptCraft 1 — How to Talk to Machines by John Kenneally',
-  gumroadUrl: '',
-  checkoutStatus: 'pending',
+  gumroadUrl: 'https://promptcraftone.gumroad.com/l/promptcraft-1',
+  checkoutStatus: 'live',
 }
 
 export const priceLabel = `USD ${pc1Product.priceUsd}`
 
-/** Public CTA label. Uses locked price. */
-export const buyCtaLabel = `Get PromptCraft 1 — ${priceLabel}`
+/** Public CTA label. */
+export const buyCtaLabel = 'Buy PromptCraft 1'
+
+export const checkoutDisclosure = 'Secure checkout and digital delivery through Gumroad.'
 
 /**
  * One checkout configuration point.

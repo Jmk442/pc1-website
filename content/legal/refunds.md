@@ -4,25 +4,23 @@ This page explains refunds and consumer rights for the digital ebook PromptCraft
 
 Nothing in this policy excludes, restricts or modifies any consumer guarantee, right or remedy that cannot lawfully be excluded.
 
-Secure checkout is being prepared. Until Gumroad is connected, this site does not take payment. The wording below is the intended purchaser position once checkout is live.
+Purchase is processed by Gumroad. The wording below is the purchaser position for that checkout.
 
 ## Change of mind
 
-A digital ebook can be downloaded immediately after purchase. Change-of-mind refunds may be limited where you have already been given the files, to the extent the law allows.
+Except where a consumer guarantee, right or remedy that cannot lawfully be excluded applies, we do not offer an ordinary change-of-mind refund after the PDF or EPUB has been delivered, accessed or downloaded.
 
-Where a change-of-mind refund is available, it will be handled through Gumroad once checkout is connected, or by emailing [john@spiralbeyondcompliance.com.au](mailto:john@spiralbeyondcompliance.com.au).
+This does not exclude appropriate remedies for the issues described below or any statutory or consumer right that cannot lawfully be excluded.
 
-This is not a statement that refunds are unavailable in every case.
+## Failed, inaccessible or non-working digital delivery
 
-## Failed or inaccessible digital delivery
+If you paid and cannot obtain, open or access the PDF or EPUB files you bought, or the supplied files are corrupted or do not work, email [john@spiralbeyondcompliance.com.au](mailto:john@spiralbeyondcompliance.com.au). You may also use Gumroad's purchase support.
 
-If you paid and cannot obtain, open, or access the PDF or EPUB files you bought, email [john@spiralbeyondcompliance.com.au](mailto:john@spiralbeyondcompliance.com.au). Once checkout is live, also use Gumroad's purchase support.
-
-We will look into the delivery problem. Where the files cannot be delivered, you may be entitled to a replacement download or a refund as the law requires.
+Where the problem can reasonably be corrected by restoring access or supplying working files, we will do that first. If it cannot reasonably be corrected, you may be entitled to another appropriate remedy, including a refund where the law requires one.
 
 ## Duplicate purchases and payment errors
 
-If you are charged more than once in error, or you buy the same digital product twice by mistake, email [john@spiralbeyondcompliance.com.au](mailto:john@spiralbeyondcompliance.com.au) and, once checkout is live, Gumroad purchase support.
+If you are charged more than once in error, or you buy the same digital product twice by mistake, email [john@spiralbeyondcompliance.com.au](mailto:john@spiralbeyondcompliance.com.au) and use Gumroad purchase support.
 
 We will look into a refund or reversal of the duplicate or incorrect charge.
 
@@ -36,7 +34,7 @@ Buyers outside Australia may also have mandatory consumer rights under the law o
 
 ## Gumroad refund handling
 
-When checkout is connected, Gumroad processes the payment and usually handles the first step of a refund request through its own purchase flow.
+Gumroad processes the payment and usually handles the first step of a refund request through its own purchase flow.
 
 You may still contact John Kenneally directly at [john@spiralbeyondcompliance.com.au](mailto:john@spiralbeyondcompliance.com.au). We will work with Gumroad where a refund or replacement is required.
 

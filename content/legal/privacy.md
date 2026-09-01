@@ -32,9 +32,7 @@ This site does not currently run advertising, analytics or tracking pixels. It d
 
 ## Checkout
 
-When Gumroad checkout is connected, Gumroad will process purchase, payment and delivery information under its own privacy terms. This site does not currently collect payment-card details.
-
-Until checkout is live, this site does not take payment.
+Purchase of PromptCraft 1 is processed by Gumroad. Gumroad handles payment and delivery under its own privacy terms. This website does not collect payment-card details.
 
 ## How submitted information is used
 
@@ -49,7 +47,7 @@ We do not sell your information.
 
 ## Disclosure
 
-We disclose information to service providers only as needed to run the site and fulfil a request. That currently includes Netlify as host, and as form processor if the contact form is handled there. It will include Gumroad for checkout, payment and delivery once connected, and an email provider if the update list is connected later.
+We disclose information to service providers only as needed to run the site and fulfil a request. That currently includes Netlify as host, and as form processor if the contact form is handled there, and Gumroad for checkout, payment and delivery. It will include an email provider if the update list is connected later.
 
 Those providers process information under their own terms.
 

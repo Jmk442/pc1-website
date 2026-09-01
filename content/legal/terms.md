@@ -42,19 +42,17 @@ There is no guarantee that AI outputs produced using this method, the examples i
 
 ## External links
 
-This site may refer to other websites or services, including a checkout provider when purchase is connected. Those services have their own terms. We are not responsible for their content or practices.
+This site may refer to other websites or services, including Gumroad for checkout. Those services have their own terms. We are not responsible for their content or practices.
 
 ## Checkout and digital delivery {#terms-of-sale}
 
-Secure checkout is being prepared. Until a live Gumroad checkout is connected, a listing of price and format on this site is product information, not an offer that purchase is open.
+Purchase of PromptCraft 1 is processed by Gumroad. After a successful payment, Gumroad delivers the PDF and EPUB files.
+
+Except where a consumer guarantee, right or remedy that cannot lawfully be excluded applies, ordinary change-of-mind refunds are not offered after the PDF or EPUB has been delivered, accessed or downloaded. Appropriate remedies remain available for duplicate payments, failed or inaccessible delivery, supplied files that cannot reasonably be corrected, materially not-as-described issues, and other non-excludable rights. See the [refunds page](/refunds/) for details.
 
 A place on the update list is not a purchase or a preorder.
 
-When checkout is connected, purchase will be processed by Gumroad. After a successful purchase, Gumroad will deliver the PDF and EPUB files according to its download process.
-
-If you have a delivery or download problem, contact John Kenneally at [john@spiralbeyondcompliance.com.au](mailto:john@spiralbeyondcompliance.com.au), or through the [contact form](/contact/). Once checkout is live, also use Gumroad's purchase support.
-
-Until Gumroad is connected, this site does not complete payment and does not deliver the files.
+If you have a delivery or download problem, contact John Kenneally at [john@spiralbeyondcompliance.com.au](mailto:john@spiralbeyondcompliance.com.au), or through the [contact form](/contact/). You may also use Gumroad's purchase support.
 
 ## Purchaser licence
 

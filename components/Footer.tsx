@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { navLinks } from '@/data/navigation'
 import { legalLinks } from '@/data/legal'
 import { pc1Product } from '@/data/pc1Product'
+import CheckoutButton from '@/components/CheckoutButton'
 
 export default function Footer() {
   return (
@@ -43,9 +44,7 @@ export default function Footer() {
               <li>{pc1Product.formats}</li>
               <li>USD {pc1Product.priceUsd}</li>
               <li>
-                <Link href="/book/#offer" className="hover:text-accent transition-colors">
-                  Get PromptCraft 1
-                </Link>
+                <CheckoutButton className="hover:text-accent transition-colors" label="Buy PromptCraft 1" />
               </li>
               <li>
                 <Link href="/#updates" className="hover:text-accent transition-colors">

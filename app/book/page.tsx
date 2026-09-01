@@ -3,7 +3,7 @@ import Link from 'next/link'
 import CoverImage from '@/components/CoverImage'
 import CheckoutButton from '@/components/CheckoutButton'
 import { storeLongDescription } from '@/data/craft'
-import { pc1Product, priceLabel, isCheckoutLive } from '@/data/pc1Product'
+import { checkoutDisclosure, pc1Product, priceLabel } from '@/data/pc1Product'
 import { bookToc } from '@/data/bookToc'
 import { seo } from '@/data/seo'
 
@@ -13,8 +13,6 @@ export const metadata: Metadata = {
 }
 
 export default function BookPage() {
-  const live = isCheckoutLive()
-
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">The Book</p>
@@ -46,20 +44,11 @@ export default function BookPage() {
       </div>
 
       <section id="offer" className="card border-2 border-accent mb-14 scroll-mt-24">
-        <h2 className="text-2xl font-black text-primary mb-2">Get PromptCraft 1</h2>
-        <p className="text-gray-600 mb-4">
-          {pc1Product.formats} · {priceLabel} · One-time purchase.
+        <h2 className="text-2xl font-black text-primary mb-2">{pc1Product.displayTitle}</h2>
+        <p className="text-gray-600 mb-2">
+          {pc1Product.formats} · {priceLabel}
         </p>
-        {live ? (
-          <p className="text-gray-600 mb-6">
-            Checkout is handled securely. After purchase you receive the PDF and EPUB files.
-          </p>
-        ) : (
-          <p className="text-gray-600 mb-6">
-            Secure checkout is being prepared. PromptCraft 1 will be sold as {pc1Product.formats} for {priceLabel}.
-            Join the update list on the home page if you want to be notified when purchase opens.
-          </p>
-        )}
+        <p className="text-gray-600 mb-6">{checkoutDisclosure}</p>
         <CheckoutButton />
         <p className="text-gray-500 text-sm mt-6 leading-relaxed">
           Digital product · {pc1Product.formats} · {priceLabel} · Purchase subject to{' '}

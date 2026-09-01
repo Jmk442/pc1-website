@@ -5,7 +5,7 @@ import CraftGrid from '@/components/CraftGrid'
 import EmailCapture from '@/components/EmailCapture'
 import CTASection from '@/components/CTASection'
 import { audiences, craftElements, craftTransformation, storeShortDescription } from '@/data/craft'
-import { pc1Product, priceLabel } from '@/data/pc1Product'
+import { checkoutDisclosure, pc1Product, priceLabel } from '@/data/pc1Product'
 import { author } from '@/data/author'
 import { articles } from '@/data/articles'
 
@@ -52,6 +52,7 @@ export default function HomePage() {
               <p className="text-white/40 text-sm mt-6">
                 {pc1Product.formats} · {priceLabel} · {pc1Product.author}
               </p>
+              <p className="text-white/40 text-sm mt-2">{checkoutDisclosure}</p>
             </div>
             <div className="max-w-[280px] sm:max-w-[320px] mx-auto">
               <div className="rounded-lg overflow-hidden shadow-2xl ring-1 ring-white/10">
@@ -149,6 +150,7 @@ export default function HomePage() {
                 <li className="flex gap-3"><span className="text-accent font-black">✓</span> C.R.A.F.T. reference material you can keep using</li>
               </ul>
               <CheckoutButton />
+              <p className="text-gray-500 text-sm mt-3">{checkoutDisclosure}</p>
               <p className="text-gray-400 text-sm mt-3">
                 <Link href="/book" className="hover:text-primary">See what is included →</Link>
               </p>
@@ -230,8 +232,8 @@ export default function HomePage() {
       </section>
 
       <CTASection
-        heading="Get PromptCraft 1"
-        subtext={`${pc1Product.formats} · ${priceLabel}. A practical method for clearer AI prompts.`}
+        heading={pc1Product.displayTitle}
+        subtext={`${pc1Product.formats} · ${priceLabel}. ${checkoutDisclosure}`}
         secondaryLabel="See how C.R.A.F.T. works"
         secondaryHref="/craft"
       />

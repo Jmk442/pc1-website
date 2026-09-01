@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { craftElements, craftTransformation } from '@/data/craft'
 import { seo } from '@/data/seo'
 import CheckoutButton from '@/components/CheckoutButton'
+import { checkoutDisclosure } from '@/data/pc1Product'
 
 export const metadata: Metadata = {
   title: seo.craftTitle,
@@ -51,7 +52,8 @@ export default function CraftPage() {
 
       <div className="card bg-primary text-white text-center">
         <h2 className="text-xl font-bold mb-3">The book teaches the full method</h2>
-        <p className="text-white/70 mb-6">24 chapters, practical examples, and C.R.A.F.T. reference material.</p>
+        <p className="text-white/70 mb-2">24 chapters, practical examples, and C.R.A.F.T. reference material.</p>
+        <p className="text-white/50 text-sm mb-6">{checkoutDisclosure}</p>
         <CheckoutButton />
       </div>
     </div>
