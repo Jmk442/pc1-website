@@ -16,4 +16,7 @@ export const seo = {
     'Practical articles on prompt literacy, C.R.A.F.T. prompting, and writing better AI prompts for study and work.',
   contactTitle: 'Contact | PromptCraft 1',
   contactDescription: 'Contact John Kenneally about PromptCraft 1 — How to Talk to Machines.',
+  termsTitle: 'Terms of use | PromptCraft 1',
+  privacyTitle: 'Privacy | PromptCraft 1',
+  refundsTitle: 'Refunds and consumer rights | PromptCraft 1',
 }

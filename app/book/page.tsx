@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import CoverImage from '@/components/CoverImage'
 import CheckoutButton from '@/components/CheckoutButton'
 import { storeLongDescription } from '@/data/craft'
@@ -60,6 +61,17 @@ export default function BookPage() {
           </p>
         )}
         <CheckoutButton />
+        <p className="text-gray-500 text-sm mt-6 leading-relaxed">
+          Digital product · {pc1Product.formats} · {priceLabel} · Purchase subject to{' '}
+          <Link href="/terms/" className="text-primary font-semibold hover:text-accent">
+            Terms
+          </Link>{' '}
+          and applicable{' '}
+          <Link href="/refunds/" className="text-primary font-semibold hover:text-accent">
+            consumer rights
+          </Link>
+          .
+        </p>
       </section>
 
       <section className="mb-14">

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { navLinks } from '@/data/navigation'
+import { legalLinks } from '@/data/legal'
 import { pc1Product } from '@/data/pc1Product'
 
 export default function Footer() {
@@ -55,8 +56,17 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 text-center text-xs text-white/25">
-          © {new Date().getFullYear()} {pc1Product.author}. All rights reserved.
+        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-xs text-white/40">
+          <p>© 2026 {pc1Product.author}</p>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2">
+            {legalLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="hover:text-accent transition-colors">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>

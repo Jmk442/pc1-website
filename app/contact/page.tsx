@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { seo } from '@/data/seo'
 import EmailCapture from '@/components/EmailCapture'
 
@@ -13,7 +14,7 @@ export default function ContactPage() {
       <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">Contact</p>
       <h1 className="text-4xl font-extrabold text-primary mb-4">Get in touch</h1>
       <p className="text-gray-500 mb-8">
-        Questions about PromptCraft 1, teaching the method, or the update list — write below.
+        Questions about PromptCraft 1, teaching the method, the update list, or a purchase — write below.
       </p>
 
       <div className="card mb-10">
@@ -33,6 +34,12 @@ export default function ContactPage() {
           </div>
           <button type="submit" className="btn-primary w-full">Send message</button>
         </form>
+        <p className="mt-4 text-xs text-gray-500">
+          Your details are used only to respond to this enquiry. See the{' '}
+          <Link href="/privacy" className="underline hover:text-primary">privacy notice</Link>
+          {' '}and{' '}
+          <Link href="/refunds" className="underline hover:text-primary">refunds</Link> page.
+        </p>
       </div>
 
       <EmailCapture compact />
