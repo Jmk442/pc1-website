@@ -3,7 +3,7 @@ import Link from 'next/link'
 import CoverImage from '@/components/CoverImage'
 import CheckoutButton from '@/components/CheckoutButton'
 import { storeLongDescription } from '@/data/craft'
-import { checkoutDisclosure, pc1Product, priceLabel } from '@/data/pc1Product'
+import { checkoutDisclosure, pc1Product, priceLabel, refundDisclosure } from '@/data/pc1Product'
 import { bookToc } from '@/data/bookToc'
 import { seo } from '@/data/seo'
 
@@ -51,15 +51,18 @@ export default function BookPage() {
         <p className="text-gray-600 mb-6">{checkoutDisclosure}</p>
         <CheckoutButton />
         <p className="text-gray-500 text-sm mt-6 leading-relaxed">
+          {refundDisclosure}{' '}
+          <Link href="/refunds/" className="text-primary font-semibold hover:text-accent">
+            Read the full refund policy
+          </Link>
+          .
+        </p>
+        <p className="text-gray-500 text-sm mt-3 leading-relaxed">
           Digital product · {pc1Product.formats} · {priceLabel} · Purchase subject to{' '}
           <Link href="/terms/" className="text-primary font-semibold hover:text-accent">
             Terms
           </Link>{' '}
-          and applicable{' '}
-          <Link href="/refunds/" className="text-primary font-semibold hover:text-accent">
-            consumer rights
-          </Link>
-          .
+          and applicable consumer rights.
         </p>
       </section>
 

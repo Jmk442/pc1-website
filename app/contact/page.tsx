@@ -28,8 +28,13 @@ export default function ContactPage() {
       </p>
 
       <div className="card mb-10">
-        <form name="contact" method="POST" data-netlify="true" className="space-y-5">
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" className="space-y-5">
           <input type="hidden" name="form-name" value="contact" />
+          <p className="hidden" aria-hidden="true">
+            <label>
+              Do not fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+            </label>
+          </p>
           <div>
             <label htmlFor="name" className="block text-sm font-semibold text-primary mb-1">Your name</label>
             <input id="name" name="name" type="text" required className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent" />

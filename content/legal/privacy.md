@@ -10,15 +10,15 @@ If you use the [contact form](/contact/), we receive the name, email address and
 
 We use that information to respond to your enquiry and, where relevant, to handle a purchase, delivery or refund question.
 
-The website is hosted by Netlify. If the contact form is processed through Netlify Forms, Netlify receives those submitted details so that we can read and reply.
+The website is hosted by Netlify. The contact form is processed through Netlify Forms, so Netlify receives and stores those submitted details so that we can read and reply.
 
 ## Update list
 
 If you join the update list, you provide an email address. The intended purpose is practical PromptCraft updates, information about PromptCraft 1, and news about PromptCraft 2.
 
-An email provider is not connected yet. Until it is, that address is stored in your browser on this device and is not sent to a mailing-list service.
+The update-list form is processed through Netlify Forms. Netlify receives and stores the email address and the record of your request so that we can maintain the list and send the updates you asked for.
 
-When an email service is connected, that service's unsubscribe method will be stated at the point of collection. There is no remote unsubscribe link while the list remains local-only. You can stop a browser-stored sign-up by clearing this site's data in your browser.
+If a separate email-delivery service is connected later, this notice will be updated and that provider will receive only the information needed to send the requested updates. You can unsubscribe at any time by using the method in an update or by emailing [john@spiralbeyondcompliance.com.au](mailto:john@spiralbeyondcompliance.com.au).
 
 ## Other local storage
 
@@ -28,7 +28,7 @@ Some pages may save preferences in your browser on this device using local stora
 
 Netlify hosts the website. Like most hosts, Netlify may process technical log data such as IP address, browser type, date and time, and pages requested, in order to operate, secure and diagnose the service.
 
-This site does not currently run advertising, analytics or tracking pixels. It does not currently set advertising or analytics cookies. The host or your browser may still use technical cookies or similar storage needed to deliver the site.
+This site does not currently run advertising, analytics or tracking pixels. It does not currently set advertising or analytics cookies. Netlify or your browser may still use technical cookies or similar storage needed to deliver the site and process forms.
 
 ## Checkout
 
@@ -39,7 +39,7 @@ Purchase of PromptCraft 1 is processed by Gumroad. Gumroad handles payment and d
 We use information you submit to:
 
 - respond to enquiries
-- send the updates you asked for, once an email provider is connected
+- maintain the update list and send the updates you asked for
 - operate and secure the website
 - handle purchase, delivery or refund questions
 
@@ -47,7 +47,7 @@ We do not sell your information.
 
 ## Disclosure
 
-We disclose information to service providers only as needed to run the site and fulfil a request. That currently includes Netlify as host, and as form processor if the contact form is handled there, and Gumroad for checkout, payment and delivery. It will include an email provider if the update list is connected later.
+We disclose information to service providers only as needed to run the site and fulfil a request. That currently includes Netlify as host and form processor, and Gumroad for checkout, payment and delivery. It may include an email-delivery provider if one is connected later.
 
 Those providers process information under their own terms.
 
@@ -55,7 +55,7 @@ Those providers process information under their own terms.
 
 Contact messages are kept for as long as needed to respond and to handle a related support or purchase issue.
 
-Browser-stored update-list details remain on your device until you clear site data, or until an email provider is connected and those details are moved into that service with your consent at that time.
+Update-list details are kept for as long as you remain subscribed or as otherwise reasonably needed to document and administer the request. If you unsubscribe, we will stop using the address for updates and remove it from the active list, subject to any record we must keep by law.
 
 We take practical steps to look after information, but no method of transmission or storage is completely secure.
 

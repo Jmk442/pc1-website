@@ -52,6 +52,10 @@ export const buyCtaLabel = 'Buy PromptCraft 1'
 export const checkoutDisclosure =
   'Secure checkout and digital delivery through Gumroad. Gumroad converts the A$19.95 base price to USD at checkout. Applicable taxes are calculated at checkout.'
 
+/** Short checkout-adjacent summary. Full terms remain on the refunds page. */
+export const refundDisclosure =
+  'No change-of-mind refunds are offered after the PDF or EPUB has been delivered, accessed or downloaded. This does not affect remedies for failed or inaccessible delivery, corrupted or non-working files, a materially misdescribed product, duplicate charges, or rights that cannot lawfully be excluded.'
+
 /**
  * One checkout configuration point.
  * pending → in-site product section

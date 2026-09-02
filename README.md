@@ -7,7 +7,7 @@ The official website for PromptCraft 1 — How to Talk to Machines by John Kenne
 - Sells PromptCraft 1 (PDF + EPUB) via a single Gumroad checkout point
 - Explains the C.R.A.F.T. method
 - Hosts a small resources area for prompt-literacy articles
-- Collects update-list interest (provider connection comes later)
+- Collects update-list sign-ups through Netlify Forms
 
 ## Before you start
 
