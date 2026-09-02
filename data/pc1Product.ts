@@ -50,7 +50,7 @@ export const priceLabel = `A$${pc1Product.priceAud}`
 export const buyCtaLabel = 'Buy PromptCraft 1'
 
 export const checkoutDisclosure =
-  'Secure checkout and digital delivery through Gumroad. Applicable taxes are calculated at checkout.'
+  'Secure checkout and digital delivery through Gumroad. Gumroad converts the A$19.95 base price to USD at checkout. Applicable taxes are calculated at checkout.'
 
 /**
  * One checkout configuration point.
