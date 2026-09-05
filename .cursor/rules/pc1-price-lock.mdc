@@ -1,0 +1,16 @@
+---
+description: Keep the authorised PC1 direct-sale price at A$14.99 on the website and Gumroad checkout
+alwaysApply: true
+---
+
+# PC1 price lock — A$14.99
+
+The authorised PromptCraft 1 direct-sale price is **A$14.99**.
+
+- Source of truth: `data/pc1Product.ts` → `priceAud: '14.99'`
+- Live website: https://pc1-direct-sales-rc-20260901.netlify.app/
+- Checkout: https://promptcraftone.gumroad.com/l/promptcraft-1
+- Do not leave an active A$19.95 or A$14.95 offer on the website or Gumroad
+- A website-only change is incomplete until Git is committed/pushed and Gumroad `price_cents` is `1499`
+- Do not invent a Kindle URL or change unpublished Amazon pricing
+- Follow `prompts/PC1-PRICE-CONSISTENCY-A1499.md` when price work is requested
