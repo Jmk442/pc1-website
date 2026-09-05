@@ -1,6 +1,6 @@
 <!-- OWNER-PREPARED LEGAL BASELINE — PROFESSIONAL REVIEW RECOMMENDED -->
 
-This page explains refunds and consumer rights for the digital ebook PromptCraft 1 — How to Talk to Machines (PDF + EPUB, A$19.95).
+This page explains refunds and consumer rights for the digital ebook PromptCraft 1 — How to Talk to Machines (PDF + EPUB, A$14.99).
 
 Nothing in this policy excludes, restricts or modifies any consumer guarantee, right or remedy that cannot lawfully be excluded.
 

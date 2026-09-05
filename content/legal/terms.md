@@ -26,7 +26,7 @@ Edition: First edition, 2026.
 
 Format: PDF + EPUB.
 
-Price: A$19.95.
+Price: A$14.99.
 
 ISBN: unassigned.
 

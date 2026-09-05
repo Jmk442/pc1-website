@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import CheckoutButton from '@/components/CheckoutButton'
+import KindleOffer from '@/components/KindleOffer'
 
 interface CTASectionProps {
   heading: string
@@ -38,6 +39,7 @@ export default function CTASection({
             </Link>
           )}
         </div>
+        <KindleOffer tone="dark" />
       </div>
     </section>
   )

@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import JsonLd from '@/components/JsonLd'
+import UtmCapture from '@/components/UtmCapture'
 import { seo } from '@/data/seo'
 
 const inter = Inter({
@@ -34,6 +35,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen flex flex-col font-sans">
         <JsonLd />
+        <UtmCapture />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

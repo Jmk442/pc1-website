@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import CoverImage from '@/components/CoverImage'
 import CheckoutButton from '@/components/CheckoutButton'
+import KindleOffer from '@/components/KindleOffer'
 import { storeLongDescription } from '@/data/craft'
-import { checkoutDisclosure, pc1Product, priceLabel, refundDisclosure } from '@/data/pc1Product'
+import { checkoutDisclosure, pc1Product, priceLabel, refundDisclosure, seriesPositioning } from '@/data/pc1Product'
 import { bookToc } from '@/data/bookToc'
 import { seo } from '@/data/seo'
 
@@ -48,8 +49,10 @@ export default function BookPage() {
         <p className="text-gray-600 mb-2">
           {pc1Product.formats} · {priceLabel}
         </p>
+        <p className="text-gray-500 text-sm mb-4">{seriesPositioning}</p>
         <p className="text-gray-600 mb-6">{checkoutDisclosure}</p>
         <CheckoutButton />
+        <KindleOffer />
         <p className="text-gray-500 text-sm mt-6 leading-relaxed">
           {refundDisclosure}{' '}
           <Link href="/refunds/" className="text-primary font-semibold hover:text-accent">

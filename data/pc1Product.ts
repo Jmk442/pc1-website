@@ -1,4 +1,5 @@
 export type CheckoutStatus = 'pending' | 'live'
+export type KindleStatus = 'pending' | 'live'
 
 export interface Pc1Product {
   id: 'pc1-book'
@@ -34,7 +35,7 @@ export const pc1Product: Pc1Product = {
   publishingModel: 'Self-published',
   edition: 'First edition, 2026',
   language: 'English',
-  priceAud: '19.95',
+  priceAud: '14.99',
   currency: 'AUD',
   formats: 'PDF + EPUB',
   isbn: 'UNASSIGNED',
@@ -46,11 +47,39 @@ export const pc1Product: Pc1Product = {
 
 export const priceLabel = `A$${pc1Product.priceAud}`
 
-/** Public CTA label. */
+/** Public CTA label for the primary website → Gumroad direct-sale path. */
 export const buyCtaLabel = 'Buy PromptCraft 1'
 
+export const approvedPositioning =
+  'When taught correctly and applied properly, C.R.A.F.T. is designed to improve the relevance, completeness and task-specific accuracy of AI responses while reducing avoidable corrections and retries.'
+
+export const humanJudgementBoundary =
+  'Human judgement, checking and revision remain necessary.'
+
+export const compatibilityWording =
+  'Use C.R.A.F.T. with any AI system that accepts written instructions.'
+
 export const checkoutDisclosure =
-  'Secure checkout and digital delivery through Gumroad. Gumroad converts the A$19.95 base price to USD at checkout. Applicable taxes are calculated at checkout.'
+  `Secure checkout and digital delivery through Gumroad. Gumroad converts the ${priceLabel} base price to USD at checkout. Applicable taxes are calculated at checkout.`
+
+/**
+ * Secondary Kindle pathway. Keep status at 'pending' and amazonUrl null until a
+ * verified public Amazon listing URL is supplied. Do not guess a URL.
+ *
+ * Later live switch:
+ *   status: 'live'
+ *   amazonUrl: 'https://exact-verified-amazon-url'
+ */
+export const kindleOffer = {
+  status: 'pending' as KindleStatus,
+  amazonUrl: null as string | null,
+  pendingCopy:
+    'Amazon Kindle edition. Uploaded and processing with Amazon. Live link coming soon.',
+  liveCtaLabel: 'Buy on Amazon Kindle',
+}
+
+export const seriesPositioning =
+  'PromptCraft 1 is Book 1 of a planned three-book series.'
 
 /** Short checkout-adjacent summary. Full terms remain on the refunds page. */
 export const refundDisclosure =
@@ -70,4 +99,12 @@ export function getCheckoutHref(): string {
 
 export function isCheckoutLive(): boolean {
   return pc1Product.checkoutStatus === 'live' && pc1Product.gumroadUrl.startsWith('https://')
+}
+
+export function isKindleLive(): boolean {
+  return (
+    kindleOffer.status === 'live' &&
+    typeof kindleOffer.amazonUrl === 'string' &&
+    kindleOffer.amazonUrl.startsWith('https://')
+  )
 }

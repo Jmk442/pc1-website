@@ -1,10 +1,10 @@
 export const seo = {
   homeTitle: 'PromptCraft 1 — How to Talk to Machines | Better AI Prompts',
   homeDescription:
-    'Learn the C.R.A.F.T. method for writing clearer AI prompts. PromptCraft 1 helps students, educators, managers and everyday users get more useful AI results.',
+    'When taught correctly and applied properly, C.R.A.F.T. is designed to improve the relevance, completeness and task-specific accuracy of AI responses while reducing avoidable corrections and retries. Human judgement, checking and revision remain necessary.',
   bookTitle: 'PromptCraft 1 — How to Talk to Machines | John Kenneally',
   bookDescription:
-    'PromptCraft 1 — How to Talk to Machines by John Kenneally. PDF + EPUB. First edition, 2026. A practical C.R.A.F.T. method for clearer AI prompts. A$19.95.',
+    'PromptCraft 1 — How to Talk to Machines by John Kenneally. PDF + EPUB. First edition, 2026. A practical C.R.A.F.T. method for clearer AI prompts. A$14.99.',
   aboutTitle: 'John Kenneally | Author of PromptCraft 1',
   aboutDescription:
     'John Kenneally is the author and independent publisher of PromptCraft 1 — How to Talk to Machines, and the creator of the C.R.A.F.T. method.',

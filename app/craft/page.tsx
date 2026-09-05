@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { craftElements, craftTransformation } from '@/data/craft'
 import { seo } from '@/data/seo'
 import CheckoutButton from '@/components/CheckoutButton'
-import { checkoutDisclosure } from '@/data/pc1Product'
+import KindleOffer from '@/components/KindleOffer'
+import { checkoutDisclosure, compatibilityWording, humanJudgementBoundary } from '@/data/pc1Product'
 
 export const metadata: Metadata = {
   title: seo.craftTitle,
@@ -14,10 +15,11 @@ export default function CraftPage() {
     <div className="max-w-4xl mx-auto px-4 py-12">
       <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">The method</p>
       <h1 className="text-4xl font-extrabold text-primary mb-4">The C.R.A.F.T. method</h1>
-      <p className="text-gray-600 text-lg mb-10 leading-relaxed">
-        C.R.A.F.T. is a repeatable way to write clearer AI prompts. It is the core of PromptCraft 1.
-        Use it before the model starts generating — not as a trick after a weak answer.
+      <p className="text-gray-600 text-lg mb-4 leading-relaxed">
+        C.R.A.F.T. is a repeatable, platform-independent way to write clearer AI prompts. It is the core of PromptCraft 1.
+        Use it before the model starts generating — not as a trick after a weak answer. {compatibilityWording}
       </p>
+      <p className="text-gray-500 text-base mb-10 leading-relaxed">{humanJudgementBoundary}</p>
 
       <div className="space-y-6 mb-16">
         {craftElements.map((el) => (
@@ -55,6 +57,7 @@ export default function CraftPage() {
         <p className="text-white/70 mb-2">24 chapters, practical examples, and C.R.A.F.T. reference material.</p>
         <p className="text-white/50 text-sm mb-6">{checkoutDisclosure}</p>
         <CheckoutButton />
+        <KindleOffer tone="dark" />
       </div>
     </div>
   )

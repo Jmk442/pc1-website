@@ -9,6 +9,15 @@ export default function JsonLd() {
     description: author.bio[0],
   }
 
+  const offer = {
+    '@type': 'Offer',
+    url: pc1Product.gumroadUrl,
+    price: pc1Product.priceAud,
+    priceCurrency: pc1Product.currency,
+    availability: 'https://schema.org/InStock',
+    itemCondition: 'https://schema.org/NewCondition',
+  }
+
   const book = {
     '@type': 'Book',
     name: pc1Product.displayTitle,
@@ -21,6 +30,7 @@ export default function JsonLd() {
     copyrightYear: 2026,
     description:
       'A practical guide to writing clearer AI prompts using the C.R.A.F.T. method: Context, Role, Action, Format and Tone.',
+    offers: offer,
   }
 
   const graph = {

@@ -1,11 +1,20 @@
 import Link from 'next/link'
 import CoverImage from '@/components/CoverImage'
 import CheckoutButton from '@/components/CheckoutButton'
+import KindleOffer from '@/components/KindleOffer'
 import CraftGrid from '@/components/CraftGrid'
 import EmailCapture from '@/components/EmailCapture'
 import CTASection from '@/components/CTASection'
 import { audiences, craftElements, craftTransformation, storeShortDescription } from '@/data/craft'
-import { checkoutDisclosure, pc1Product, priceLabel } from '@/data/pc1Product'
+import {
+  approvedPositioning,
+  checkoutDisclosure,
+  compatibilityWording,
+  humanJudgementBoundary,
+  pc1Product,
+  priceLabel,
+  seriesPositioning,
+} from '@/data/pc1Product'
 import { author } from '@/data/author'
 import { articles } from '@/data/articles'
 
@@ -34,11 +43,14 @@ export default function HomePage() {
                   How to Talk to Machines
                 </span>
               </h1>
-              <p className="text-xl sm:text-2xl font-semibold text-white mt-6 mb-4">
-                Better AI results start with clearer instructions.
+              <p className="text-lg sm:text-xl font-semibold text-white mt-6 mb-3 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                {approvedPositioning}
+              </p>
+              <p className="text-white/80 text-base mb-5 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                {humanJudgementBoundary}
               </p>
               <p className="text-white/70 text-lg mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                PromptCraft 1 teaches a repeatable way to give AI the Context, Role, Action, Format and Tone it needs before it starts generating.
+                PromptCraft 1 teaches a repeatable, platform-independent way to give an AI system the Context, Role, Action, Format and Tone it needs before it starts generating.
               </p>
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                 <CheckoutButton className="btn-primary text-base px-8 py-4 font-black tracking-wide" />
@@ -53,6 +65,7 @@ export default function HomePage() {
                 {pc1Product.formats} · {priceLabel} · {pc1Product.author}
               </p>
               <p className="text-white/40 text-sm mt-2">{checkoutDisclosure}</p>
+              <KindleOffer tone="dark" />
             </div>
             <div className="max-w-[280px] sm:max-w-[320px] mx-auto">
               <div className="rounded-lg overflow-hidden shadow-2xl ring-1 ring-white/10">
@@ -86,7 +99,7 @@ export default function HomePage() {
             <p className="text-xs font-bold tracking-[0.3em] uppercase text-accent mb-3">The method</p>
             <h2 className="text-3xl sm:text-4xl font-black text-primary mb-4">C.R.A.F.T.</h2>
             <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-              Five elements. One structure. Use it on Claude, ChatGPT, Gemini, or any tool that reads instructions.
+              Five elements. One structure. {compatibilityWording}
             </p>
           </div>
           <CraftGrid />
@@ -142,6 +155,7 @@ export default function HomePage() {
               <p className="text-gray-500 mb-5">
                 {pc1Product.author} · {pc1Product.edition} · {pc1Product.formats} · {priceLabel}
               </p>
+              <p className="text-gray-500 text-sm mb-5">{seriesPositioning}</p>
               <p className="text-gray-600 mb-6 leading-relaxed">{storeShortDescription}</p>
               <ul className="space-y-3 mb-8 text-sm text-gray-600">
                 <li className="flex gap-3"><span className="text-accent font-black">✓</span> 24 chapters, with practical examples</li>
@@ -150,6 +164,7 @@ export default function HomePage() {
                 <li className="flex gap-3"><span className="text-accent font-black">✓</span> C.R.A.F.T. reference material you can keep using</li>
               </ul>
               <CheckoutButton />
+              <KindleOffer />
               <p className="text-gray-500 text-sm mt-3">{checkoutDisclosure}</p>
               <p className="text-gray-400 text-sm mt-3">
                 <Link href="/book" className="hover:text-primary">See what is included →</Link>
